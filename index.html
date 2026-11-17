@@ -458,6 +458,7 @@ async function initFirebase() {
   } catch (e) {
     console.error('Auth error', e);
     updateSyncBadge('error');
+    alert('حدث خطأ في الاتصال بـ Firebase: \n' + e.message); 
   }
 }
 
@@ -637,7 +638,6 @@ window.addEntry = async () => {
   updateSyncBadge('saving');
   try {
     await addDoc(collection(db, 'entries'), entryData);
-    // إعادة تعيين الحقول
     ['custName','custPhone','category','amount','costPrice','notes','paidAmount','dueDate'].forEach(id => {
       const el = document.getElementById(id); if (el) el.value = '';
     });
@@ -854,7 +854,6 @@ window.savePayment = async () => {
   const totalPaid = (e.paid || 0) + newPayments.reduce((s, p) => s + p.amount, 0);
   const update = { payments: newPayments };
   if (totalPaid >= e.amount * e.quantity) {
-    // دفع كامل، تحويل الدين إلى بيع
     update.type = 'sale';
   }
   try {
@@ -923,7 +922,6 @@ window.closeBox = async () => {
   try {
     await addDoc(collection(db, 'reports'), report);
     toastMsg('✅ تم تسكير الصندوق');
-    // خيار إرسال عبر واتساب
     const phone = settings.phone || '96181439656';
     const msg = `📊 تقرير ${today}\n\n🛒 المبيع: ${fmt(sales)} $\n📈 الربح: ${fmt(profit)} $\n📓 الديون: ${fmt(debts)} $\n🔄 المرتجع: ${fmt(returns)} $\n💸 المصاريف: ${fmt(expenses)} $\n💰 الصافي: ${fmt(profit - expenses - returns)} $\n\nعدد العمليات: ${todaysEntries.length}`;
     if (confirm('هل تريد إرسال التقرير عبر واتساب؟')) {
@@ -1018,7 +1016,6 @@ function renderEmployees() {
       <button onclick="openWithdraw('${emp.id}','${emp.name}')" class="w-full bg-[#0f172a] text-white rounded-xl py-2 text-sm font-bold">💵 تسجيل سحب</button>
     </div>`;
   }).join('');
-  // سجل السحوبات الكلي
   const hist = document.getElementById('withdrawHistory');
   if (hist) {
     const all = [];
@@ -1174,7 +1171,7 @@ window.sendMonthlyText = () => {
   window.open(`https://wa.me/${phone}?text=${encodeURIComponent('📊 تقرير شهر ' + month + '\n\n' + txt)}`, '_blank');
 };
 
-// ========== الإعدادات ==========
+// ========== الإعدادات والاستيراد ==========
 window.saveTelegram = async () => {
   const phone = document.getElementById('ahmadNumber').value.trim();
   try {
@@ -1194,16 +1191,53 @@ window.exportData = () => {
 };
 
 window.importData = async (event) => {
-  const file = event.target.files[0]; if (!file) return;
+  const file = event.target.files[0]; 
+  if (!file) return;
+  
+  // تصفير الحقل ليتمكن المستخدم من اختيار نفس الملف مرة أخرى
+  event.target.value = '';
+
   if (!confirm('سيتم إضافة البيانات المستوردة إلى قاعدة البيانات الحالية. متابعة؟')) return;
+  
   try {
-    const data = JSON.parse(await file.text());
-    for (const e of (data.entries || [])) {
-      const { id, ...rest } = e;
-      await addDoc(collection(db, 'entries'), { ...rest, timestamp: serverTimestamp() });
+    const text = await file.text();
+    let data = JSON.parse(text);
+    
+    let entriesToImport = [];
+    
+    // التحقق من شكل الملف (سواء كان مصفوفة قديمة أو كائن جديد)
+    if (Array.isArray(data)) {
+       entriesToImport = data; // إذا كان الملف مجرد قائمة عمليات
+    } else if (data && data.entries && Array.isArray(data.entries)) {
+       entriesToImport = data.entries; // إذا كان ملف النسخة الجديدة
+    } else {
+       alert('❌ تنسيق الملف غير معروف! تأكد من أنه ملف نسخة احتياطية صحيح.');
+       return;
     }
-    toastMsg('✅ تم الاستيراد');
-  } catch (err) { console.error(err); toastMsg('❌ فشل'); }
+
+    if (entriesToImport.length === 0) {
+       alert('⚠️ لا توجد عمليات داخل هذا الملف لاستيرادها.');
+       return;
+    }
+
+    updateSyncBadge('saving', 'جاري الاستيراد...');
+    let count = 0;
+    
+    for (const e of entriesToImport) {
+      const { id, ...rest } = e;
+      // إضافة العمليات إلى Firebase
+      await addDoc(collection(db, 'entries'), { ...rest, timestamp: serverTimestamp() });
+      count++;
+    }
+    
+    updateSyncBadge('ok');
+    alert(`✅ تم استيراد ${count} عملية بنجاح! سيتم تحديث الشاشة الآن.`);
+    
+  } catch (err) { 
+    console.error("Import Error:", err); 
+    alert('❌ فشل الاستيراد: ' + err.message); 
+    updateSyncBadge('error');
+  }
 };
 
 window.manualSync = () => {
@@ -1214,19 +1248,15 @@ window.manualSync = () => {
 
 // ========== البدء ==========
 function boot() {
-  // التاريخ الحالي
   document.getElementById('entryDate').value = todayStr();
   document.getElementById('filterDate').value = todayStr();
   document.getElementById('monthPicker').value = todayStr().slice(0, 7);
-  // الوضع الليلي
   if (localStorage.getItem('alherz_dark') === '1') document.body.classList.add('dark');
-  // الجلسة السابقة
   const saved = localStorage.getItem('alherz_user');
   if (saved && PASSWORDS[saved]) {
     currentUser = saved;
     applyLogin();
   }
-  // Firebase
   initFirebase();
 }
 

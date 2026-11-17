@@ -406,11 +406,7 @@ const db = getFirestore(app);
 const auth = getAuth(app);
 
 // ========== كلمات السر ==========
-const PASSWORDS = {
-  ahmad: 'ahmad2010',
-  amal: 'amal2010',
-  nurr: 'nurr2010'
-};
+const PASSWORDS = { ahmad: 'ahmad2010', amal: 'amal2010', nurr: 'nurr2010' };
 
 // ========== المتغيرات العامة ==========
 let currentUser = null;
@@ -1193,7 +1189,7 @@ window.exportData = () => {
 window.importData = async (event) => {
   const file = event.target.files[0]; 
   if (!file) return;
-  event.target.value = ''; // تصفير الحقل
+  event.target.value = '';
 
   if (!firebaseReady) {
       alert('⚠️ التطبيق غير متصل بقاعدة البيانات بعد. انتظر ثواني حتى تظهر علامة (✅ متزامن) وحاول مجدداً.');
@@ -1221,31 +1217,56 @@ window.importData = async (event) => {
 
     updateSyncBadge('saving', 'جاري الاستيراد...');
     let count = 0;
+
+    const findValue = (obj, keys, defaultVal) => {
+        for (let k of keys) {
+            if (obj[k] !== undefined && obj[k] !== null && obj[k] !== '') return obj[k];
+        }
+        return defaultVal;
+    };
     
     for (const oldEntry of entriesToImport) {
       try {
-        // تنظيف البيانات وتوحيد أسماء الحقول
+        // دالة بحث قوية جداً عن المبالغ والأسماء
+        let rawName = findValue(oldEntry, ['customerName', 'custName', 'name', 'client', 'customer', 'cust', 'buyer', 'اسم', 'الزبون'], '');
+        let rawAmount = findValue(oldEntry, ['amount', 'price', 'total', 'value', 'salePrice', 'سعر', 'المبلغ'], 0);
+        let rawQty = findValue(oldEntry, ['quantity', 'qty', 'count', 'الكمية'], 1);
+        let rawProduct = findValue(oldEntry, ['productName', 'product', 'category', 'cat', 'item', 'المنتج', 'الصنف'], '');
+        let rawDate = findValue(oldEntry, ['date', 'Date', 'createdAt', 'timestamp', 'time', 'التاريخ'], todayStr());
+        let rawType = findValue(oldEntry, ['type', 'action', 'kind', 'النوع'], 'sale');
+        let rawCost = findValue(oldEntry, ['costPrice', 'cost', 'رأس المال'], 0);
+        let rawPaid = findValue(oldEntry, ['paid', 'المدفوع'], 0);
+
+        // تنظيف الأرقام (إزالة أي علامات مثل $)
+        let finalAmount = parseFloat(String(rawAmount).replace(/[^0-9.-]+/g, "")) || 0;
+        let finalQty = parseInt(String(rawQty).replace(/[^0-9.-]+/g, "")) || 1;
+        let finalCost = parseFloat(String(rawCost).replace(/[^0-9.-]+/g, "")) || 0;
+        let finalPaid = parseFloat(String(rawPaid).replace(/[^0-9.-]+/g, "")) || 0;
+
+        // تصحيح التاريخ (إزالة الوقت إن وجد: 2026-11-16T17:13:03 -> 2026-11-16)
+        let finalDate = String(rawDate).split('T')[0].split(' ')[0];
+
+        // مطابقة نوع العملية
+        let finalType = 'sale';
+        if (rawType === 'debt' || rawType === 'دين') finalType = 'debt';
+        else if (rawType === 'expense' || rawType === 'مصروف') finalType = 'expense';
+        else if (rawType === 'return' || rawType === 'مرتجع') finalType = 'return';
+
         const safeEntry = {
-            type: ['sale', 'debt', 'expense', 'return'].includes(oldEntry.type) ? oldEntry.type : 'sale',
+            type: finalType,
             saleKind: oldEntry.saleKind || oldEntry.kind || oldEntry.view || 'جملة',
-            customerName: String(oldEntry.customerName || oldEntry.name || oldEntry.cust || oldEntry.customer || '').trim(),
-            customerPhone: String(oldEntry.customerPhone || oldEntry.phone || '').trim(),
-            productName: String(oldEntry.productName || oldEntry.product || oldEntry.cat || oldEntry.item || '').trim(),
-            
-            quantity: Number(oldEntry.quantity || oldEntry.qty || 1),
-            amount: Number(oldEntry.amount || oldEntry.price || 0),
-            costPrice: Number(oldEntry.costPrice || oldEntry.cost || 0),
-            paid: Number(oldEntry.paid || 0),
-            
-            dueDate: String(oldEntry.dueDate || ''),
-            notes: String(oldEntry.notes || ''),
-            
-            date: (oldEntry.date && typeof oldEntry.date === 'string' && oldEntry.date.includes('-')) 
-                  ? oldEntry.date 
-                  : todayStr(),
-                  
+            customerName: String(rawName).trim(),
+            customerPhone: String(findValue(oldEntry, ['customerPhone', 'phone', 'الرقم', 'الهاتف'], '')).trim(),
+            productName: String(rawProduct).trim(),
+            quantity: finalQty,
+            amount: finalAmount,
+            costPrice: finalCost,
+            paid: finalPaid,
+            dueDate: String(findValue(oldEntry, ['dueDate', 'تاريخ الاستحقاق'], '')),
+            notes: String(findValue(oldEntry, ['notes', 'الملاحظات', 'ملاحظة'], '')),
+            date: finalDate,
             payments: Array.isArray(oldEntry.payments) ? oldEntry.payments : [],
-            user: oldEntry.user || 'imported',
+            user: 'imported',
             timestamp: serverTimestamp()
         };
 
@@ -1257,8 +1278,6 @@ window.importData = async (event) => {
     }
     
     alert(`✅ ممتاز! تم فحص واستيراد ${count} عملية بنجاح وتصحيح بياناتها.\nسأقوم بتحديث الصفحة الآن لتظهر لك.`);
-    
-    // تحديث الصفحة فوراً لكي ترى البيانات
     window.location.reload();
     
   } catch (err) { 
@@ -1292,3 +1311,4 @@ boot();
 </script>
 </body>
 </html>
+```

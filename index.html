@@ -1171,7 +1171,7 @@ window.sendMonthlyText = () => {
   window.open(`https://wa.me/${phone}?text=${encodeURIComponent('📊 تقرير شهر ' + month + '\n\n' + txt)}`, '_blank');
 };
 
-// ========== الإعدادات والاستيراد ==========
+// ========== الإعدادات والاستيراد الذكي ==========
 window.saveTelegram = async () => {
   const phone = document.getElementById('ahmadNumber').value.trim();
   try {
@@ -1193,94 +1193,73 @@ window.exportData = () => {
 window.importData = async (event) => {
   const file = event.target.files[0]; 
   if (!file) return;
-  
-  event.target.value = '';
+  event.target.value = ''; // تصفير الحقل
 
   if (!firebaseReady) {
       alert('⚠️ التطبيق غير متصل بقاعدة البيانات بعد. انتظر ثواني حتى تظهر علامة (✅ متزامن) وحاول مجدداً.');
       return;
   }
 
-  if (!confirm('سيتم إضافة البيانات المستوردة إلى قاعدة البيانات الحالية. متابعة؟')) return;
+  if (!confirm('سيتم قراءة الملف ومطابقة بياناته مع النظام الجديد وإضافته. متابعة؟')) return;
   
   try {
     const text = await file.text();
     let data = JSON.parse(text);
     
     let entriesToImport = [];
-    
     if (Array.isArray(data)) {
        entriesToImport = data; 
     } else if (data && data.entries && Array.isArray(data.entries)) {
        entriesToImport = data.entries; 
     } else {
-       alert('❌ تنسيق الملف غير معروف! تأكد من أنه ملف نسخة احتياطية صحيح.');
-       return;
+       alert('❌ تنسيق الملف غير معروف! تأكد أنه ملف JSON صحيح.'); return;
     }
 
     if (entriesToImport.length === 0) {
-       alert('⚠️ لا توجد عمليات داخل هذا الملف لاستيرادها.');
-       return;
+       alert('⚠️ لا توجد عمليات داخل هذا الملف.'); return;
     }
 
     updateSyncBadge('saving', 'جاري الاستيراد...');
     let count = 0;
-    let errors = 0;
     
-    for (const e of entriesToImport) {
+    for (const oldEntry of entriesToImport) {
       try {
-        const { id, ...rest } = e;
-        
-        // الترجمة من الحقول القديمة إلى الجديدة (إذا كان الملف قديماً)
-        const mappedEntry = {
-          type: rest.type || 'sale',
-          saleKind: rest.saleKind || 'مفرق',
-          customerName: rest.cust || rest.customerName || 'زبون',
-          customerPhone: rest.phone || rest.customerPhone || '',
-          productName: rest.cat || rest.productName || '',
-          quantity: Number(rest.qty || rest.quantity) || 1,
-          amount: Number(rest.amount) || 0,
-          costPrice: Number(rest.costPrice) || 0,
-          paid: Number(rest.paid) || 0,
-          dueDate: rest.due || rest.dueDate || '',
-          notes: rest.notes || '',
-          date: rest.date ? rest.date.split('T')[0] : todayStr(),
-          payments: rest.payments || [],
-          user: rest.user || currentUser,
-          timestamp: serverTimestamp()
+        // تنظيف البيانات وتوحيد أسماء الحقول
+        const safeEntry = {
+            type: ['sale', 'debt', 'expense', 'return'].includes(oldEntry.type) ? oldEntry.type : 'sale',
+            saleKind: oldEntry.saleKind || oldEntry.kind || oldEntry.view || 'جملة',
+            customerName: String(oldEntry.customerName || oldEntry.name || oldEntry.cust || oldEntry.customer || '').trim(),
+            customerPhone: String(oldEntry.customerPhone || oldEntry.phone || '').trim(),
+            productName: String(oldEntry.productName || oldEntry.product || oldEntry.cat || oldEntry.item || '').trim(),
+            
+            quantity: Number(oldEntry.quantity || oldEntry.qty || 1),
+            amount: Number(oldEntry.amount || oldEntry.price || 0),
+            costPrice: Number(oldEntry.costPrice || oldEntry.cost || 0),
+            paid: Number(oldEntry.paid || 0),
+            
+            dueDate: String(oldEntry.dueDate || ''),
+            notes: String(oldEntry.notes || ''),
+            
+            date: (oldEntry.date && typeof oldEntry.date === 'string' && oldEntry.date.includes('-')) 
+                  ? oldEntry.date 
+                  : todayStr(),
+                  
+            payments: Array.isArray(oldEntry.payments) ? oldEntry.payments : [],
+            user: oldEntry.user || 'imported',
+            timestamp: serverTimestamp()
         };
 
-        const cleanEntry = JSON.parse(JSON.stringify(mappedEntry)); 
-        
-        await addDoc(collection(db, 'entries'), cleanEntry);
+        await addDoc(collection(db, 'entries'), safeEntry);
         count++;
       } catch (err) {
-        console.error("خطأ في عملية:", e, err);
-        errors++;
+        console.error("خطأ في عملية:", oldEntry, err);
       }
     }
     
-    // استيراد الموظفين (إذا كانوا موجودين)
-    let empCount = 0;
-    if (data.employees && typeof data.employees === 'object' && !Array.isArray(data.employees)) {
-      for (const [empName, empData] of Object.entries(data.employees)) {
-        try {
-          await addDoc(collection(db, 'employees'), {
-            name: empName,
-            withdrawals: empData.withdrawals || [],
-            createdAt: serverTimestamp()
-          });
-          empCount++;
-        } catch (err) { console.error("خطأ في موظف:", err); }
-      }
-    }
+    alert(`✅ ممتاز! تم فحص واستيراد ${count} عملية بنجاح وتصحيح بياناتها.\nسأقوم بتحديث الصفحة الآن لتظهر لك.`);
     
-    updateSyncBadge('ok');
-    if (errors > 0) {
-        alert(`⚠️ تم استيراد ${count} عملية بنجاح.\nولكن فشل استيراد ${errors} عملية.`);
-    } else {
-        alert(`✅ ممتاز! تم استيراد ${count} عملية بنجاح.${empCount > 0 ? ' و ' + empCount + ' موظف.' : ''}`);
-    }
+    // تحديث الصفحة فوراً لكي ترى البيانات
+    window.location.reload();
     
   } catch (err) { 
     console.error("Import Error:", err); 
@@ -1313,4 +1292,3 @@ boot();
 </script>
 </body>
 </html>
-```

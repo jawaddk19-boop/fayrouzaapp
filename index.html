@@ -1194,11 +1194,10 @@ window.importData = async (event) => {
   const file = event.target.files[0]; 
   if (!file) return;
   
-  // تصفير الحقل ليتمكن المستخدم من اختيار نفس الملف مرة أخرى
   event.target.value = '';
 
   if (!firebaseReady) {
-      alert('⚠️ التطبيق غير متصل بقاعدة البيانات بعد. انتظر ثواني حتى تظهر علامة (✅ متزامن) في الأعلى وحاول مجدداً.');
+      alert('⚠️ التطبيق غير متصل بقاعدة البيانات بعد. انتظر ثواني حتى تظهر علامة (✅ متزامن) وحاول مجدداً.');
       return;
   }
 
@@ -1210,11 +1209,10 @@ window.importData = async (event) => {
     
     let entriesToImport = [];
     
-    // التحقق من شكل الملف (سواء كان مصفوفة قديمة أو كائن جديد)
     if (Array.isArray(data)) {
-       entriesToImport = data; // إذا كان الملف مجرد قائمة عمليات
+       entriesToImport = data; 
     } else if (data && data.entries && Array.isArray(data.entries)) {
-       entriesToImport = data.entries; // إذا كان ملف النسخة الجديدة
+       entriesToImport = data.entries; 
     } else {
        alert('❌ تنسيق الملف غير معروف! تأكد من أنه ملف نسخة احتياطية صحيح.');
        return;
@@ -1232,25 +1230,56 @@ window.importData = async (event) => {
     for (const e of entriesToImport) {
       try {
         const { id, ...rest } = e;
-        // تنظيف البيانات من أي حقول فارغة (undefined) ترفضها Firebase
-        const cleanEntry = JSON.parse(JSON.stringify(rest)); 
         
-        await addDoc(collection(db, 'entries'), { 
-            ...cleanEntry, 
-            timestamp: serverTimestamp() 
-        });
+        // الترجمة من الحقول القديمة إلى الجديدة (إذا كان الملف قديماً)
+        const mappedEntry = {
+          type: rest.type || 'sale',
+          saleKind: rest.saleKind || 'مفرق',
+          customerName: rest.cust || rest.customerName || 'زبون',
+          customerPhone: rest.phone || rest.customerPhone || '',
+          productName: rest.cat || rest.productName || '',
+          quantity: Number(rest.qty || rest.quantity) || 1,
+          amount: Number(rest.amount) || 0,
+          costPrice: Number(rest.costPrice) || 0,
+          paid: Number(rest.paid) || 0,
+          dueDate: rest.due || rest.dueDate || '',
+          notes: rest.notes || '',
+          date: rest.date ? rest.date.split('T')[0] : todayStr(),
+          payments: rest.payments || [],
+          user: rest.user || currentUser,
+          timestamp: serverTimestamp()
+        };
+
+        const cleanEntry = JSON.parse(JSON.stringify(mappedEntry)); 
+        
+        await addDoc(collection(db, 'entries'), cleanEntry);
         count++;
       } catch (err) {
-        console.error("خطأ في عملية واحدة:", e, err);
+        console.error("خطأ في عملية:", e, err);
         errors++;
+      }
+    }
+    
+    // استيراد الموظفين (إذا كانوا موجودين)
+    let empCount = 0;
+    if (data.employees && typeof data.employees === 'object' && !Array.isArray(data.employees)) {
+      for (const [empName, empData] of Object.entries(data.employees)) {
+        try {
+          await addDoc(collection(db, 'employees'), {
+            name: empName,
+            withdrawals: empData.withdrawals || [],
+            createdAt: serverTimestamp()
+          });
+          empCount++;
+        } catch (err) { console.error("خطأ في موظف:", err); }
       }
     }
     
     updateSyncBadge('ok');
     if (errors > 0) {
-        alert(`⚠️ تم استيراد ${count} عملية بنجاح.\nولكن فشل استيراد ${errors} عملية (راجع الـ Console لمعرفة السبب).`);
+        alert(`⚠️ تم استيراد ${count} عملية بنجاح.\nولكن فشل استيراد ${errors} عملية.`);
     } else {
-        alert(`✅ ممتاز! تم استيراد ${count} عملية بنجاح. سيتم تحديث الشاشة الآن.`);
+        alert(`✅ ممتاز! تم استيراد ${count} عملية بنجاح.${empCount > 0 ? ' و ' + empCount + ' موظف.' : ''}`);
     }
     
   } catch (err) { 

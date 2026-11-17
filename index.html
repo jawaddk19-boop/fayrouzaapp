@@ -405,7 +405,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
-// ========== كلمات السر (غيّرها من هنا) ==========
+// ========== كلمات السر ==========
 const PASSWORDS = {
   ahmad: 'ahmad2010',
   amal: 'amal2010',
@@ -1197,6 +1197,11 @@ window.importData = async (event) => {
   // تصفير الحقل ليتمكن المستخدم من اختيار نفس الملف مرة أخرى
   event.target.value = '';
 
+  if (!firebaseReady) {
+      alert('⚠️ التطبيق غير متصل بقاعدة البيانات بعد. انتظر ثواني حتى تظهر علامة (✅ متزامن) في الأعلى وحاول مجدداً.');
+      return;
+  }
+
   if (!confirm('سيتم إضافة البيانات المستوردة إلى قاعدة البيانات الحالية. متابعة؟')) return;
   
   try {
@@ -1222,16 +1227,31 @@ window.importData = async (event) => {
 
     updateSyncBadge('saving', 'جاري الاستيراد...');
     let count = 0;
+    let errors = 0;
     
     for (const e of entriesToImport) {
-      const { id, ...rest } = e;
-      // إضافة العمليات إلى Firebase
-      await addDoc(collection(db, 'entries'), { ...rest, timestamp: serverTimestamp() });
-      count++;
+      try {
+        const { id, ...rest } = e;
+        // تنظيف البيانات من أي حقول فارغة (undefined) ترفضها Firebase
+        const cleanEntry = JSON.parse(JSON.stringify(rest)); 
+        
+        await addDoc(collection(db, 'entries'), { 
+            ...cleanEntry, 
+            timestamp: serverTimestamp() 
+        });
+        count++;
+      } catch (err) {
+        console.error("خطأ في عملية واحدة:", e, err);
+        errors++;
+      }
     }
     
     updateSyncBadge('ok');
-    alert(`✅ تم استيراد ${count} عملية بنجاح! سيتم تحديث الشاشة الآن.`);
+    if (errors > 0) {
+        alert(`⚠️ تم استيراد ${count} عملية بنجاح.\nولكن فشل استيراد ${errors} عملية (راجع الـ Console لمعرفة السبب).`);
+    } else {
+        alert(`✅ ممتاز! تم استيراد ${count} عملية بنجاح. سيتم تحديث الشاشة الآن.`);
+    }
     
   } catch (err) { 
     console.error("Import Error:", err); 

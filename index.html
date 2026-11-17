@@ -530,6 +530,12 @@ async function initFirebase() {
   }
 }
 
+function onListenError(name, err) {
+  console.error('Listener error:', name, err);
+  updateSyncBadge('error');
+  toastMsg('❌ لا يمكن قراءة ' + name + ' (' + (err && err.code ? err.code : 'error') + ')');
+}
+
 function startListeners() {
   unsubscribers.forEach(u => u());
   unsubscribers = [];
@@ -547,17 +553,17 @@ function startListeners() {
   unsubscribers.push(onSnapshot(collection(db, 'loyaltyCards'), snap => {
     loyaltyCards = snap.docs.map(d => ({ id: d.id, ...d.data() }));
     renderLoyalty();
-  }));
+  }, (err) => onListenError('loyaltyCards', err)));
 
   unsubscribers.push(onSnapshot(collection(db, 'employees'), snap => {
     employees = snap.docs.map(d => ({ id: d.id, ...d.data() }));
     renderEmployees();
-  }));
+  }, (err) => onListenError('employees', err)));
 
   unsubscribers.push(onSnapshot(query(collection(db, 'reports'), orderBy('closedAt', 'desc')), snap => {
     reports = snap.docs.map(d => ({ id: d.id, ...d.data() }));
     renderReports();
-  }));
+  }, (err) => onListenError('reports', err)));
 
   unsubscribers.push(onSnapshot(doc(db, 'settings', 'config'), snap => {
     if (snap.exists()) {
@@ -1228,6 +1234,8 @@ function renderLoyalty() {
         <div class="text-gold font-black text-lg">${esc(c.points || 0)} ⭐</div>
       </div>
       <div class="flex gap-2 mt-3">
+        <button onclick="changePoints('${esc(c.id)}',-1)" class="bg-slate-100 rounded-lg px-3 py-2 text-xs font-black">−</button>
+        <button onclick="changePoints('${esc(c.id)}',1)" class="bg-yellow-50 text-yellow-700 rounded-lg px-3 py-2 text-xs font-black">+ ⭐</button>
         <button onclick="waLoyalty('${esc(c.id)}')" class="flex-1 bg-green-600 text-white rounded-lg py-2 text-xs font-bold">💬 واتساب</button>
         ${isManager() ? `<button onclick="deleteLoyalty('${esc(c.id)}')" class="bg-red-50 text-red-600 rounded-lg px-3 py-2 text-xs font-bold">🗑️</button>` : ''}
       </div>
@@ -1236,6 +1244,16 @@ function renderLoyalty() {
 }
 
 // تُمرَّر الآن الـ id فقط (الأسماء قد تحتوي على ' وتكسر onclick)
+window.changePoints = async (id, delta) => {
+  const c = loyaltyCards.find(x => x.id === id); if (!c) return;
+  const cur = Number(c.points) || 0;
+  const pts = Math.max(0, cur + delta);
+  if (pts === cur) return;
+  const h = { action: delta > 0 ? 'إضافة نقطة' : 'خصم نقطة', time: new Date().toLocaleString('ar-LB'), pointsAfter: pts, user: currentUser };
+  try { await updateDoc(doc(db, 'loyaltyCards', id), { points: pts, history: [h, ...(c.history || [])] }); }
+  catch (e) { toastMsg('❌ فشل'); }
+};
+
 window.waLoyalty = (id) => {
   const c = loyaltyCards.find(x => x.id === id); if (!c) return;
   const phone = normPhone(c.phone);
@@ -1552,7 +1570,7 @@ window.importData = async (event) => {
           notes: String(findValue(oldEntry, ['notes', 'الملاحظات', 'ملاحظة'], '')),
           date: normDate(rawDate),
           payments: Array.isArray(oldEntry.payments) ? oldEntry.payments : [],
-          user: 'imported',
+          user: ['ahmad', 'amal', 'nurr'].includes(oldEntry.user) ? oldEntry.user : 'imported',
           timestamp: serverTimestamp()
         };
 
@@ -1568,7 +1586,46 @@ window.importData = async (event) => {
       }
     }
 
-    alert(`✅ تم استيراد ${count} عملية جديدة.\nتم تخطي ${skipped} عملية مكررة.${failed ? '\n⚠️ فشلت ' + failed + ' عملية.' : ''}`);
+    let loyAdded = 0, repAdded = 0, loyFail = 0, repFail = 0, lastErr = '';
+    if (data && !Array.isArray(data)) {
+      // بطاقات الولاء: تخطي الموجود بنفس الرقم
+      const phones = new Set(loyaltyCards.map(c => normPhone(c.phone)));
+      for (const c of (Array.isArray(data.loyaltyCards) ? data.loyaltyCards : [])) {
+        try {
+          const ph = normPhone(c.phone);
+          if (!c.name || (ph && phones.has(ph))) continue;
+          await addDoc(collection(db, 'loyaltyCards'), {
+            name: String(c.name).trim(), phone: String(c.phone || '').trim(), points: Number(c.points) || 0,
+            history: Array.isArray(c.history) ? c.history : [], createdAt: serverTimestamp(), user: 'imported'
+          });
+          if (ph) phones.add(ph);
+          loyAdded++;
+        } catch (err) { console.error(err); loyFail++; lastErr = err.code || err.message; }
+      }
+      // تقارير الأيام المغلقة: تقرير واحد لكل يوم، بدون استبدال الموجود
+      const repIds = new Set(reports.map(r => r.id));
+      for (const r of (Array.isArray(data.reports) ? data.reports : [])) {
+        try {
+          if (!r.date) continue;
+          const rid = 'day_' + r.date;
+          if (repIds.has(rid)) continue;
+          let rep;
+          if (r.totalSales !== undefined) {
+            rep = { ...r }; delete rep.id;
+          } else {
+            const profit = Number(r.profit) || 0, ret = Number(r.returns) || 0, exps = Number(r.exps) || 0;
+            rep = { date: r.date, totalSales: Number(r.sales) || 0, totalProfit: profit, totalDebts: Number(r.debts) || 0,
+              totalReturns: ret, totalExpenses: exps, netProfit: profit - exps - ret, entriesCount: Number(r.count) || 0, user: r.from || 'imported' };
+          }
+          rep.closedAt = new Date(r.date + 'T23:59:00');
+          await setDoc(doc(db, 'reports', rid), rep);
+          repIds.add(rid);
+          repAdded++;
+        } catch (err) { console.error(err); repFail++; lastErr = err.code || err.message; }
+      }
+    }
+
+    alert(`✅ تم استيراد ${count} عملية جديدة.${loyAdded ? '\n💳 بطاقات ولاء جديدة: ' + loyAdded : ''}${repAdded ? '\n📊 تقارير أيام: ' + repAdded : ''}${loyFail ? '\n⚠️ فشل استيراد ' + loyFail + ' بطاقة ولاء (' + lastErr + ')' : ''}${repFail ? '\n⚠️ فشل استيراد ' + repFail + ' تقرير (' + lastErr + ')' : ''}\nتم تخطي ${skipped} عملية مكررة.${failed ? '\n⚠️ فشلت ' + failed + ' عملية.' : ''}`);
     updateSyncBadge('ok');
   } catch (err) {
     console.error('Import Error:', err);

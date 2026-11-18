@@ -244,6 +244,18 @@ body.dark .text-slate-500{color:#94a3b8!important}
 <div class="glass-card p-8">
 <h3 class="font-black mb-6 border-b pb-4 text-slate-900 text-2xl">⚙️ الإعدادات</h3>
 <div class="mb-8">
+<h4 class="font-bold text-slate-700 mb-1">🔁 المصاريف الشهرية الثابتة</h4>
+<p class="text-xs text-slate-500 mb-3">تُسجَّل تلقائياً كل شهر عند فتح التطبيق في يوم الاستحقاق (مرة واحدة فقط لكل شهر).</p>
+<div class="grid grid-cols-6 gap-2 mb-3">
+<input id="fxName" placeholder="الاسم (مثال: إيجار المحل)" class="col-span-6 custom-input p-3 text-sm font-bold">
+<input id="fxAmount" type="number" placeholder="المبلغ $" class="col-span-3 custom-input p-3 text-sm font-bold">
+<input id="fxDay" type="number" min="1" max="31" placeholder="اليوم من الشهر" class="col-span-3 custom-input p-3 text-sm font-bold">
+<button onclick="addFixedExpense()" class="col-span-6 bg-[#0f172a] text-white rounded-xl p-3 font-black text-sm btn-hover">➕ إضافة مصروف ثابت</button>
+</div>
+<div id="fixedTotal" class="text-xs font-bold text-slate-600 mb-2"></div>
+<div id="fixedList" class="space-y-2"></div>
+</div>
+<div class="mb-8">
 <h4 class="font-bold text-slate-700 mb-3">💾 النسخ الاحتياطي</h4>
 <div class="flex gap-3">
 <button onclick="exportData()" class="flex-1 bg-green-600 text-white rounded-xl p-4 font-black text-sm btn-hover">⬇️ تصدير نسخة</button>
@@ -478,6 +490,7 @@ const isManager = () => currentUser === 'ahmad';
 let pendingClose = null;
 let currentInvoiceId = null;
 const openDebtCustomers = new Set();
+let fixedRunning = false, entriesLoaded = false, settingsLoaded = false;
 // رقم واتساب بصيغة دولية (الافتراضي لبنان 961)
 function normPhone(p) {
   let d = String(p || '').replace(/[^0-9]/g, '');
@@ -547,6 +560,8 @@ function startListeners() {
     updateDashboard();
     populateDatalists();
     renderDebts();
+    entriesLoaded = true;
+    maybeRunFixed();
     updateSyncBadge('ok');
   }, () => updateSyncBadge('error')));
 
@@ -571,7 +586,10 @@ function startListeners() {
       const el = document.getElementById('ahmadNumber');
       if (el && settings.phone) el.value = settings.phone;
     }
-  }));
+    settingsLoaded = true;
+    renderFixedList();
+    maybeRunFixed();
+  }, (err) => onListenError('settings', err)));
 
   updateSyncBadge('ok');
 }
@@ -616,6 +634,7 @@ function applyLogin() {
   document.getElementById('logoutBtn').classList.remove('hidden');
   document.getElementById('syncBtn').classList.remove('hidden');
   applyRole();
+  maybeRunFixed();
   render();
   updateDashboard();
 }
@@ -992,7 +1011,7 @@ function calcCash(day) {
       if (e.type === 'sale') sales += (e.payments || []).length ? (Number(e.paid) || 0) : tot;
       if (e.type === 'debt') debtPaid += Number(e.paid) || 0;
       if (e.type === 'return') returns += tot;
-      if (e.type === 'expense') expenses += tot;
+      if (e.type === 'expense' && !e.auto) expenses += tot;
     }
     (e.payments || []).forEach(p => { if (p.date === day) payments += Number(p.amount) || 0; });
   });
@@ -1204,6 +1223,119 @@ function applyRole() {
   setType('sale');
   switchTab('sales');
 }
+
+// ========== المصاريف الشهرية الثابتة ==========
+const pad2 = (n) => String(n).padStart(2, '0');
+const prevMonth = (m) => { let [y, mo] = m.split('-').map(Number); mo--; if (!mo) { mo = 12; y--; } return y + '-' + pad2(mo); };
+const daysIn = (m) => { const [y, mo] = m.split('-').map(Number); return new Date(y, mo, 0).getDate(); };
+const fixedList = () => Array.isArray(settings.fixedExpenses) ? settings.fixedExpenses : [];
+const saveFixed = (list) => setDoc(doc(db, 'settings', 'config'), { fixedExpenses: list }, { merge: true });
+
+// تسجيل مصروف كل بند مرة واحدة في الشهر (معرّف ثابت للمصروف يمنع التكرار)
+async function maybeRunFixed() {
+  if (fixedRunning || !firebaseReady || !currentUser || !isManager() || !entriesLoaded || !settingsLoaded) return;
+  const list = fixedList();
+  if (!list.length) return;
+  const now = todayStr();
+  const month = now.slice(0, 7);
+  fixedRunning = true;
+  try {
+    let changed = false;
+    const next = [];
+    for (const it of list) {
+      let cur = it;
+      if (it.active !== false && it.lastMonth !== month) {
+        const day = Math.min(Math.max(parseInt(it.day) || 1, 1), daysIn(month));
+        const date = month + '-' + pad2(day);
+        if (date <= now) {
+          await setDoc(doc(db, 'entries', 'fx_' + it.id + '_' + month), {
+            type: 'expense', saleKind: '', customerName: '', customerPhone: '', productName: it.name,
+            quantity: 1, amount: Number(it.amount) || 0, costPrice: 0, paid: 0, dueDate: '',
+            notes: 'مصروف شهري ثابت', date, payments: [], user: 'auto', auto: true, fixedId: it.id,
+            timestamp: serverTimestamp()
+          });
+          cur = { ...it, lastMonth: month };
+          changed = true;
+        }
+      }
+      next.push(cur);
+    }
+    if (changed) {
+      await saveFixed(next);
+      toastMsg('🔁 تمت إضافة المصاريف الثابتة لهذا الشهر');
+    }
+  } catch (e) { console.error('Fixed expenses error', e); }
+  finally { fixedRunning = false; }
+}
+
+function renderFixedList() {
+  const el = document.getElementById('fixedList');
+  if (!el) return;
+  const list = fixedList();
+  const total = list.filter(i => i.active !== false).reduce((s, i) => s + (Number(i.amount) || 0), 0);
+  const tEl = document.getElementById('fixedTotal');
+  if (tEl) tEl.textContent = list.length ? 'إجمالي المصاريف الثابتة الفعّالة: ' + fmt(total) + ' $ / شهر' : '';
+  if (!list.length) { el.innerHTML = '<div class="text-center text-slate-400 text-sm py-3">لا توجد مصاريف ثابتة</div>'; return; }
+  el.innerHTML = list.map(it => `
+    <div class="flex items-center justify-between gap-2 border border-slate-200 rounded-xl p-3 ${it.active === false ? 'opacity-50' : ''}">
+      <div class="min-w-0">
+        <div class="font-black text-sm truncate">${esc(it.name)}</div>
+        <div class="text-[10px] text-slate-500">يوم ${esc(it.day)} من كل شهر ${it.active === false ? '· متوقف' : ''}</div>
+      </div>
+      <div class="font-black text-red-600 text-sm shrink-0">${fmt(it.amount)} $</div>
+      <div class="flex gap-1 shrink-0">
+        <button onclick="toggleFixed('${esc(it.id)}')" class="text-xs bg-slate-100 rounded-md px-2 py-1">${it.active === false ? '▶️' : '⏸️'}</button>
+        <button onclick="editFixed('${esc(it.id)}')" class="text-xs bg-slate-100 rounded-md px-2 py-1">✏️</button>
+        <button onclick="deleteFixed('${esc(it.id)}')" class="text-xs bg-red-50 text-red-600 rounded-md px-2 py-1">🗑️</button>
+      </div>
+    </div>`).join('');
+}
+
+window.addFixedExpense = async () => {
+  if (!isManager() || !firebaseReady) return;
+  const name = document.getElementById('fxName').value.trim();
+  const amount = parseFloat(document.getElementById('fxAmount').value) || 0;
+  const day = parseInt(document.getElementById('fxDay').value) || 0;
+  if (!name || amount <= 0 || day < 1 || day > 31) { toastMsg('⚠️ أدخل الاسم والمبلغ ويوماً من 1 إلى 31'); return; }
+  const now = todayStr();
+  const month = now.slice(0, 7);
+  const due = month + '-' + pad2(Math.min(day, daysIn(month)));
+  let lastMonth = prevMonth(month); // يُسجَّل هذا الشهر عند حلول اليوم
+  if (due <= now && !confirm('يوم الاستحقاق مرّ هذا الشهر.\nموافق = أضف مصروف هذا الشهر الآن\nإلغاء = ابدأ من الشهر القادم')) lastMonth = month;
+  const item = { id: Date.now().toString(36), name, amount, day, active: true, lastMonth };
+  try {
+    await saveFixed([...fixedList(), item]);
+    ['fxName', 'fxAmount', 'fxDay'].forEach(id => document.getElementById(id).value = '');
+    toastMsg('✅ تمت إضافة المصروف الثابت');
+  } catch (e) { console.error(e); toastMsg('❌ فشل الحفظ'); }
+};
+
+window.toggleFixed = async (id) => {
+  if (!isManager()) return;
+  const month = todayStr().slice(0, 7);
+  const list = fixedList().map(i => i.id !== id ? i : (i.active === false
+    ? { ...i, active: true, lastMonth: month }   // عند التشغيل لا يُضاف شهر فائت
+    : { ...i, active: false }));
+  try { await saveFixed(list); } catch (e) { toastMsg('❌ فشل'); }
+};
+
+window.editFixed = async (id) => {
+  if (!isManager()) return;
+  const it = fixedList().find(i => i.id === id); if (!it) return;
+  const a = prompt('المبلغ الشهري ($) لـ ' + it.name + ':', it.amount);
+  if (a === null) return;
+  const d = prompt('يوم الاستحقاق (1-31):', it.day);
+  if (d === null) return;
+  const amount = parseFloat(a), day = parseInt(d);
+  if (!(amount > 0) || !(day >= 1 && day <= 31)) { toastMsg('⚠️ قيمة غير صحيحة'); return; }
+  try { await saveFixed(fixedList().map(i => i.id === id ? { ...i, amount, day } : i)); toastMsg('✅ تم التعديل (يسري على الأشهر القادمة)'); }
+  catch (e) { toastMsg('❌ فشل'); }
+};
+
+window.deleteFixed = async (id) => {
+  if (!isManager() || !confirm('حذف هذا المصروف الثابت؟ (لا يحذف ما سُجّل سابقاً)')) return;
+  try { await saveFixed(fixedList().filter(i => i.id !== id)); } catch (e) { toastMsg('❌ فشل'); }
+};
 
 // ========== بطاقات الولاء ==========
 window.addLoyaltyCard = async () => {
@@ -1658,3 +1790,4 @@ boot();
 </script>
 </body>
 </html>
+    

@@ -54,7 +54,7 @@ body.dark .text-slate-500{color:#94a3b8!important}
 <!-- Header -->
 <div class="bg-[#0f172a] text-white p-4 flex justify-between items-center sticky top-0 z-50 shadow-lg">
 <div class="flex gap-4 items-center">
-<img src="logo.jpg" alt="Alherz" class="h-10 w-auto object-contain rounded-md bg-white p-1" onerror="this.outerHTML='<div class=\'text-gold font-black text-2xl\'>Alherz</div>'">
+<img src="logo.jpg" alt="Alherz" class="h-10 w-auto object-contain rounded-md bg-white p-1" onerror="this.outerHTML='&lt;div class=\'text-gold font-black text-2xl\'&gt;Alherz&lt;/div&gt;'">
 <div class="font-black text-gold text-2xl tracking-wide hidden sm:block">Alherz</div>
 </div>
 <div class="flex gap-2 sm:gap-4 items-center text-sm">
@@ -66,13 +66,13 @@ body.dark .text-slate-500{color:#94a3b8!important}
 </div>
 </div>
 
-<!-- Login Screen -->
+<!-- Login -->
 <div id="loginScreen" class="w-full max-w-md mx-auto mt-24 p-4 animate-fade-in">
 <div class="glass-card p-10 border border-slate-200">
 <div class="text-center mb-10">
-<img src="logo.jpg" alt="Alherz" class="w-full max-w-[180px] mx-auto rounded-xl mb-6 shadow-sm" onerror="this.outerHTML='<h2 class=\'font-black text-4xl mb-6 text-gold\'>Alherz</h2>'">
+<img src="logo.jpg" alt="Alherz" class="w-full max-w-[180px] mx-auto rounded-xl mb-6 shadow-sm" onerror="this.outerHTML='&lt;h2 class=\'font-black text-4xl mb-6 text-gold\'&gt;Alherz&lt;/h2&gt;'">
 <h2 class="font-black text-3xl text-slate-900">مرحباً بعودتك</h2>
-<p class="text-slate-500 mt-2 font-medium">سجلي الدخول لإدارة المحل</p>
+<p class="text-slate-500 mt-2 font-medium">سجّلي الدخول لإدارة المحل</p>
 </div>
 <div class="space-y-4">
 <button onclick="selectUser('ahmad')" id="btn_ahmad" class="userBtn w-full border border-slate-200 rounded-2xl p-4 text-right btn-hover bg-slate-50 hover:bg-white flex justify-between items-center"><b class="text-slate-900">ahmad</b> <span class="text-slate-500 text-sm bg-slate-200 px-2 py-1 rounded-md">مدير</span></button>
@@ -87,7 +87,7 @@ body.dark .text-slate-500{color:#94a3b8!important}
 </div>
 </div>
 
-<!-- Main App -->
+<!-- Main -->
 <div id="mainApp" class="hidden w-full px-4 py-4">
 <div class="grid grid-cols-3 sm:flex sm:flex-wrap gap-2 justify-center mb-6 bg-white p-2 rounded-2xl shadow-sm border border-slate-200 max-w-4xl mx-auto">
 <button onclick="switchTab('sales')" id="tab_sales" class="tab-active rounded-xl px-3 py-3 text-xs sm:text-sm font-black btn-hover transition-all">🛒 البيع</button>
@@ -98,7 +98,7 @@ body.dark .text-slate-500{color:#94a3b8!important}
 <button onclick="switchTab('settings')" id="tab_settings" class="tab-inactive rounded-xl px-3 py-3 text-xs sm:text-sm font-black btn-hover transition-all">⚙️ الإعدادات</button>
 </div>
 
-<!-- Sales Tab -->
+<!-- Sales -->
 <div id="salesTab" class="animate-fade-in w-full max-w-7xl mx-auto">
 <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3 mb-6">
 <div class="glass-card p-2 sm:p-4 text-center"><div id="labelSales" class="text-[10px] sm:text-xs font-bold text-slate-500 mb-1">المبيع</div><div id="totalSales" class="font-black text-blue-600 text-base sm:text-xl">0 $</div></div>
@@ -171,7 +171,7 @@ body.dark .text-slate-500{color:#94a3b8!important}
 </div>
 </div>
 
-<!-- Debts Tab -->
+<!-- Debts -->
 <div id="debtsTab" class="hidden animate-fade-in w-full max-w-5xl mx-auto">
 <div class="glass-card p-6">
 <h3 class="font-black mb-4 text-slate-900 text-2xl text-center">📓 كشف ديون الزبائن</h3>
@@ -184,7 +184,7 @@ body.dark .text-slate-500{color:#94a3b8!important}
 </div>
 </div>
 
-<!-- Loyalty Tab -->
+<!-- Loyalty -->
 <div id="loyaltyTab" class="hidden animate-fade-in w-full max-w-4xl mx-auto">
 <div class="glass-card p-8">
 <h3 class="font-black mb-6 text-slate-900 text-2xl text-center">💳 بطاقات الولاء (Golden Member)</h3>
@@ -197,7 +197,7 @@ body.dark .text-slate-500{color:#94a3b8!important}
 </div>
 </div>
 
-<!-- Employees Tab -->
+<!-- Employees -->
 <div id="employeesTab" class="hidden animate-fade-in w-full max-w-5xl mx-auto">
 <div class="glass-card p-4 mb-4 flex flex-col md:flex-row gap-3 items-end">
 <div class="flex-1 w-full">
@@ -217,7 +217,7 @@ body.dark .text-slate-500{color:#94a3b8!important}
 </div>
 </div>
 
-<!-- Reports Tab -->
+<!-- Reports -->
 <div id="reportsTab" class="hidden animate-fade-in w-full max-w-5xl mx-auto">
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 <div class="glass-card p-6">
@@ -239,7 +239,7 @@ body.dark .text-slate-500{color:#94a3b8!important}
 </div>
 </div>
 
-<!-- Settings Tab -->
+<!-- Settings -->
 <div id="settingsTab" class="hidden animate-fade-in w-full max-w-xl mx-auto">
 <div class="glass-card p-8">
 <h3 class="font-black mb-6 border-b pb-4 text-slate-900 text-2xl">⚙️ الإعدادات</h3>
@@ -273,7 +273,7 @@ body.dark .text-slate-500{color:#94a3b8!important}
 </div>
 </div>
 
-<!-- ===== Edit Modal ===== -->
+<!-- Edit Modal -->
 <div id="editModal" class="hidden fixed inset-0 bg-black/60 z-[1000] flex items-center justify-center p-4 backdrop-blur-md overflow-y-auto">
 <div class="bg-white w-full max-w-md rounded-[24px] p-6 shadow-2xl animate-fade-in my-8">
 <h3 class="font-black text-xl mb-5 text-center text-slate-800">✏️ تعديل العملية</h3>
@@ -323,7 +323,7 @@ body.dark .text-slate-500{color:#94a3b8!important}
 </div>
 </div>
 
-<!-- ===== Payment Modal ===== -->
+<!-- Payment Modal -->
 <div id="paymentModal" class="hidden fixed inset-0 bg-black/60 z-[1000] flex items-center justify-center p-4 backdrop-blur-md overflow-y-auto">
   <div class="bg-white w-full max-w-sm rounded-[24px] p-6 shadow-2xl animate-fade-in my-8">
     <h3 class="font-black text-xl mb-2 text-center text-slate-800">💰 تسجيل دفعة</h3>
@@ -355,25 +355,16 @@ body.dark .text-slate-500{color:#94a3b8!important}
   </div>
 </div>
 
-<!-- ===== Withdrawal Modal ===== -->
+<!-- Withdraw Modal -->
 <div id="withdrawModal" class="hidden fixed inset-0 bg-black/60 z-[1000] flex items-center justify-center p-4 backdrop-blur-md">
 <div class="bg-white w-full max-w-sm rounded-[24px] p-6 shadow-2xl animate-fade-in">
 <h3 class="font-black text-xl mb-5 text-center text-slate-800" id="withdrawModalTitle">💵 تسجيل سحب</h3>
 <input type="hidden" id="wdEmp">
 <input type="hidden" id="wdId">
 <div class="space-y-3 text-sm">
-  <div>
-    <label class="text-[10px] font-bold text-slate-500 block mb-1">المبلغ ($)</label>
-    <input id="wdAmount" type="number" placeholder="0.00" class="w-full custom-input p-3 font-black text-lg">
-  </div>
-  <div>
-    <label class="text-[10px] font-bold text-slate-500 block mb-1">التاريخ</label>
-    <input id="wdDate" type="date" class="w-full custom-input p-3 font-bold">
-  </div>
-  <div>
-    <label class="text-[10px] font-bold text-slate-500 block mb-1">ملاحظة (اختياري)</label>
-    <input id="wdNote" placeholder="مثال: سحب نص الشهر" class="w-full custom-input p-3 font-bold">
-  </div>
+  <div><label class="text-[10px] font-bold text-slate-500 block mb-1">المبلغ ($)</label><input id="wdAmount" type="number" placeholder="0.00" class="w-full custom-input p-3 font-black text-lg"></div>
+  <div><label class="text-[10px] font-bold text-slate-500 block mb-1">التاريخ</label><input id="wdDate" type="date" class="w-full custom-input p-3 font-bold"></div>
+  <div><label class="text-[10px] font-bold text-slate-500 block mb-1">ملاحظة (اختياري)</label><input id="wdNote" placeholder="مثال: سحب نص الشهر" class="w-full custom-input p-3 font-bold"></div>
 </div>
 <div class="flex gap-3 mt-6">
   <button onclick="saveWithdrawModal()" class="flex-1 bg-[#0f172a] text-white font-black py-3 rounded-xl btn-hover shadow-lg">💾 حفظ</button>
@@ -382,7 +373,7 @@ body.dark .text-slate-500{color:#94a3b8!important}
 </div>
 </div>
 
-<!-- ===== Report Details Modal ===== -->
+<!-- Report Details Modal -->
 <div id="reportDetailsModal" class="hidden fixed inset-0 bg-black/60 z-[1000] flex items-center justify-center p-4 backdrop-blur-md overflow-y-auto">
   <div class="bg-white w-full max-w-md rounded-[24px] p-6 shadow-2xl animate-fade-in my-8">
     <div class="flex justify-between items-center mb-5 border-b pb-3">
@@ -397,7 +388,7 @@ body.dark .text-slate-500{color:#94a3b8!important}
   </div>
 </div>
 
-<!-- ===== Cash Count Modal ===== -->
+<!-- Cash Modal -->
 <div id="cashModal" class="hidden fixed inset-0 bg-black/60 z-[1000] flex items-center justify-center p-4 backdrop-blur-md overflow-y-auto">
   <div class="bg-white w-full max-w-sm rounded-[24px] p-6 shadow-2xl animate-fade-in my-8">
     <h3 id="cashTitle" class="font-black text-xl mb-4 text-center text-slate-800">💵 جرد الصندوق</h3>
@@ -412,7 +403,7 @@ body.dark .text-slate-500{color:#94a3b8!important}
   </div>
 </div>
 
-<!-- ===== Invoice Modal ===== -->
+<!-- Invoice Modal -->
 <div id="invoiceModal" class="hidden fixed inset-0 bg-black/60 z-[1000] flex items-center justify-center p-4 backdrop-blur-md overflow-y-auto">
   <div class="bg-white w-full max-w-sm rounded-[24px] p-6 shadow-2xl animate-fade-in my-8">
     <div class="text-center mb-4 border-b pb-3">
@@ -423,7 +414,7 @@ body.dark .text-slate-500{color:#94a3b8!important}
     <div class="flex gap-3 mt-6 no-print">
       <button onclick="sendInvoiceWA()" class="flex-1 bg-green-600 text-white font-black py-3 rounded-xl btn-hover">📲 واتساب</button>
       <button onclick="window.print()" class="flex-1 bg-slate-800 text-white font-black py-3 rounded-xl btn-hover">🖨️ طباعة</button>
-      <button onclick="document.getElementById('invoiceModal').classList.add('hidden')" class="bg-slate-100 text-slate-600 font-black py-3 px-6 rounded-xl btn-hover">إغلاق</button>
+      <button onclick="closeInvoiceModal()" class="bg-slate-100 text-slate-600 font-black py-3 px-6 rounded-xl btn-hover">إغلاق</button>
     </div>
   </div>
 </div>
@@ -437,7 +428,6 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-// ========== إعدادات Firebase ==========
 const firebaseConfig = {
   apiKey: "AIzaSyCDkBjcnaWqGz-yBhpGxDSLWiW3OFA2v8U",
   authDomain: "alherzapp.firebaseapp.com",
@@ -450,18 +440,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 let db;
 try {
-  // بديل enableIndexedDbPersistence القديمة (يدعم عدة تبويبات)
-  db = initializeFirestore(app, {
-    localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() })
-  });
+  db = initializeFirestore(app, { localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() }) });
 } catch (e) {
-  console.warn('Persistent cache unavailable, using default', e);
   db = initializeFirestore(app, {});
 }
 const auth = getAuth(app);
 
-// ========== كلمات السر (SHA-256 مملّح، بدون نص صريح) ==========
-// الصيغة: sha256("alherz:" + password)
 const PASS_HASHES = {
   ahmad: '1408b3861e67fc9c4e28ca50a864b8e9b8d9de5411e5225d327c63894179cd43',
   amal:  '30757720c1d3d1eef3e3fd4d5f198ea10071ae657f1ce9b04ed8723119f277f0',
@@ -472,7 +456,6 @@ async function sha256Hex(str) {
   return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
-// ========== المتغيرات العامة ==========
 let currentUser = null;
 let pendingUser = null;
 let currentView = 'جملة';
@@ -484,14 +467,14 @@ let reports = [];
 let settings = { phone: '96181439656' };
 let unsubscribers = [];
 let currentReportId = null;
+let currentInvoiceGroup = null;
 let firebaseReady = false;
-let listenersStarted = false;
-const isManager = () => currentUser === 'ahmad';
 let pendingClose = null;
-let currentInvoiceId = null;
 const openDebtCustomers = new Set();
 let fixedRunning = false, entriesLoaded = false, settingsLoaded = false;
-// رقم واتساب بصيغة دولية (الافتراضي لبنان 961)
+
+const isManager = () => currentUser === 'ahmad';
+
 function normPhone(p) {
   let d = String(p || '').replace(/[^0-9]/g, '');
   if (d.startsWith('00')) d = d.slice(2);
@@ -500,14 +483,12 @@ function normPhone(p) {
   return d;
 }
 
-// ========== أدوات مساعدة ==========
 const fmt = (n) => (Number(n) || 0).toFixed(2);
 const todayStr = () => {
   const d = new Date();
   const p = (n) => String(n).padStart(2, '0');
   return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
 };
-// تنظيف النصوص قبل إدراجها في innerHTML (منع حقن HTML)
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const sumPayments = (e) => (e.payments || []).reduce((s, p) => s + (Number(p.amount) || 0), 0);
 const paidOf = (e) => (Number(e.paid) || 0) + sumPayments(e);
@@ -528,15 +509,13 @@ function updateSyncBadge(state, text) {
   badge.textContent = (icons[state] || '') + ' ' + (text || labels[state] || '');
 }
 
-// ========== تهيئة Firebase والمزامنة ==========
 async function initFirebase() {
   updateSyncBadge('offline', 'جاري الاتصال');
   onAuthStateChanged(auth, (user) => {
     if (user) { firebaseReady = true; startListeners(); }
   });
-  try {
-    await signInAnonymously(auth);
-  } catch (e) {
+  try { await signInAnonymously(auth); }
+  catch (e) {
     console.error('Auth error', e);
     updateSyncBadge('error');
     alert('حدث خطأ في الاتصال بـ Firebase: \n' + e.message);
@@ -552,14 +531,10 @@ function onListenError(name, err) {
 function startListeners() {
   unsubscribers.forEach(u => u());
   unsubscribers = [];
-  listenersStarted = true;
 
   unsubscribers.push(onSnapshot(collection(db, 'entries'), snap => {
     entries = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-    render();
-    updateDashboard();
-    populateDatalists();
-    renderDebts();
+    render(); updateDashboard(); populateDatalists(); renderDebts();
     entriesLoaded = true;
     maybeRunFixed();
     updateSyncBadge('ok');
@@ -594,7 +569,6 @@ function startListeners() {
   updateSyncBadge('ok');
 }
 
-// ========== تسجيل الدخول ==========
 window.selectUser = (user) => {
   pendingUser = user;
   document.querySelectorAll('.userBtn').forEach(b => b.classList.remove('ring-2', 'ring-[#bf953f]'));
@@ -610,7 +584,8 @@ window.login = async () => {
   const pw = document.getElementById('password').value;
   if (!pendingUser) return;
   let ok = false;
-  try { ok = (await sha256Hex('alherz:' + pw)) === PASS_HASHES[pendingUser]; } catch (e) { ok = false; }
+  try { ok = (await sha256Hex('alherz:' + pw)) === PASS_HASHES[pendingUser]; }
+  catch (e) { ok = false; }
   if (ok) {
     currentUser = pendingUser;
     localStorage.setItem('alherz_user', currentUser);
@@ -620,10 +595,7 @@ window.login = async () => {
   }
 };
 
-window.logout = () => {
-  localStorage.removeItem('alherz_user');
-  location.reload();
-};
+window.logout = () => { localStorage.removeItem('alherz_user'); location.reload(); };
 
 function applyLogin() {
   document.getElementById('loginScreen').classList.add('hidden');
@@ -635,20 +607,16 @@ function applyLogin() {
   document.getElementById('syncBtn').classList.remove('hidden');
   applyRole();
   maybeRunFixed();
-  render();
-  updateDashboard();
+  render(); updateDashboard();
 }
 
-// ========== التنقل والتبويبات ==========
 window.switchTab = (tab) => {
   if (!isManager() && ['employees', 'reports', 'settings'].includes(tab)) return;
   const tabs = ['sales', 'debts', 'loyalty', 'employees', 'reports', 'settings'];
   tabs.forEach(t => {
     const btn = document.getElementById('tab_' + t);
     const content = document.getElementById(t + 'Tab');
-    if (btn) {
-      btn.className = (t === tab ? 'tab-active' : 'tab-inactive') + ' rounded-xl px-3 py-3 text-xs sm:text-sm font-black btn-hover transition-all';
-    }
+    if (btn) btn.className = (t === tab ? 'tab-active' : 'tab-inactive') + ' rounded-xl px-3 py-3 text-xs sm:text-sm font-black btn-hover transition-all';
     if (content) content.classList.toggle('hidden', t !== tab);
   });
   if (tab === 'reports') renderMonthly();
@@ -697,7 +665,6 @@ window.changeQty = (delta) => {
   q.value = v;
 };
 
-// ========== إضافة عملية ==========
 window.addEntry = async () => {
   if (!firebaseReady) { toastMsg('⚠️ لم يتصل بقاعدة البيانات بعد'); return; }
   const date = document.getElementById('entryDate').value || todayStr();
@@ -711,9 +678,7 @@ window.addEntry = async () => {
   const paid = parseFloat(document.getElementById('paidAmount').value) || 0;
   const dueDate = document.getElementById('dueDate').value || '';
 
-  if (currentType !== 'expense' && currentType !== 'return' && !productName) {
-    toastMsg('⚠️ أدخل اسم المنتج'); return;
-  }
+  if (currentType !== 'expense' && currentType !== 'return' && !productName) { toastMsg('⚠️ أدخل اسم المنتج'); return; }
   if (amount <= 0) { toastMsg('⚠️ أدخل المبلغ'); return; }
   if (currentType === 'debt' && !customerName) { toastMsg('⚠️ أدخل اسم الزبون للدين'); return; }
 
@@ -736,14 +701,9 @@ window.addEntry = async () => {
     });
     document.getElementById('quantity').value = 1;
     toastMsg('✅ تمت إضافة العملية');
-  } catch (e) {
-    console.error(e);
-    toastMsg('❌ فشل الحفظ');
-    updateSyncBadge('error');
-  }
+  } catch (e) { console.error(e); toastMsg('❌ فشل الحفظ'); updateSyncBadge('error'); }
 };
 
-// ========== لوحة المعلومات ==========
 function calcTotals(list) {
   let sales = 0, profit = 0, debts = 0, returns = 0, expenses = 0;
   list.forEach(e => {
@@ -762,7 +722,6 @@ function calcTotals(list) {
 function updateDashboard() {
   const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = fmt(v) + ' $'; };
   if (!isManager()) {
-    // البائعة ترى مبيع اليوم وديونها فقط
     const mine = entries.filter(e => e.user === currentUser);
     set('totalSales', calcTotals(mine.filter(e => e.date === todayStr())).sales);
     set('totalDebts', calcTotals(mine).debts);
@@ -773,7 +732,37 @@ function updateDashboard() {
   set('totalReturns', t.returns); set('totalExpenses', t.expenses); set('netProfit', t.net);
 }
 
-// ========== عرض سجل العمليات ==========
+/* ============================================================
+   التجميع: كل عمليات نفس الزبون في نفس اليوم = فاتورة واحدة
+   ============================================================ */
+function groupKey(e) {
+  const name = (e.customerName || '').trim().toLowerCase();
+  const date = e.date || '';
+  return date + '||' + name;
+}
+
+function groupEntries(list) {
+  const groups = new Map();
+  list.forEach(e => {
+    const k = groupKey(e);
+    if (!groups.has(k)) groups.set(k, []);
+    groups.get(k).push(e);
+  });
+  return groups;
+}
+
+function groupTotals(items) {
+  let total = 0, paid = 0, cost = 0, qty = 0;
+  items.forEach(e => {
+    const q = Number(e.quantity) || 1, a = Number(e.amount) || 0;
+    total += a * q;
+    paid += paidOf(e);
+    cost += (Number(e.costPrice) || 0) * q;
+    qty += q;
+  });
+  return { total, paid, cost, qty, remaining: Math.max(0, total - paid) };
+}
+
 window.render = () => {
   const list = document.getElementById('list');
   if (!list) return;
@@ -784,9 +773,7 @@ window.render = () => {
 
   let filtered = entries.slice();
   if (!isManager()) filtered = filtered.filter(e => e.user === currentUser);
-  if (!allDates && filterDate) {
-    filtered = filtered.filter(e => e.date === filterDate);
-  }
+  if (!allDates && filterDate) filtered = filtered.filter(e => e.date === filterDate);
   if (!bothKinds) {
     filtered = filtered.filter(e => {
       const isSaleLike = e.type === 'sale' || e.type === 'debt';
@@ -800,7 +787,6 @@ window.render = () => {
       (e.customerPhone || '').includes(search)
     );
   }
-  filtered.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
 
   if (!filtered.length) {
     list.innerHTML = '<div class="text-center text-slate-400 py-10 font-bold">لا توجد عمليات</div>';
@@ -810,36 +796,94 @@ window.render = () => {
   const typeLabels = { sale: '🛒 بيع', debt: '📓 دين', expense: '💸 مصروف', return: '🔄 مرتجع' };
   const typeColors = { sale: 'blue', debt: 'orange', expense: 'red', return: 'red' };
 
-  list.innerHTML = filtered.map(e => {
-    const total = (e.amount * e.quantity);
-    const remaining = e.type === 'debt' ? Math.max(0, total - paidOf(e)) : 0;
-    const settled = e.type === 'debt' && remaining <= 0;
-    const id = esc(e.id);
-    return `
-    <div class="border border-slate-200 rounded-xl p-3 hover:bg-slate-50 transition cursor-pointer" onclick="openInvoice('${id}')">
-      <div class="flex justify-between items-start mb-1">
-        <div class="flex-1 min-w-0">
-          <div class="font-black text-slate-900 text-sm truncate">${esc(e.customerName) || '-'}</div>
-          <div class="text-xs text-slate-500 truncate">${esc(e.productName)} ${e.saleKind ? '(' + esc(e.saleKind) + ')' : ''}</div>
-        </div>
-        <div class="text-left mr-2">
-          <div class="font-black text-${typeColors[e.type] || 'blue'}-600">${fmt(total)} $</div>
-          <div class="text-[10px] text-slate-500">${typeLabels[e.type] || ''}</div>
-        </div>
+  if (currentView === 'مفرق' || bothKinds) {
+    // مفرق: كل عملية منفصلة
+    filtered.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+    list.innerHTML = filtered.map(e => renderSingleEntry(e, typeLabels, typeColors)).join('');
+  } else {
+    // جملة: تجميع حسب (زبون + يوم)
+    const groups = groupEntries(filtered);
+    const arr = [...groups.values()];
+    arr.sort((a, b) => (b[0].date || '').localeCompare(a[0].date || ''));
+    list.innerHTML = arr.map(items => renderGroupCard(items, typeLabels, typeColors)).join('');
+  }
+};
+
+function renderSingleEntry(e, typeLabels, typeColors) {
+  const total = (e.amount * e.quantity);
+  const remaining = e.type === 'debt' ? Math.max(0, total - paidOf(e)) : 0;
+  const settled = e.type === 'debt' && remaining <= 0;
+  const id = esc(e.id);
+  return `
+  <div class="border border-slate-200 rounded-xl p-3 hover:bg-slate-50 transition cursor-pointer" onclick="openInvoice('${id}')">
+    <div class="flex justify-between items-start mb-1">
+      <div class="flex-1 min-w-0">
+        <div class="font-black text-slate-900 text-sm truncate">${esc(e.customerName) || '-'}</div>
+        <div class="text-xs text-slate-500 truncate">${esc(e.productName)} ${e.saleKind ? '(' + esc(e.saleKind) + ')' : ''}</div>
       </div>
-      <div class="flex justify-between items-center mt-2 text-[10px] text-slate-500">
-        <span>📅 ${esc(e.date)} · ×${esc(e.quantity || 1)}</span>
-        ${e.type === 'debt' && remaining > 0 ? `<span class="text-red-600 font-bold">متبقي: ${fmt(remaining)} $</span>` : ''}
-        ${settled ? '<span class="text-green-600 font-bold">✅ مسدّد</span>' : ''}
+      <div class="text-left mr-2">
+        <div class="font-black text-${typeColors[e.type] || 'blue'}-600">${fmt(total)} $</div>
+        <div class="text-[10px] text-slate-500">${typeLabels[e.type] || ''}</div>
       </div>
-      <div class="flex gap-1 mt-2 no-print">
-        ${isManager() ? `<button onclick="event.stopPropagation();editEntry('${id}')" class="text-xs bg-slate-100 hover:bg-slate-200 rounded-md px-2 py-1">✏️</button>` : ''}
-        ${isManager() ? `<button onclick="event.stopPropagation();deleteEntryConfirm('${id}')" class="text-xs bg-red-50 hover:bg-red-100 text-red-600 rounded-md px-2 py-1">🗑️</button>` : ''}
-        ${e.type === 'debt' && remaining > 0 ? `<button onclick="event.stopPropagation();openPayment('${id}')" class="text-xs bg-green-50 hover:bg-green-100 text-green-600 rounded-md px-2 py-1">💰 دفعة</button>` : ''}
-      </div>
+    </div>
+    <div class="flex justify-between items-center mt-2 text-[10px] text-slate-500">
+      <span>📅 ${esc(e.date)} · ×${esc(e.quantity || 1)}</span>
+      ${e.type === 'debt' && remaining > 0 ? `<span class="text-red-600 font-bold">متبقي: ${fmt(remaining)} $</span>` : ''}
+      ${settled ? '<span class="text-green-600 font-bold">✅ مسدّد</span>' : ''}
+    </div>
+    <div class="flex gap-1 mt-2 no-print">
+      ${isManager() ? `<button onclick="event.stopPropagation();editEntry('${id}')" class="text-xs bg-slate-100 hover:bg-slate-200 rounded-md px-2 py-1">✏️</button>` : ''}
+      ${isManager() ? `<button onclick="event.stopPropagation();deleteEntryConfirm('${id}')" class="text-xs bg-red-50 hover:bg-red-100 text-red-600 rounded-md px-2 py-1">🗑️</button>` : ''}
+      ${e.type === 'debt' && remaining > 0 ? `<button onclick="event.stopPropagation();openPayment('${id}')" class="text-xs bg-green-50 hover:bg-green-100 text-green-600 rounded-md px-2 py-1">💰 دفعة</button>` : ''}
+    </div>
+  </div>`;
+}
+
+function renderGroupCard(items, typeLabels, typeColors) {
+  const gk = groupKey(items[0]);
+  const safeKey = encodeURIComponent(gk).replace(/'/g, '%27');
+  const t = groupTotals(items);
+  const name = items[0].customerName || 'زبون';
+  const date = items[0].date || '';
+  const firstType = items[0].type;
+  const hasDebt = items.some(e => e.type === 'debt');
+  const settled = hasDebt && t.remaining <= 0;
+
+  const productsHtml = items.map(e => {
+    const tot = (Number(e.amount) || 0) * (Number(e.quantity) || 1);
+    return `<div class="flex justify-between text-[11px] py-0.5">
+      <span class="truncate">• ${esc(e.productName)} ×${esc(e.quantity || 1)}</span>
+      <span class="font-bold shrink-0 mr-2">${fmt(tot)} $</span>
     </div>`;
   }).join('');
-};
+
+  return `
+  <div class="border border-slate-200 rounded-xl p-3 hover:bg-slate-50 transition">
+    <div class="flex justify-between items-start mb-2 cursor-pointer" onclick="openGroupInvoice('${safeKey}')">
+      <div class="flex-1 min-w-0">
+        <div class="font-black text-slate-900 text-sm truncate">👤 ${esc(name)}</div>
+        <div class="text-[10px] text-slate-500">📅 ${esc(date)} · ${items.length} منتج · ×${t.qty}</div>
+      </div>
+      <div class="text-left mr-2">
+        <div class="font-black text-blue-600">${fmt(t.total)} $</div>
+        ${hasDebt ? (settled
+          ? '<div class="text-[10px] text-green-600 font-bold">✅ مسدّد</div>'
+          : `<div class="text-[10px] text-red-600 font-bold">متبقي: ${fmt(t.remaining)} $</div>`) : ''}
+      </div>
+    </div>
+    <div class="bg-slate-50 rounded-lg p-2 mb-2 cursor-pointer" onclick="openGroupInvoice('${safeKey}')">${productsHtml}</div>
+    ${hasDebt ? `
+    <div class="grid grid-cols-3 gap-1 text-[10px] mb-2 bg-white border rounded-lg p-1.5">
+      <div class="text-center"><div class="text-slate-500">الإجمالي</div><div class="font-black text-blue-600">${fmt(t.total)} $</div></div>
+      <div class="text-center border-x"><div class="text-slate-500">المدفوع</div><div class="font-black text-green-600">${fmt(t.paid)} $</div></div>
+      <div class="text-center"><div class="text-slate-500">المتبقي</div><div class="font-black text-red-600">${fmt(t.remaining)} $</div></div>
+    </div>` : ''}
+    <div class="flex gap-1 flex-wrap">
+      <button onclick="openGroupInvoice('${safeKey}')" class="flex-1 text-xs bg-[#0f172a] text-white rounded-md px-2 py-1.5 font-bold">🧾 عرض الفاتورة</button>
+      ${hasDebt && t.remaining > 0 ? `<button onclick="openGroupPayment('${safeKey}')" class="text-xs bg-green-50 hover:bg-green-100 text-green-600 rounded-md px-2 py-1.5 font-bold">💰 دفعة</button>` : ''}
+    </div>
+  </div>`;
+}
 
 function populateDatalists() {
   const customers = new Set();
@@ -864,161 +908,58 @@ window.autoFillPrice = () => {
   }
 };
 
-// ========== التعديل ==========
-window.editEntry = (id) => {
-  const e = entries.find(x => x.id === id); if (!e) return;
-  document.getElementById('editId').value = id;
-  document.getElementById('editType').value = e.type;
-  document.getElementById('editSaleKind').value = e.saleKind || 'مفرق';
-  document.getElementById('editCust').value = e.customerName || '';
-  document.getElementById('editPhone').value = e.customerPhone || '';
-  document.getElementById('editCat').value = e.productName || '';
-  document.getElementById('editDate').value = e.date || todayStr();
-  document.getElementById('editQty').value = e.quantity || 1;
-  document.getElementById('editAmount').value = e.amount || 0;
-  document.getElementById('editCost').value = e.costPrice || 0;
-  document.getElementById('editPaid').value = e.paid || 0;
-  document.getElementById('editDue').value = e.dueDate || '';
-  document.getElementById('editNotes').value = e.notes || '';
-  toggleEditTypeFields();
-  document.getElementById('editModal').classList.remove('hidden');
-};
+/* ============================================================
+   الفاتورة المجمعة
+   ============================================================ */
+window.openGroupInvoice = (safeKey) => {
+  const key = decodeURIComponent(safeKey);
+  const items = entries.filter(e => groupKey(e) === key);
+  if (!items.length) return;
+  currentInvoiceGroup = items;
+  const t = groupTotals(items);
+  const name = items[0].customerName || 'زبون';
+  const phone = items.find(e => e.customerPhone)?.customerPhone || '';
+  const date = items[0].date || '';
 
-window.toggleEditTypeFields = () => {
-  const t = document.getElementById('editType').value;
-  document.getElementById('editSaleKindBox').style.display = (t === 'sale' || t === 'debt') ? '' : 'none';
-  document.getElementById('editCostBox').style.display = (t === 'sale' || t === 'debt') ? '' : 'none';
-  document.getElementById('editDebtBox').style.display = t === 'debt' ? '' : 'none';
-};
+  const productsRows = items.map(e => {
+    const tot = (Number(e.amount) || 0) * (Number(e.quantity) || 1);
+    return `<div class="flex justify-between border-b py-1 text-xs">
+      <span>${esc(e.productName)} ×${esc(e.quantity || 1)}</span>
+      <span class="font-bold">${fmt(tot)} $</span>
+    </div>`;
+  }).join('');
 
-window.closeEdit = () => document.getElementById('editModal').classList.add('hidden');
-
-window.saveEdit = async () => {
-  const id = document.getElementById('editId').value;
-  const type = document.getElementById('editType').value;
-  const amount = parseFloat(document.getElementById('editAmount').value) || 0;
-  const isSaleLike = type === 'sale' || type === 'debt';
-  const data = {
-    type,
-    saleKind: isSaleLike ? document.getElementById('editSaleKind').value : '',
-    customerName: document.getElementById('editCust').value.trim(),
-    customerPhone: document.getElementById('editPhone').value.trim(),
-    productName: document.getElementById('editCat').value.trim(),
-    date: document.getElementById('editDate').value,
-    quantity: parseInt(document.getElementById('editQty').value) || 1,
-    amount,
-    costPrice: parseFloat(document.getElementById('editCost').value) || 0,
-    paid: type === 'debt' ? (parseFloat(document.getElementById('editPaid').value) || 0) : (type === 'sale' ? amount : 0),
-    dueDate: document.getElementById('editDue').value,
-    notes: document.getElementById('editNotes').value.trim(),
-    updatedAt: serverTimestamp()
-  };
-  updateSyncBadge('saving');
-  try {
-    await updateDoc(doc(db, 'entries', id), data);
-    closeEdit();
-    toastMsg('✅ تم التعديل');
-  } catch (e) { console.error(e); toastMsg('❌ فشل التعديل'); }
-};
-
-window.deleteEntryConfirm = async (id) => {
-  if (!confirm('هل تريد حذف هذه العملية نهائياً؟')) return;
-  try {
-    await deleteDoc(doc(db, 'entries', id));
-    toastMsg('🗑️ تم الحذف');
-  } catch (e) { toastMsg('❌ فشل الحذف'); }
-};
-
-// ========== المدفوعات ==========
-window.openPayment = (id) => {
-  const e = entries.find(x => x.id === id); if (!e) return;
-  const total = e.amount * e.quantity;
-  const paid = paidOf(e);
-  document.getElementById('payEntryId').value = id;
-  document.getElementById('payCustomerName').textContent = e.customerName || '-';
-  document.getElementById('payTotal').textContent = fmt(total) + ' $';
-  document.getElementById('payPaidSoFar').textContent = fmt(paid) + ' $';
-  document.getElementById('payRemaining').textContent = fmt(Math.max(0, total - paid)) + ' $';
-  document.getElementById('payAmount').value = '';
-  document.getElementById('payDate').value = todayStr();
-  document.getElementById('payNote').value = '';
-  document.getElementById('paymentModal').classList.remove('hidden');
-};
-
-window.closePaymentModal = () => document.getElementById('paymentModal').classList.add('hidden');
-
-window.savePayment = async () => {
-  const id = document.getElementById('payEntryId').value;
-  const amount = parseFloat(document.getElementById('payAmount').value) || 0;
-  if (amount <= 0) { toastMsg('⚠️ أدخل المبلغ'); return; }
-  const e = entries.find(x => x.id === id); if (!e) return;
-  const remaining = Math.max(0, e.amount * e.quantity - paidOf(e));
-  if (amount > remaining + 0.001 && !confirm('المبلغ أكبر من المتبقي (' + fmt(remaining) + ' $). متابعة؟')) return;
-  const payment = {
-    amount,
-    date: document.getElementById('payDate').value || todayStr(),
-    note: document.getElementById('payNote').value.trim(),
-    user: currentUser
-  };
-  try {
-    // يبقى النوع "دين" لحفظ تاريخ الدين؛ المتبقي صفر = مسدّد
-    await updateDoc(doc(db, 'entries', id), { payments: [...(e.payments || []), payment] });
-    closePaymentModal();
-    toastMsg('✅ تم تسجيل الدفعة');
-  } catch (err) { console.error(err); toastMsg('❌ فشل الحفظ'); }
-};
-
-// ========== الفاتورة ==========
-window.openInvoice = (id) => {
-  currentInvoiceId = id;
-  const e = entries.find(x => x.id === id); if (!e) return;
-  const total = e.amount * e.quantity;
-  const paid = paidOf(e);
-  const remaining = Math.max(0, total - paid);
-  const typeLabels = { sale: 'بيع', debt: 'دين', expense: 'مصروف', return: 'مرتجع' };
-  const pays = (e.payments || []).map(p => `<div class="flex justify-between text-xs text-slate-500"><span>${esc(p.date)} ${p.note ? '- ' + esc(p.note) : ''}</span><span>${fmt(p.amount)} $</span></div>`).join('');
   document.getElementById('invoiceContent').innerHTML = `
-    <div class="flex justify-between"><span class="text-slate-500">النوع:</span><span class="font-bold">${typeLabels[e.type] || ''}</span></div>
-    <div class="flex justify-between"><span class="text-slate-500">التاريخ:</span><span class="font-bold">${esc(e.date)}</span></div>
-    ${e.customerName ? `<div class="flex justify-between"><span class="text-slate-500">الزبون:</span><span class="font-bold">${esc(e.customerName)}</span></div>` : ''}
-    ${e.customerPhone ? `<div class="flex justify-between"><span class="text-slate-500">الهاتف:</span><span class="font-bold" dir="ltr">${esc(e.customerPhone)}</span></div>` : ''}
-    ${e.productName ? `<div class="flex justify-between"><span class="text-slate-500">المنتج:</span><span class="font-bold">${esc(e.productName)}</span></div>` : ''}
-    <div class="flex justify-between"><span class="text-slate-500">الكمية:</span><span class="font-bold">${esc(e.quantity)}</span></div>
-    <div class="flex justify-between"><span class="text-slate-500">السعر:</span><span class="font-bold">${fmt(e.amount)} $</span></div>
-    <div class="flex justify-between border-t pt-2 mt-2"><span class="text-slate-500 font-bold">الإجمالي:</span><span class="font-black text-lg text-blue-600">${fmt(total)} $</span></div>
-    ${e.type === 'debt' ? `
-      <div class="flex justify-between"><span class="text-slate-500">مدفوع:</span><span class="font-bold text-green-600">${fmt(paid)} $</span></div>
-      ${pays}
-      <div class="flex justify-between"><span class="text-slate-500">متبقي:</span><span class="font-black text-red-600">${fmt(remaining)} $</span></div>
-    ` : ''}
-    ${e.notes ? `<div class="border-t pt-2 mt-2"><div class="text-slate-500 text-xs mb-1">ملاحظات:</div><div class="font-bold text-sm">${esc(e.notes)}</div></div>` : ''}
-    <div class="text-center text-xs text-slate-400 mt-4 pt-3 border-t">شكراً لتعاملكم مع Alherz</div>
+    <div class="flex justify-between"><span class="text-slate-500">الزبون:</span><span class="font-bold">${esc(name)}</span></div>
+    ${phone ? `<div class="flex justify-between"><span class="text-slate-500">الهاتف:</span><span class="font-bold" dir="ltr">${esc(phone)}</span></div>` : ''}
+    <div class="flex justify-between"><span class="text-slate-500">التاريخ:</span><span class="font-bold">${esc(date)}</span></div>
+    <div class="border-t pt-2 mt-2">
+      <div class="text-slate-500 text-xs mb-1">المنتجات (${items.length}):</div>
+      ${productsRows}
+    </div>
+    <div class="flex justify-between border-t pt-2 mt-2">
+      <span class="text-slate-500 font-bold">الإجمالي:</span>
+      <span class="font-black text-lg text-blue-600">${fmt(t.total)} $</span>
+    </div>
+    <div class="flex justify-between"><span class="text-slate-500">المدفوع:</span><span class="font-bold text-green-600">${fmt(t.paid)} $</span></div>
+    <div class="flex justify-between border-t pt-1 mt-1"><span class="text-slate-500 font-bold">المتبقي:</span><span class="font-black ${t.remaining > 0 ? 'text-red-600' : 'text-green-600'}">${fmt(t.remaining)} $</span></div>
+    ${t.remaining > 0 ? `<div class="text-center mt-2 text-xs font-bold ${t.remaining > 0 ? 'text-red-600' : 'text-green-600'}">${t.remaining > 0 ? '⚠️ الفاتورة غير مسدّدة' : '✅ مسدّدة'}</div>` : '<div class="text-center mt-2 text-xs font-bold text-green-600">✅ مسدّدة</div>'}
   `;
   document.getElementById('invoiceModal').classList.remove('hidden');
 };
 
-// ========== جرد وتسكير الصندوق ==========
-const cashDiffText = (d) => {
-  d = Number(d) || 0;
-  return d === 0 ? 'مطابق ✅' : (d < 0 ? 'نقص ' + fmt(Math.abs(d)) + ' $' : 'زيادة ' + fmt(d) + ' $');
+window.openGroupPayment = (safeKey) => {
+  const key = decodeURIComponent(safeKey);
+  const items = entries.filter(e => groupKey(e) === key && e.type === 'debt');
+  if (!items.length) return;
+  const firstOpen = items.find(e => (Number(e.amount) * (Number(e.quantity)||1)) - paidOf(e) > 0);
+  if (!firstOpen) { toastMsg('✅ الفاتورة مسدّدة'); return; }
+  openPayment(firstOpen.id);
 };
 
-function calcCash(day) {
-  let sales = 0, debtPaid = 0, payments = 0, returns = 0, expenses = 0, withdrawals = 0;
-  entries.forEach(e => {
-    const tot = (Number(e.amount) || 0) * (Number(e.quantity) || 1);
-    if (e.date === day) {
-      if (e.type === 'sale') sales += (e.payments || []).length ? (Number(e.paid) || 0) : tot;
-      if (e.type === 'debt') debtPaid += Number(e.paid) || 0;
-      if (e.type === 'return') returns += tot;
-      if (e.type === 'expense' && !e.auto) expenses += tot;
-    }
-    (e.payments || []).forEach(p => { if (p.date === day) payments += Number(p.amount) || 0; });
-  });
-  employees.forEach(emp => (emp.withdrawals || []).forEach(w => { if (w.date === day) withdrawals += Number(w.amount) || 0; }));
-  return { sales, debtPaid, payments, returns, expenses, withdrawals, expected: sales + debtPaid + payments - returns - expenses - withdrawals };
-}
-
+/* ============================================================
+   تسكير الفاتورة (ملخص)
+   ============================================================ */
 window.closeBox = async () => {
   if (!isManager()) { toastMsg('⚠️ التسكير للمدير فقط'); return; }
   if (!firebaseReady) { toastMsg('⚠️ غير متصل'); return; }
@@ -1026,7 +967,7 @@ window.closeBox = async () => {
   const todaysEntries = entries.filter(e => e.date === today);
   if (!todaysEntries.length) { toastMsg('⚠️ لا توجد عمليات اليوم'); return; }
   let exists = false;
-  try { exists = (await getDoc(doc(db, 'reports', 'day_' + today))).exists(); } catch (e) { /* ignore */ }
+  try { exists = (await getDoc(doc(db, 'reports', 'day_' + today))).exists(); } catch (e) {}
   const c = calcCash(today);
   pendingClose = { today, todaysEntries, exists, cash: c };
   document.getElementById('cashTitle').textContent = exists ? '💵 جرد الصندوق (تحديث تقرير ' + today + ')' : '💵 جرد الصندوق - ' + today;
@@ -1051,6 +992,27 @@ window.updateCashDiff = () => {
   el.className = 'mt-3 text-center font-black text-lg ' + (Math.abs(d) < 0.005 ? 'text-green-600' : (d < 0 ? 'text-red-600' : 'text-blue-600'));
 };
 
+const cashDiffText = (d) => {
+  d = Number(d) || 0;
+  return d === 0 ? 'مطابق ✅' : (d < 0 ? 'نقص ' + fmt(Math.abs(d)) + ' $' : 'زيادة ' + fmt(d) + ' $');
+};
+
+function calcCash(day) {
+  let sales = 0, debtPaid = 0, payments = 0, returns = 0, expenses = 0, withdrawals = 0;
+  entries.forEach(e => {
+    const tot = (Number(e.amount) || 0) * (Number(e.quantity) || 1);
+    if (e.date === day) {
+      if (e.type === 'sale') sales += (e.payments || []).length ? (Number(e.paid) || 0) : tot;
+      if (e.type === 'debt') debtPaid += Number(e.paid) || 0;
+      if (e.type === 'return') returns += tot;
+      if (e.type === 'expense' && !e.auto) expenses += tot;
+    }
+    (e.payments || []).forEach(p => { if (p.date === day) payments += Number(p.amount) || 0; });
+  });
+  employees.forEach(emp => (emp.withdrawals || []).forEach(w => { if (w.date === day) withdrawals += Number(w.amount) || 0; }));
+  return { sales, debtPaid, payments, returns, expenses, withdrawals, expected: sales + debtPaid + payments - returns - expenses - withdrawals };
+}
+
 window.confirmClose = async () => {
   if (!pendingClose) return;
   const v = document.getElementById('cashCounted').value;
@@ -1066,8 +1028,7 @@ window.confirmClose = async () => {
     netProfit: t.net,
     entriesCount: todaysEntries.length,
     cashExpected: cash.expected, cashCounted: counted, cashDiff: diff,
-    user: currentUser,
-    closedAt: serverTimestamp()
+    user: currentUser, closedAt: serverTimestamp()
   };
   try {
     await setDoc(doc(db, 'reports', 'day_' + today), report);
@@ -1075,13 +1036,13 @@ window.confirmClose = async () => {
     toastMsg(exists ? '✅ تم تحديث تقرير اليوم' : '✅ تم تسكير الصندوق');
     const phone = settings.phone || '96181439656';
     const msg = `📊 تقرير ${today}\n\n🛒 المبيع: ${fmt(t.sales)} $\n📈 الربح: ${fmt(t.profit)} $\n📓 الديون: ${fmt(t.debts)} $\n🔄 المرتجع: ${fmt(t.returns)} $\n💸 المصاريف: ${fmt(t.expenses)} $\n💰 الصافي: ${fmt(t.net)} $\n\n💵 الكاش المتوقع: ${fmt(cash.expected)} $\n💵 الكاش الفعلي: ${fmt(counted)} $\n⚖️ الفرق: ${cashDiffText(diff)}\n\nعدد العمليات: ${todaysEntries.length}`;
-    if (confirm('هل تريد إرسال التقرير عبر واتساب؟')) {
-      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
-    }
+    if (confirm('هل تريد إرسال التقرير عبر واتساب؟')) window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
   } catch (e) { console.error(e); toastMsg('❌ فشل التسكير'); }
 };
 
-// ========== كشف الديون ==========
+/* ============================================================
+   الديون
+   ============================================================ */
 function debtGroups() {
   const src = isManager() ? entries : entries.filter(e => e.user === currentUser);
   const map = {};
@@ -1163,191 +1124,185 @@ window.remindDebt = (k) => {
   const g = debtGroups().find(x => x.key === key);
   if (!g || g.remaining <= 0) return;
   let phone = normPhone(g.phone);
-  if (!phone) {
-    const p = prompt('رقم واتساب ' + g.name + ':');
-    if (!p) return;
-    phone = normPhone(p);
-  }
+  if (!phone) { const p = prompt('رقم واتساب ' + g.name + ':'); if (!p) return; phone = normPhone(p); }
   const lines = g.items.filter(x => x.rem > 0).sort((a, b) => (a.e.date || '').localeCompare(b.e.date || ''))
     .map(x => `• ${x.e.date} ${x.e.productName || ''} ×${x.e.quantity}: ${fmt(x.rem)} $`).join('\n');
   const msg = `مرحباً ${g.name} 👋\nتذكير ودّي من Alherz:\nالمتبقي عليك ${fmt(g.remaining)} $\n\n${lines}\n${g.overdue ? '\n⚠️ بعض الدفعات تجاوزت تاريخ الاستحقاق.\n' : ''}\nشكراً لتعاملك معنا 🙏`;
   window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
 };
 
-// ========== إرسال الفاتورة بالواتساب ==========
-window.sendInvoiceWA = () => {
-  const e = entries.find(x => x.id === currentInvoiceId); if (!e) return;
-  let phone = normPhone(e.customerPhone);
-  if (!phone) {
-    const p = prompt('رقم واتساب الزبون:');
-    if (!p) return;
-    phone = normPhone(p);
-  }
+/* ============================================================
+   الفاتورة الفردية (مفرق)
+   ============================================================ */
+window.openInvoice = (id) => {
+  const e = entries.find(x => x.id === id); if (!e) return;
+  currentInvoiceGroup = [e];
   const total = e.amount * e.quantity;
   const paid = paidOf(e);
+  const remaining = Math.max(0, total - paid);
   const typeLabels = { sale: 'بيع', debt: 'دين', expense: 'مصروف', return: 'مرتجع' };
-  let msg = `🧾 فاتورة - Alherz\n\n📅 ${e.date}\n`;
-  if (e.customerName) msg += `👤 ${e.customerName}\n`;
-  msg += `🔖 ${typeLabels[e.type] || ''}\n`;
-  if (e.productName) msg += `📦 ${e.productName}\n`;
-  msg += `🔢 الكمية: ${e.quantity}\n💵 السعر: ${fmt(e.amount)} $\n━━━━━━━━\n💰 الإجمالي: ${fmt(total)} $`;
-  if (e.type === 'debt') {
-    msg += `\n✅ مدفوع: ${fmt(paid)} $\n⏳ متبقي: ${fmt(Math.max(0, total - paid))} $`;
-    if (e.dueDate) msg += `\n📆 الاستحقاق: ${e.dueDate}`;
+  const pays = (e.payments || []).map(p => `<div class="flex justify-between text-xs text-slate-500"><span>${esc(p.date)} ${p.note ? '- ' + esc(p.note) : ''}</span><span>${fmt(p.amount)} $</span></div>`).join('');
+  document.getElementById('invoiceContent').innerHTML = `
+    <div class="flex justify-between"><span class="text-slate-500">النوع:</span><span class="font-bold">${typeLabels[e.type] || ''}</span></div>
+    <div class="flex justify-between"><span class="text-slate-500">التاريخ:</span><span class="font-bold">${esc(e.date)}</span></div>
+    ${e.customerName ? `<div class="flex justify-between"><span class="text-slate-500">الزبون:</span><span class="font-bold">${esc(e.customerName)}</span></div>` : ''}
+    ${e.customerPhone ? `<div class="flex justify-between"><span class="text-slate-500">الهاتف:</span><span class="font-bold" dir="ltr">${esc(e.customerPhone)}</span></div>` : ''}
+    ${e.productName ? `<div class="flex justify-between"><span class="text-slate-500">المنتج:</span><span class="font-bold">${esc(e.productName)}</span></div>` : ''}
+    <div class="flex justify-between"><span class="text-slate-500">الكمية:</span><span class="font-bold">${esc(e.quantity)}</span></div>
+    <div class="flex justify-between"><span class="text-slate-500">السعر:</span><span class="font-bold">${fmt(e.amount)} $</span></div>
+    <div class="flex justify-between border-t pt-2 mt-2"><span class="text-slate-500 font-bold">الإجمالي:</span><span class="font-black text-lg text-blue-600">${fmt(total)} $</span></div>
+    ${e.type === 'debt' ? `
+      <div class="flex justify-between"><span class="text-slate-500">مدفوع:</span><span class="font-bold text-green-600">${fmt(paid)} $</span></div>
+      ${pays}
+      <div class="flex justify-between"><span class="text-slate-500">متبقي:</span><span class="font-black text-red-600">${fmt(remaining)} $</span></div>
+    ` : ''}
+    ${e.notes ? `<div class="border-t pt-2 mt-2"><div class="text-slate-500 text-xs mb-1">ملاحظات:</div><div class="font-bold text-sm">${esc(e.notes)}</div></div>` : ''}
+    <div class="text-center text-xs text-slate-400 mt-4 pt-3 border-t">شكراً لتعاملكم مع Alherz</div>
+  `;
+  document.getElementById('invoiceModal').classList.remove('hidden');
+};
+
+window.closeInvoiceModal = () => document.getElementById('invoiceModal').classList.add('hidden');
+
+window.sendInvoiceWA = () => {
+  if (!currentInvoiceGroup || !currentInvoiceGroup.length) return;
+  const items = currentInvoiceGroup;
+  const first = items[0];
+  let phone = normPhone(items.find(e => e.customerPhone)?.customerPhone || '');
+  if (!phone) { const p = prompt('رقم واتساب الزبون:'); if (!p) return; phone = normPhone(p); }
+
+  if (items.length === 1) {
+    const e = first;
+    const total = e.amount * e.quantity;
+    const paid = paidOf(e);
+    const typeLabels = { sale: 'بيع', debt: 'دين', expense: 'مصروف', return: 'مرتجع' };
+    let msg = `🧾 فاتورة - Alherz\n\n📅 ${e.date}\n`;
+    if (e.customerName) msg += `👤 ${e.customerName}\n`;
+    msg += `🔖 ${typeLabels[e.type] || ''}\n`;
+    if (e.productName) msg += `📦 ${e.productName}\n`;
+    msg += `🔢 الكمية: ${e.quantity}\n💵 السعر: ${fmt(e.amount)} $\n━━━━━━━━\n💰 الإجمالي: ${fmt(total)} $`;
+    if (e.type === 'debt') {
+      msg += `\n✅ مدفوع: ${fmt(paid)} $\n⏳ متبقي: ${fmt(Math.max(0, total - paid))} $`;
+      if (e.dueDate) msg += `\n📆 الاستحقاق: ${e.dueDate}`;
+    }
+    msg += `\n\nشكراً لتعاملكم مع Alherz 🙏`;
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
+    return;
   }
-  msg += `\n\nشكراً لتعاملكم مع Alherz 🙏`;
+
+  const t = groupTotals(items);
+  const name = first.customerName || 'زبون';
+  const date = first.date || '';
+  let msg = `🧾 فاتورة - Alherz\n\n👤 ${name}\n📅 ${date}\n━━━━━━━━\n`;
+  items.forEach(e => {
+    const tot = (Number(e.amount) || 0) * (Number(e.quantity) || 1);
+    msg += `• ${e.productName} ×${e.quantity}: ${fmt(tot)} $\n`;
+  });
+  msg += `━━━━━━━━\n💰 الإجمالي: ${fmt(t.total)} $\n✅ المدفوع: ${fmt(t.paid)} $\n⏳ المتبقي: ${fmt(t.remaining)} $\n\nشكراً لتعاملكم مع Alherz 🙏`;
   window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
 };
 
-// ========== الراتب ==========
-window.setSalary = async (id) => {
-  if (!isManager()) return;
-  const emp = employees.find(e => e.id === id); if (!emp) return;
-  const v = prompt('الراتب الشهري لـ ' + emp.name + ' ($):', emp.salary || '');
-  if (v === null) return;
-  const sal = parseFloat(v);
-  if (!(sal >= 0)) { toastMsg('⚠️ رقم غير صحيح'); return; }
-  try { await updateDoc(doc(db, 'employees', id), { salary: sal }); toastMsg('✅ تم حفظ الراتب'); } catch (e) { toastMsg('❌ فشل'); }
+/* ============================================================
+   تعديل / حذف / دفعات
+   ============================================================ */
+window.editEntry = (id) => {
+  const e = entries.find(x => x.id === id); if (!e) return;
+  document.getElementById('editId').value = id;
+  document.getElementById('editType').value = e.type;
+  document.getElementById('editSaleKind').value = e.saleKind || 'مفرق';
+  document.getElementById('editCust').value = e.customerName || '';
+  document.getElementById('editPhone').value = e.customerPhone || '';
+  document.getElementById('editCat').value = e.productName || '';
+  document.getElementById('editDate').value = e.date || todayStr();
+  document.getElementById('editQty').value = e.quantity || 1;
+  document.getElementById('editAmount').value = e.amount || 0;
+  document.getElementById('editCost').value = e.costPrice || 0;
+  document.getElementById('editPaid').value = e.paid || 0;
+  document.getElementById('editDue').value = e.dueDate || '';
+  document.getElementById('editNotes').value = e.notes || '';
+  toggleEditTypeFields();
+  document.getElementById('editModal').classList.remove('hidden');
 };
 
-// ========== الصلاحيات ==========
-function applyRole() {
-  const m = isManager();
-  ['tab_employees', 'tab_reports', 'tab_settings', 'cardProfit', 'cardReturns', 'cardExpenses', 'cardNet', 'closeBtn'].forEach(id => {
-    const el = document.getElementById(id); if (el) el.style.display = m ? '' : 'none';
-  });
-  const sel = document.getElementById('otherTypeSelect');
-  if (sel) [...sel.options].forEach(o => { if (o.value === 'expense' || o.value === 'return') { o.hidden = !m; o.disabled = !m; } });
-  const ls = document.getElementById('labelSales');
-  if (ls) ls.textContent = m ? 'المبيع' : 'مبيع اليوم (أنتِ)';
-  setType('sale');
-  switchTab('sales');
-}
-
-// ========== المصاريف الشهرية الثابتة ==========
-const pad2 = (n) => String(n).padStart(2, '0');
-const prevMonth = (m) => { let [y, mo] = m.split('-').map(Number); mo--; if (!mo) { mo = 12; y--; } return y + '-' + pad2(mo); };
-const daysIn = (m) => { const [y, mo] = m.split('-').map(Number); return new Date(y, mo, 0).getDate(); };
-const fixedList = () => Array.isArray(settings.fixedExpenses) ? settings.fixedExpenses : [];
-const saveFixed = (list) => setDoc(doc(db, 'settings', 'config'), { fixedExpenses: list }, { merge: true });
-
-// تسجيل مصروف كل بند مرة واحدة في الشهر (معرّف ثابت للمصروف يمنع التكرار)
-async function maybeRunFixed() {
-  if (fixedRunning || !firebaseReady || !currentUser || !isManager() || !entriesLoaded || !settingsLoaded) return;
-  const list = fixedList();
-  if (!list.length) return;
-  const now = todayStr();
-  const month = now.slice(0, 7);
-  fixedRunning = true;
-  try {
-    let changed = false;
-    const next = [];
-    for (const it of list) {
-      let cur = it;
-      if (it.active !== false && it.lastMonth !== month) {
-        const day = Math.min(Math.max(parseInt(it.day) || 1, 1), daysIn(month));
-        const date = month + '-' + pad2(day);
-        if (date <= now) {
-          await setDoc(doc(db, 'entries', 'fx_' + it.id + '_' + month), {
-            type: 'expense', saleKind: '', customerName: '', customerPhone: '', productName: it.name,
-            quantity: 1, amount: Number(it.amount) || 0, costPrice: 0, paid: 0, dueDate: '',
-            notes: 'مصروف شهري ثابت', date, payments: [], user: 'auto', auto: true, fixedId: it.id,
-            timestamp: serverTimestamp()
-          });
-          cur = { ...it, lastMonth: month };
-          changed = true;
-        }
-      }
-      next.push(cur);
-    }
-    if (changed) {
-      await saveFixed(next);
-      toastMsg('🔁 تمت إضافة المصاريف الثابتة لهذا الشهر');
-    }
-  } catch (e) { console.error('Fixed expenses error', e); }
-  finally { fixedRunning = false; }
-}
-
-function renderFixedList() {
-  const el = document.getElementById('fixedList');
-  if (!el) return;
-  const list = fixedList();
-  const total = list.filter(i => i.active !== false).reduce((s, i) => s + (Number(i.amount) || 0), 0);
-  const tEl = document.getElementById('fixedTotal');
-  if (tEl) tEl.textContent = list.length ? 'إجمالي المصاريف الثابتة الفعّالة: ' + fmt(total) + ' $ / شهر' : '';
-  if (!list.length) { el.innerHTML = '<div class="text-center text-slate-400 text-sm py-3">لا توجد مصاريف ثابتة</div>'; return; }
-  el.innerHTML = list.map(it => `
-    <div class="flex items-center justify-between gap-2 border border-slate-200 rounded-xl p-3 ${it.active === false ? 'opacity-50' : ''}">
-      <div class="min-w-0">
-        <div class="font-black text-sm truncate">${esc(it.name)}</div>
-        <div class="text-[10px] text-slate-500">يوم ${esc(it.day)} من كل شهر ${it.active === false ? '· متوقف' : ''}</div>
-      </div>
-      <div class="font-black text-red-600 text-sm shrink-0">${fmt(it.amount)} $</div>
-      <div class="flex gap-1 shrink-0">
-        <button onclick="toggleFixed('${esc(it.id)}')" class="text-xs bg-slate-100 rounded-md px-2 py-1">${it.active === false ? '▶️' : '⏸️'}</button>
-        <button onclick="editFixed('${esc(it.id)}')" class="text-xs bg-slate-100 rounded-md px-2 py-1">✏️</button>
-        <button onclick="deleteFixed('${esc(it.id)}')" class="text-xs bg-red-50 text-red-600 rounded-md px-2 py-1">🗑️</button>
-      </div>
-    </div>`).join('');
-}
-
-window.addFixedExpense = async () => {
-  if (!isManager() || !firebaseReady) return;
-  const name = document.getElementById('fxName').value.trim();
-  const amount = parseFloat(document.getElementById('fxAmount').value) || 0;
-  const day = parseInt(document.getElementById('fxDay').value) || 0;
-  if (!name || amount <= 0 || day < 1 || day > 31) { toastMsg('⚠️ أدخل الاسم والمبلغ ويوماً من 1 إلى 31'); return; }
-  const now = todayStr();
-  const month = now.slice(0, 7);
-  const due = month + '-' + pad2(Math.min(day, daysIn(month)));
-  let lastMonth = prevMonth(month); // يُسجَّل هذا الشهر عند حلول اليوم
-  if (due <= now && !confirm('يوم الاستحقاق مرّ هذا الشهر.\nموافق = أضف مصروف هذا الشهر الآن\nإلغاء = ابدأ من الشهر القادم')) lastMonth = month;
-  const item = { id: Date.now().toString(36), name, amount, day, active: true, lastMonth };
-  try {
-    await saveFixed([...fixedList(), item]);
-    ['fxName', 'fxAmount', 'fxDay'].forEach(id => document.getElementById(id).value = '');
-    toastMsg('✅ تمت إضافة المصروف الثابت');
-  } catch (e) { console.error(e); toastMsg('❌ فشل الحفظ'); }
+window.toggleEditTypeFields = () => {
+  const t = document.getElementById('editType').value;
+  document.getElementById('editSaleKindBox').style.display = (t === 'sale' || t === 'debt') ? '' : 'none';
+  document.getElementById('editCostBox').style.display = (t === 'sale' || t === 'debt') ? '' : 'none';
+  document.getElementById('editDebtBox').style.display = t === 'debt' ? '' : 'none';
 };
 
-window.toggleFixed = async (id) => {
-  if (!isManager()) return;
-  const month = todayStr().slice(0, 7);
-  const list = fixedList().map(i => i.id !== id ? i : (i.active === false
-    ? { ...i, active: true, lastMonth: month }   // عند التشغيل لا يُضاف شهر فائت
-    : { ...i, active: false }));
-  try { await saveFixed(list); } catch (e) { toastMsg('❌ فشل'); }
+window.closeEdit = () => document.getElementById('editModal').classList.add('hidden');
+
+window.saveEdit = async () => {
+  const id = document.getElementById('editId').value;
+  const type = document.getElementById('editType').value;
+  const amount = parseFloat(document.getElementById('editAmount').value) || 0;
+  const isSaleLike = type === 'sale' || type === 'debt';
+  const data = {
+    type,
+    saleKind: isSaleLike ? document.getElementById('editSaleKind').value : '',
+    customerName: document.getElementById('editCust').value.trim(),
+    customerPhone: document.getElementById('editPhone').value.trim(),
+    productName: document.getElementById('editCat').value.trim(),
+    date: document.getElementById('editDate').value,
+    quantity: parseInt(document.getElementById('editQty').value) || 1,
+    amount,
+    costPrice: parseFloat(document.getElementById('editCost').value) || 0,
+    paid: type === 'debt' ? (parseFloat(document.getElementById('editPaid').value) || 0) : (type === 'sale' ? amount : 0),
+    dueDate: document.getElementById('editDue').value,
+    notes: document.getElementById('editNotes').value.trim(),
+    updatedAt: serverTimestamp()
+  };
+  updateSyncBadge('saving');
+  try { await updateDoc(doc(db, 'entries', id), data); closeEdit(); toastMsg('✅ تم التعديل'); }
+  catch (e) { console.error(e); toastMsg('❌ فشل التعديل'); }
 };
 
-window.editFixed = async (id) => {
-  if (!isManager()) return;
-  const it = fixedList().find(i => i.id === id); if (!it) return;
-  const a = prompt('المبلغ الشهري ($) لـ ' + it.name + ':', it.amount);
-  if (a === null) return;
-  const d = prompt('يوم الاستحقاق (1-31):', it.day);
-  if (d === null) return;
-  const amount = parseFloat(a), day = parseInt(d);
-  if (!(amount > 0) || !(day >= 1 && day <= 31)) { toastMsg('⚠️ قيمة غير صحيحة'); return; }
-  try { await saveFixed(fixedList().map(i => i.id === id ? { ...i, amount, day } : i)); toastMsg('✅ تم التعديل (يسري على الأشهر القادمة)'); }
-  catch (e) { toastMsg('❌ فشل'); }
+window.deleteEntryConfirm = async (id) => {
+  if (!confirm('هل تريد حذف هذه العملية نهائياً؟')) return;
+  try { await deleteDoc(doc(db, 'entries', id)); toastMsg('🗑️ تم الحذف'); }
+  catch (e) { toastMsg('❌ فشل الحذف'); }
 };
 
-window.deleteFixed = async (id) => {
-  if (!isManager() || !confirm('حذف هذا المصروف الثابت؟ (لا يحذف ما سُجّل سابقاً)')) return;
-  try { await saveFixed(fixedList().filter(i => i.id !== id)); } catch (e) { toastMsg('❌ فشل'); }
+window.openPayment = (id) => {
+  const e = entries.find(x => x.id === id); if (!e) return;
+  const total = e.amount * e.quantity;
+  const paid = paidOf(e);
+  document.getElementById('payEntryId').value = id;
+  document.getElementById('payCustomerName').textContent = e.customerName || '-';
+  document.getElementById('payTotal').textContent = fmt(total) + ' $';
+  document.getElementById('payPaidSoFar').textContent = fmt(paid) + ' $';
+  document.getElementById('payRemaining').textContent = fmt(Math.max(0, total - paid)) + ' $';
+  document.getElementById('payAmount').value = '';
+  document.getElementById('payDate').value = todayStr();
+  document.getElementById('payNote').value = '';
+  document.getElementById('paymentModal').classList.remove('hidden');
 };
 
-// ========== بطاقات الولاء ==========
+window.closePaymentModal = () => document.getElementById('paymentModal').classList.add('hidden');
+
+window.savePayment = async () => {
+  const id = document.getElementById('payEntryId').value;
+  const amount = parseFloat(document.getElementById('payAmount').value) || 0;
+  if (amount <= 0) { toastMsg('⚠️ أدخل المبلغ'); return; }
+  const e = entries.find(x => x.id === id); if (!e) return;
+  const remaining = Math.max(0, e.amount * e.quantity - paidOf(e));
+  if (amount > remaining + 0.001 && !confirm('المبلغ أكبر من المتبقي (' + fmt(remaining) + ' $). متابعة؟')) return;
+  const payment = { amount, date: document.getElementById('payDate').value || todayStr(), note: document.getElementById('payNote').value.trim(), user: currentUser };
+  try { await updateDoc(doc(db, 'entries', id), { payments: [...(e.payments || []), payment] }); closePaymentModal(); toastMsg('✅ تم تسجيل الدفعة'); }
+  catch (err) { console.error(err); toastMsg('❌ فشل الحفظ'); }
+};
+
+/* ============================================================
+   بطاقات الولاء
+   ============================================================ */
 window.addLoyaltyCard = async () => {
   const name = document.getElementById('loyName').value.trim();
   const phone = document.getElementById('loyPhone').value.trim();
   if (!name || !phone) { toastMsg('⚠️ أدخل الاسم والرقم'); return; }
   try {
-    await addDoc(collection(db, 'loyaltyCards'), {
-      name, phone, points: 0, createdAt: serverTimestamp(), user: currentUser
-    });
-    document.getElementById('loyName').value = '';
-    document.getElementById('loyPhone').value = '';
+    await addDoc(collection(db, 'loyaltyCards'), { name, phone, points: 0, createdAt: serverTimestamp(), user: currentUser });
+    document.getElementById('loyName').value = ''; document.getElementById('loyPhone').value = '';
     toastMsg('✅ تمت الإضافة');
   } catch (e) { toastMsg('❌ فشل'); }
 };
@@ -1359,10 +1314,7 @@ function renderLoyalty() {
   el.innerHTML = loyaltyCards.map(c => `
     <div class="border border-slate-200 rounded-xl p-4 bg-gradient-to-br from-yellow-50 to-white">
       <div class="flex justify-between items-start">
-        <div>
-          <div class="font-black text-slate-900">${esc(c.name)}</div>
-          <div class="text-xs text-slate-500" dir="ltr">${esc(c.phone)}</div>
-        </div>
+        <div><div class="font-black text-slate-900">${esc(c.name)}</div><div class="text-xs text-slate-500" dir="ltr">${esc(c.phone)}</div></div>
         <div class="text-gold font-black text-lg">${esc(c.points || 0)} ⭐</div>
       </div>
       <div class="flex gap-2 mt-3">
@@ -1371,11 +1323,9 @@ function renderLoyalty() {
         <button onclick="waLoyalty('${esc(c.id)}')" class="flex-1 bg-green-600 text-white rounded-lg py-2 text-xs font-bold">💬 واتساب</button>
         ${isManager() ? `<button onclick="deleteLoyalty('${esc(c.id)}')" class="bg-red-50 text-red-600 rounded-lg px-3 py-2 text-xs font-bold">🗑️</button>` : ''}
       </div>
-    </div>
-  `).join('');
+    </div>`).join('');
 }
 
-// تُمرَّر الآن الـ id فقط (الأسماء قد تحتوي على ' وتكسر onclick)
 window.changePoints = async (id, delta) => {
   const c = loyaltyCards.find(x => x.id === id); if (!c) return;
   const cur = Number(c.points) || 0;
@@ -1397,16 +1347,15 @@ window.deleteLoyalty = async (id) => {
   try { await deleteDoc(doc(db, 'loyaltyCards', id)); } catch (e) { toastMsg('❌ فشل الحذف'); }
 };
 
-// ========== الموظفين ==========
+/* ============================================================
+   الموظفين
+   ============================================================ */
 window.addEmployee = async () => {
   const name = document.getElementById('newEmpName').value.trim();
   if (!name) { toastMsg('⚠️ أدخل الاسم'); return; }
   try {
-    await addDoc(collection(db, 'employees'), {
-      name, salary: parseFloat(document.getElementById('newEmpSalary').value) || 0, withdrawals: [], createdAt: serverTimestamp()
-    });
-    document.getElementById('newEmpName').value = '';
-    document.getElementById('newEmpSalary').value = '';
+    await addDoc(collection(db, 'employees'), { name, salary: parseFloat(document.getElementById('newEmpSalary').value) || 0, withdrawals: [], createdAt: serverTimestamp() });
+    document.getElementById('newEmpName').value = ''; document.getElementById('newEmpSalary').value = '';
     toastMsg('✅ تمت الإضافة');
   } catch (e) { toastMsg('❌ فشل'); }
 };
@@ -1439,10 +1388,7 @@ function renderEmployees() {
       </div>
       <div class="space-y-1 text-xs mb-3 max-h-32 overflow-y-auto">
         ${withdrawals.length ? withdrawals.slice().reverse().map(w => `
-          <div class="flex justify-between bg-white rounded p-2 border">
-            <span>${esc(w.date)} ${w.note ? '- ' + esc(w.note) : ''}</span>
-            <span class="font-bold">${fmt(w.amount)} $</span>
-          </div>
+          <div class="flex justify-between bg-white rounded p-2 border"><span>${esc(w.date)} ${w.note ? '- ' + esc(w.note) : ''}</span><span class="font-bold">${fmt(w.amount)} $</span></div>
         `).join('') : '<div class="text-slate-400 text-center py-2">لا توجد سحوبات</div>'}
       </div>
       <div class="flex gap-2">
@@ -1457,13 +1403,20 @@ function renderEmployees() {
     employees.forEach(emp => (emp.withdrawals || []).forEach(w => all.push({ ...w, empName: emp.name })));
     all.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
     hist.innerHTML = all.length ? all.map(w => `
-      <div class="flex justify-between border-b pb-1">
-        <span><b>${esc(w.empName)}</b> - ${esc(w.date)} ${w.note ? '(' + esc(w.note) + ')' : ''}</span>
-        <span class="font-bold text-orange-600">${fmt(w.amount)} $</span>
-      </div>
+      <div class="flex justify-between border-b pb-1"><span><b>${esc(w.empName)}</b> - ${esc(w.date)} ${w.note ? '(' + esc(w.note) + ')' : ''}</span><span class="font-bold text-orange-600">${fmt(w.amount)} $</span></div>
     `).join('') : '<div class="text-center text-slate-400 py-4">لا توجد سحوبات</div>';
   }
 }
+
+window.setSalary = async (id) => {
+  if (!isManager()) return;
+  const emp = employees.find(e => e.id === id); if (!emp) return;
+  const v = prompt('الراتب الشهري لـ ' + emp.name + ' ($):', emp.salary || '');
+  if (v === null) return;
+  const sal = parseFloat(v);
+  if (!(sal >= 0)) { toastMsg('⚠️ رقم غير صحيح'); return; }
+  try { await updateDoc(doc(db, 'employees', id), { salary: sal }); toastMsg('✅ تم حفظ الراتب'); } catch (e) { toastMsg('❌ فشل'); }
+};
 
 window.deleteEmployee = async (id) => {
   if (!confirm('حذف الموظف وكل سحوباته؟')) return;
@@ -1488,22 +1441,14 @@ window.saveWithdrawModal = async () => {
   const amount = parseFloat(document.getElementById('wdAmount').value) || 0;
   if (amount <= 0) { toastMsg('⚠️ أدخل المبلغ'); return; }
   const emp = employees.find(e => e.id === empId); if (!emp) return;
-  const withdrawal = {
-    amount,
-    date: document.getElementById('wdDate').value || todayStr(),
-    note: document.getElementById('wdNote').value.trim(),
-    user: currentUser
-  };
-  try {
-    await updateDoc(doc(db, 'employees', empId), {
-      withdrawals: [...(emp.withdrawals || []), withdrawal]
-    });
-    closeWithdrawModal();
-    toastMsg('✅ تم تسجيل السحب');
-  } catch (e) { toastMsg('❌ فشل'); }
+  const withdrawal = { amount, date: document.getElementById('wdDate').value || todayStr(), note: document.getElementById('wdNote').value.trim(), user: currentUser };
+  try { await updateDoc(doc(db, 'employees', empId), { withdrawals: [...(emp.withdrawals || []), withdrawal] }); closeWithdrawModal(); toastMsg('✅ تم تسجيل السحب'); }
+  catch (e) { toastMsg('❌ فشل'); }
 };
 
-// ========== التقارير ==========
+/* ============================================================
+   التقارير
+   ============================================================ */
 function renderReports() {
   const el = document.getElementById('reportsList');
   if (!el) return;
@@ -1522,8 +1467,7 @@ function renderReports() {
       </div>
       <div class="font-black text-green-600 mt-1">صافي: ${fmt(r.netProfit)} $</div>
       ${r.cashCounted != null ? `<div class="text-xs font-bold mt-1 ${r.cashDiff < 0 ? 'text-red-600' : (r.cashDiff > 0 ? 'text-blue-600' : 'text-green-600')}">💵 ${cashDiffText(r.cashDiff)}</div>` : ''}
-    </div>
-  `).join('');
+    </div>`).join('');
 }
 
 window.openReportDetails = (id) => {
@@ -1550,11 +1494,8 @@ window.closeReportDetails = () => document.getElementById('reportDetailsModal').
 
 window.deleteReport = async () => {
   if (!currentReportId || !confirm('حذف التقرير؟')) return;
-  try {
-    await deleteDoc(doc(db, 'reports', currentReportId));
-    closeReportDetails();
-    toastMsg('🗑️ تم الحذف');
-  } catch (e) { toastMsg('❌ فشل الحذف'); }
+  try { await deleteDoc(doc(db, 'reports', currentReportId)); closeReportDetails(); toastMsg('🗑️ تم الحذف'); }
+  catch (e) { toastMsg('❌ فشل الحذف'); }
 };
 
 window.renderMonthly = () => {
@@ -1564,9 +1505,7 @@ window.renderMonthly = () => {
   const t = calcTotals(filtered);
   const products = {};
   filtered.forEach(e => {
-    if ((e.type === 'sale' || e.type === 'debt') && e.productName) {
-      products[e.productName] = (products[e.productName] || 0) + (Number(e.quantity) || 1);
-    }
+    if ((e.type === 'sale' || e.type === 'debt') && e.productName) products[e.productName] = (products[e.productName] || 0) + (Number(e.quantity) || 1);
   });
   document.getElementById('monthlySummary').innerHTML = `
     <div class="flex justify-between p-2 bg-blue-50 rounded"><span>🛒 المبيع</span><span class="font-black text-blue-600">${fmt(t.sales)} $</span></div>
@@ -1603,14 +1542,13 @@ window.sendMonthlyText = () => {
   window.open(`https://wa.me/${phone}?text=${encodeURIComponent('📊 تقرير شهر ' + month + '\n\n' + txt)}`, '_blank');
 };
 
-// ========== الإعدادات والاستيراد ==========
+/* ============================================================
+   الإعدادات + مصاريف ثابتة + استيراد
+   ============================================================ */
 window.saveTelegram = async () => {
   const phone = document.getElementById('ahmadNumber').value.trim();
-  try {
-    await setDoc(doc(db, 'settings', 'config'), { phone }, { merge: true });
-    settings.phone = phone;
-    toastMsg('✅ تم الحفظ');
-  } catch (e) { toastMsg('❌ فشل'); }
+  try { await setDoc(doc(db, 'settings', 'config'), { phone }, { merge: true }); settings.phone = phone; toastMsg('✅ تم الحفظ'); }
+  catch (e) { toastMsg('❌ فشل'); }
 };
 
 window.exportData = () => {
@@ -1622,42 +1560,29 @@ window.exportData = () => {
   link.click();
 };
 
-// مفتاح لكشف التكرار عند الاستيراد
-const entryKey = (e) => [
-  e.date, e.type, (e.customerName || '').trim().toLowerCase(), (e.productName || '').trim().toLowerCase(),
-  Number(e.quantity) || 1, Number(e.amount) || 0, Number(e.costPrice) || 0
-].join('|');
+const entryKey = (e) => [e.date, e.type, (e.customerName || '').trim().toLowerCase(), (e.productName || '').trim().toLowerCase(), Number(e.quantity) || 1, Number(e.amount) || 0, Number(e.costPrice) || 0].join('|');
 
 window.importData = async (event) => {
   const file = event.target.files[0];
   if (!file) return;
   event.target.value = '';
-
-  if (!firebaseReady) {
-    alert('⚠️ التطبيق غير متصل بقاعدة البيانات بعد. انتظر ثواني حتى تظهر علامة (✅ متزامن) وحاول مجدداً.');
-    return;
-  }
-
+  if (!firebaseReady) { alert('⚠️ التطبيق غير متصل بقاعدة البيانات بعد. انتظر ثواني حتى تظهر علامة (✅ متزامن) وحاول مجدداً.'); return; }
   if (!confirm('سيتم قراءة الملف وإضافة العمليات الجديدة فقط (يتم تخطي المكرر). متابعة؟')) return;
 
   try {
     const text = await file.text();
     const data = JSON.parse(text);
-
     let entriesToImport = [];
     if (Array.isArray(data)) entriesToImport = data;
     else if (data && Array.isArray(data.entries)) entriesToImport = data.entries;
     else { alert('❌ تنسيق الملف غير معروف! تأكد أنه ملف JSON صحيح.'); return; }
-
     if (entriesToImport.length === 0) { alert('⚠️ لا توجد عمليات داخل هذا الملف.'); return; }
 
     updateSyncBadge('saving', 'جاري الاستيراد...');
     let count = 0, skipped = 0, failed = 0;
 
     const findValue = (obj, keys, defaultVal) => {
-      for (const k of keys) {
-        if (obj[k] !== undefined && obj[k] !== null && obj[k] !== '') return obj[k];
-      }
+      for (const k of keys) if (obj[k] !== undefined && obj[k] !== null && obj[k] !== '') return obj[k];
       return defaultVal;
     };
     const num = (v) => parseFloat(String(v).replace(/[^0-9.-]+/g, '')) || 0;
@@ -1669,19 +1594,18 @@ window.importData = async (event) => {
       return String(v).split('T')[0].split(' ')[0];
     };
 
-    // المفاتيح الموجودة أصلاً + المضافة خلال هذا الاستيراد
     const seen = new Set(entries.map(entryKey));
 
     for (const oldEntry of entriesToImport) {
       try {
-        const rawName = findValue(oldEntry, ['customerName', 'custName', 'name', 'client', 'customer', 'cust', 'buyer', 'اسم', 'الزبون'], '');
-        const rawAmount = findValue(oldEntry, ['amount', 'price', 'total', 'value', 'salePrice', 'سعر', 'المبلغ'], 0);
-        const rawQty = findValue(oldEntry, ['quantity', 'qty', 'count', 'الكمية'], 1);
-        const rawProduct = findValue(oldEntry, ['productName', 'product', 'category', 'cat', 'item', 'المنتج', 'الصنف'], '');
-        const rawDate = findValue(oldEntry, ['date', 'Date', 'createdAt', 'timestamp', 'time', 'التاريخ'], todayStr());
-        const rawType = findValue(oldEntry, ['type', 'action', 'kind', 'النوع'], 'sale');
-        const rawCost = findValue(oldEntry, ['costPrice', 'cost', 'رأس المال'], 0);
-        const rawPaid = findValue(oldEntry, ['paid', 'المدفوع'], 0);
+        const rawName = findValue(oldEntry, ['customerName', 'custName', 'name', 'client', 'customer', 'cust', 'buyer'], '');
+        const rawAmount = findValue(oldEntry, ['amount', 'price', 'total', 'value', 'salePrice'], 0);
+        const rawQty = findValue(oldEntry, ['quantity', 'qty', 'count'], 1);
+        const rawProduct = findValue(oldEntry, ['productName', 'product', 'category', 'cat', 'item'], '');
+        const rawDate = findValue(oldEntry, ['date', 'Date', 'createdAt', 'timestamp', 'time'], todayStr());
+        const rawType = findValue(oldEntry, ['type', 'action', 'kind'], 'sale');
+        const rawCost = findValue(oldEntry, ['costPrice', 'cost'], 0);
+        const rawPaid = findValue(oldEntry, ['paid'], 0);
 
         let finalType = 'sale';
         if (rawType === 'debt' || rawType === 'دين') finalType = 'debt';
@@ -1692,14 +1616,14 @@ window.importData = async (event) => {
           type: finalType,
           saleKind: oldEntry.saleKind || oldEntry.kind || oldEntry.view || 'جملة',
           customerName: String(rawName).trim(),
-          customerPhone: String(findValue(oldEntry, ['customerPhone', 'phone', 'الرقم', 'الهاتف'], '')).trim(),
+          customerPhone: String(findValue(oldEntry, ['customerPhone', 'phone'], '')).trim(),
           productName: String(rawProduct).trim(),
           quantity: parseInt(num(rawQty)) || 1,
           amount: num(rawAmount),
           costPrice: num(rawCost),
           paid: num(rawPaid),
-          dueDate: String(findValue(oldEntry, ['dueDate', 'تاريخ الاستحقاق'], '')),
-          notes: String(findValue(oldEntry, ['notes', 'الملاحظات', 'ملاحظة'], '')),
+          dueDate: String(findValue(oldEntry, ['dueDate'], '')),
+          notes: String(findValue(oldEntry, ['notes'], '')),
           date: normDate(rawDate),
           payments: Array.isArray(oldEntry.payments) ? oldEntry.payments : [],
           user: ['ahmad', 'amal', 'nurr'].includes(oldEntry.user) ? oldEntry.user : 'imported',
@@ -1712,29 +1636,21 @@ window.importData = async (event) => {
 
         await addDoc(collection(db, 'entries'), safeEntry);
         count++;
-      } catch (err) {
-        failed++;
-        console.error('خطأ في عملية:', oldEntry, err);
-      }
+      } catch (err) { failed++; console.error('خطأ في عملية:', oldEntry, err); }
     }
 
     let loyAdded = 0, repAdded = 0, loyFail = 0, repFail = 0, lastErr = '';
     if (data && !Array.isArray(data)) {
-      // بطاقات الولاء: تخطي الموجود بنفس الرقم
       const phones = new Set(loyaltyCards.map(c => normPhone(c.phone)));
       for (const c of (Array.isArray(data.loyaltyCards) ? data.loyaltyCards : [])) {
         try {
           const ph = normPhone(c.phone);
           if (!c.name || (ph && phones.has(ph))) continue;
-          await addDoc(collection(db, 'loyaltyCards'), {
-            name: String(c.name).trim(), phone: String(c.phone || '').trim(), points: Number(c.points) || 0,
-            history: Array.isArray(c.history) ? c.history : [], createdAt: serverTimestamp(), user: 'imported'
-          });
+          await addDoc(collection(db, 'loyaltyCards'), { name: String(c.name).trim(), phone: String(c.phone || '').trim(), points: Number(c.points) || 0, history: Array.isArray(c.history) ? c.history : [], createdAt: serverTimestamp(), user: 'imported' });
           if (ph) phones.add(ph);
           loyAdded++;
         } catch (err) { console.error(err); loyFail++; lastErr = err.code || err.message; }
       }
-      // تقارير الأيام المغلقة: تقرير واحد لكل يوم، بدون استبدال الموجود
       const repIds = new Set(reports.map(r => r.id));
       for (const r of (Array.isArray(data.reports) ? data.reports : [])) {
         try {
@@ -1742,12 +1658,10 @@ window.importData = async (event) => {
           const rid = 'day_' + r.date;
           if (repIds.has(rid)) continue;
           let rep;
-          if (r.totalSales !== undefined) {
-            rep = { ...r }; delete rep.id;
-          } else {
+          if (r.totalSales !== undefined) { rep = { ...r }; delete rep.id; }
+          else {
             const profit = Number(r.profit) || 0, ret = Number(r.returns) || 0, exps = Number(r.exps) || 0;
-            rep = { date: r.date, totalSales: Number(r.sales) || 0, totalProfit: profit, totalDebts: Number(r.debts) || 0,
-              totalReturns: ret, totalExpenses: exps, netProfit: profit - exps - ret, entriesCount: Number(r.count) || 0, user: r.from || 'imported' };
+            rep = { date: r.date, totalSales: Number(r.sales) || 0, totalProfit: profit, totalDebts: Number(r.debts) || 0, totalReturns: ret, totalExpenses: exps, netProfit: profit - exps - ret, entriesCount: Number(r.count) || 0, user: r.from || 'imported' };
           }
           rep.closedAt = new Date(r.date + 'T23:59:00');
           await setDoc(doc(db, 'reports', rid), rep);
@@ -1759,35 +1673,153 @@ window.importData = async (event) => {
 
     alert(`✅ تم استيراد ${count} عملية جديدة.${loyAdded ? '\n💳 بطاقات ولاء جديدة: ' + loyAdded : ''}${repAdded ? '\n📊 تقارير أيام: ' + repAdded : ''}${loyFail ? '\n⚠️ فشل استيراد ' + loyFail + ' بطاقة ولاء (' + lastErr + ')' : ''}${repFail ? '\n⚠️ فشل استيراد ' + repFail + ' تقرير (' + lastErr + ')' : ''}\nتم تخطي ${skipped} عملية مكررة.${failed ? '\n⚠️ فشلت ' + failed + ' عملية.' : ''}`);
     updateSyncBadge('ok');
-  } catch (err) {
-    console.error('Import Error:', err);
-    alert('❌ فشل الاستيراد: ' + err.message);
-    updateSyncBadge('error');
-  }
+  } catch (err) { console.error('Import Error:', err); alert('❌ فشل الاستيراد: ' + err.message); updateSyncBadge('error'); }
 };
 
-window.manualSync = () => {
-  updateSyncBadge('saving', 'جاري إعادة الاتصال');
-  if (firebaseReady) startListeners();
-  setTimeout(() => updateSyncBadge('ok'), 1500);
+window.manualSync = () => { updateSyncBadge('saving', 'جاري إعادة الاتصال'); if (firebaseReady) startListeners(); setTimeout(() => updateSyncBadge('ok'), 1500); };
+
+/* ============================================================
+   المصاريف الشهرية الثابتة
+   ============================================================ */
+const pad2 = (n) => String(n).padStart(2, '0');
+const prevMonth = (m) => { let [y, mo] = m.split('-').map(Number); mo--; if (!mo) { mo = 12; y--; } return y + '-' + pad2(mo); };
+const daysIn = (m) => { const [y, mo] = m.split('-').map(Number); return new Date(y, mo, 0).getDate(); };
+const fixedList = () => Array.isArray(settings.fixedExpenses) ? settings.fixedExpenses : [];
+const saveFixed = (list) => setDoc(doc(db, 'settings', 'config'), { fixedExpenses: list }, { merge: true });
+
+async function maybeRunFixed() {
+  if (fixedRunning || !firebaseReady || !currentUser || !isManager() || !entriesLoaded || !settingsLoaded) return;
+  const list = fixedList();
+  if (!list.length) return;
+  const now = todayStr();
+  const month = now.slice(0, 7);
+  fixedRunning = true;
+  try {
+    let changed = false;
+    const next = [];
+    for (const it of list) {
+      let cur = it;
+      if (it.active !== false && it.lastMonth !== month) {
+        const day = Math.min(Math.max(parseInt(it.day) || 1, 1), daysIn(month));
+        const date = month + '-' + pad2(day);
+        if (date <= now) {
+          await setDoc(doc(db, 'entries', 'fx_' + it.id + '_' + month), {
+            type: 'expense', saleKind: '', customerName: '', customerPhone: '', productName: it.name,
+            quantity: 1, amount: Number(it.amount) || 0, costPrice: 0, paid: 0, dueDate: '',
+            notes: 'مصروف شهري ثابت', date, payments: [], user: 'auto', auto: true, fixedId: it.id,
+            timestamp: serverTimestamp()
+          });
+          cur = { ...it, lastMonth: month };
+          changed = true;
+        }
+      }
+      next.push(cur);
+    }
+    if (changed) { await saveFixed(next); toastMsg('🔁 تمت إضافة المصاريف الثابتة لهذا الشهر'); }
+  } catch (e) { console.error('Fixed expenses error', e); }
+  finally { fixedRunning = false; }
+}
+
+function renderFixedList() {
+  const el = document.getElementById('fixedList');
+  if (!el) return;
+  const list = fixedList();
+  const total = list.filter(i => i.active !== false).reduce((s, i) => s + (Number(i.amount) || 0), 0);
+  const tEl = document.getElementById('fixedTotal');
+  if (tEl) tEl.textContent = list.length ? 'إجمالي المصاريف الثابتة الفعّالة: ' + fmt(total) + ' $ / شهر' : '';
+  if (!list.length) { el.innerHTML = '<div class="text-center text-slate-400 text-sm py-3">لا توجد مصاريف ثابتة</div>'; return; }
+  el.innerHTML = list.map(it => `
+    <div class="flex items-center justify-between gap-2 border border-slate-200 rounded-xl p-3 ${it.active === false ? 'opacity-50' : ''}">
+      <div class="min-w-0">
+        <div class="font-black text-sm truncate">${esc(it.name)}</div>
+        <div class="text-[10px] text-slate-500">يوم ${esc(it.day)} من كل شهر ${it.active === false ? '· متوقف' : ''}</div>
+      </div>
+      <div class="font-black text-red-600 text-sm shrink-0">${fmt(it.amount)} $</div>
+      <div class="flex gap-1 shrink-0">
+        <button onclick="toggleFixed('${esc(it.id)}')" class="text-xs bg-slate-100 rounded-md px-2 py-1">${it.active === false ? '▶️' : '⏸️'}</button>
+        <button onclick="editFixed('${esc(it.id)}')" class="text-xs bg-slate-100 rounded-md px-2 py-1">✏️</button>
+        <button onclick="deleteFixed('${esc(it.id)}')" class="text-xs bg-red-50 text-red-600 rounded-md px-2 py-1">🗑️</button>
+      </div>
+    </div>`).join('');
+}
+
+window.addFixedExpense = async () => {
+  if (!isManager() || !firebaseReady) return;
+  const name = document.getElementById('fxName').value.trim();
+  const amount = parseFloat(document.getElementById('fxAmount').value) || 0;
+  const day = parseInt(document.getElementById('fxDay').value) || 0;
+  if (!name || amount <= 0 || day < 1 || day > 31) { toastMsg('⚠️ أدخل الاسم والمبلغ ويوماً من 1 إلى 31'); return; }
+  const now = todayStr();
+  const month = now.slice(0, 7);
+  const due = month + '-' + pad2(Math.min(day, daysIn(month)));
+  let lastMonth = prevMonth(month);
+  if (due <= now && !confirm('يوم الاستحقاق مرّ هذا الشهر.\nموافق = أضف مصروف هذا الشهر الآن\nإلغاء = ابدأ من الشهر القادم')) lastMonth = month;
+  const item = { id: Date.now().toString(36), name, amount, day, active: true, lastMonth };
+  try {
+    await saveFixed([...fixedList(), item]);
+    ['fxName', 'fxAmount', 'fxDay'].forEach(id => document.getElementById(id).value = '');
+    toastMsg('✅ تمت إضافة المصروف الثابت');
+  } catch (e) { console.error(e); toastMsg('❌ فشل الحفظ'); }
 };
 
-// ========== البدء ==========
+window.toggleFixed = async (id) => {
+  if (!isManager()) return;
+  const month = todayStr().slice(0, 7);
+  const list = fixedList().map(i => {
+    if (i.id !== id) return i;
+    if (i.active === false) return { ...i, active: true, lastMonth: month };
+    return { ...i, active: false };
+  });
+  try { await saveFixed(list); } catch (e) { toastMsg('❌ فشل'); }
+};
+
+window.editFixed = async (id) => {
+  if (!isManager()) return;
+  const it = fixedList().find(i => i.id === id); if (!it) return;
+  const a = prompt('المبلغ الشهري ($) لـ ' + it.name + ':', it.amount);
+  if (a === null) return;
+  const d = prompt('يوم الاستحقاق (1-31):', it.day);
+  if (d === null) return;
+  const amount = parseFloat(a), day = parseInt(d);
+  if (!(amount > 0) || !(day >= 1 && day <= 31)) { toastMsg('⚠️ قيمة غير صحيحة'); return; }
+  try { await saveFixed(fixedList().map(i => i.id === id ? { ...i, amount, day } : i)); toastMsg('✅ تم التعديل'); }
+  catch (e) { toastMsg('❌ فشل'); }
+};
+
+window.deleteFixed = async (id) => {
+  if (!isManager() || !confirm('حذف هذا المصروف الثابت؟ (لا يحذف ما سُجّل سابقاً)')) return;
+  try { await saveFixed(fixedList().filter(i => i.id !== id)); } catch (e) { toastMsg('❌ فشل'); }
+};
+
+/* ============================================================
+   الصلاحيات والبدء
+   ============================================================ */
+function applyRole() {
+  const m = isManager();
+  ['tab_employees', 'tab_reports', 'tab_settings', 'cardProfit', 'cardReturns', 'cardExpenses', 'cardNet', 'closeBtn'].forEach(id => {
+    const el = document.getElementById(id); if (el) el.style.display = m ? '' : 'none';
+  });
+  const sel = document.getElementById('otherTypeSelect');
+  if (sel) [...sel.options].forEach(o => { if (o.value === 'expense' || o.value === 'return') { o.hidden = !m; o.disabled = !m; } });
+  const ls = document.getElementById('labelSales');
+  if (ls) ls.textContent = m ? 'المبيع' : 'مبيع اليوم (أنتِ)';
+  setType('sale');
+  switchTab('sales');
+}
+
 function boot() {
   document.getElementById('entryDate').value = todayStr();
   document.getElementById('filterDate').value = todayStr();
   document.getElementById('monthPicker').value = todayStr().slice(0, 7);
   if (localStorage.getItem('alherz_dark') === '1') document.body.classList.add('dark');
   const saved = localStorage.getItem('alherz_user');
-  if (saved && PASS_HASHES[saved]) {
-    currentUser = saved;
-    applyLogin();
-  }
+  if (saved && PASS_HASHES[saved]) { currentUser = saved; applyLogin(); }
   initFirebase();
 }
 
 boot();
 </script>
+
 </body>
 </html>
-    
+```

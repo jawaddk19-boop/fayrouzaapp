@@ -2,71 +2,97 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alherz جملة - نظام إدارة المحل</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Alherz - نظام إدارة المحل</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
 <style>
-*{font-family:'Cairo',sans-serif}
-body{background-color:#f8fafc!important;color:#0f172a;overflow-x:hidden}
-.glass-card{background:#fff!important;border:1px solid #e2e8f0!important;box-shadow:0 4px 20px -2px rgba(0,0,0,.05)!important;border-radius:20px}
+*{font-family:'Cairo',sans-serif; -webkit-tap-highlight-color: transparent;}
+body{background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%) !important;color:#0f172a;overflow-x:hidden;min-height:100vh}
+.glass-card{background:#fff!important;border:1px solid rgba(226,232,240,0.8)!important;box-shadow:0 4px 24px -8px rgba(15,23,42,0.08)!important;border-radius:20px!important}
 .text-gold{color:#bf953f!important}
-.bg-gold{background:linear-gradient(135deg,#bf953f,#fcf6ba,#b38728)!important;color:#000!important}
+.bg-gold{background:linear-gradient(135deg,#bf953f 0%,#fcf6ba 50%,#b38728 100%)!important;color:#000!important}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.animate-fade-in{animation:fadeIn .4s ease-out forwards}
-.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#0f172a;color:#fff;padding:14px 28px;border-radius:100px;z-index:9999;font-weight:bold;box-shadow:0 20px 25px -5px rgba(0,0,0,.3);animation:fadeIn .3s ease-out}
+.animate-fade-in{animation:fadeIn .3s ease-out forwards}
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#0f172a;color:#fff;padding:12px 24px;border-radius:100px;z-index:9999;font-weight:bold;font-size:14px;box-shadow:0 20px 25px -5px rgba(0,0,0,.3);animation:slideUp .3s ease-out}
+@keyframes slideUp{from{opacity:0;transform:translate(-50%,20px)}to{opacity:1;transform:translate(-50%,0)}}
 @media print{body *{visibility:hidden}#invoiceModal,#invoiceModal *{visibility:visible}#invoiceModal{position:absolute;left:0;top:0;width:100%;background:#fff}.no-print{display:none!important}}
 input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
 input[type=number]{-moz-appearance:textfield}
-.custom-input{transition:all .2s ease;border:2px solid #e2e8f0;border-radius:12px;background:#f8fafc}
+.custom-input{transition:all .2s ease;border:1.5px solid #e2e8f0;border-radius:14px;background:#f8fafc;padding:12px 14px}
 .custom-input:focus{outline:none;border-color:#bf953f;background:#fff;box-shadow:0 0 0 4px rgba(191,149,63,.1)}
 .btn-hover{transition:all .2s ease}
 .btn-hover:hover{transform:translateY(-2px);box-shadow:0 10px 15px -3px rgba(0,0,0,.1)}
+.btn-hover:active{transform:scale(0.97)}
 .tab-active{background-color:#0f172a;color:#fff;box-shadow:0 4px 12px rgba(15,23,42,.2)}
 .tab-inactive{background-color:#fff;color:#64748b;border:1px solid #e2e8f0}
-::-webkit-scrollbar{width:8px;height:8px}
-::-webkit-scrollbar-track{background:#f1f5f9}
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:4px}
-::-webkit-scrollbar-thumb:hover{background:#94a3b8}
 .sync-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:100px;font-size:11px;font-weight:800;transition:all .3s}
 .sync-ok{background:#dcfce7;color:#166534}
 .sync-saving{background:#fef3c7;color:#92400e}
 .sync-error{background:#fee2e2;color:#991b1b}
 .sync-offline{background:#e2e8f0;color:#475569}
-@media (max-width: 640px){
-  .glass-card{padding:14px!important;border-radius:16px!important}
-  #list{max-height:60vh!important}
-  .mobile-stack{flex-direction:column!important}
-  .mobile-full{width:100%!important}
-  input, select, button{font-size:16px!important}
-}
-body.dark{background-color:#0f172a!important;color:#e2e8f0}
-body.dark .glass-card{background:#1e293b!important;border-color:#334155!important;color:#e2e8f0}
+body.dark{background:linear-gradient(135deg,#0f172a 0%,#1e293b 100%)!important;color:#e2e8f0}
+body.dark .glass-card{background:#1e293b!important;border-color:#334155!important;color:#e2e8f0;box-shadow:0 4px 24px -8px rgba(0,0,0,0.4)!important}
 body.dark .custom-input{background:#0f172a;border-color:#334155;color:#e2e8f0}
 body.dark .custom-input:focus{background:#1e293b}
 body.dark h3,body.dark h2,body.dark label{color:#e2e8f0!important}
 body.dark .text-slate-500{color:#94a3b8!important}
+body.dark .text-slate-900{color:#f1f5f9!important}
+body.dark .bg-slate-50,body.dark .bg-slate-100{background-color:#334155!important}
+body.dark .text-slate-700{color:#cbd5e1!important}
+body.dark .border-slate-200{border-color:#334155!important}
+#darkToggleBtn{transition:all 0.3s} #darkToggleBtn:hover{transform:rotate(20deg) scale(1.1)}
+
+@media (max-width: 640px){
+  body{font-size:14px}
+  .glass-card{padding:14px!important;border-radius:18px!important;box-shadow:0 2px 12px -4px rgba(15,23,42,0.06)!important}
+  #list{max-height:60vh!important}
+  .app-header{background:rgba(15,23,42,0.95)!important;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:10px 14px!important}
+  #tab_sales, #tab_debts, #tab_loyalty, #tab_employees, #tab_reports, #tab_settings{display:none!important}
+  #mainApp > div:first-child{display:none!important}
+  #mainApp{padding:8px 8px 90px 8px!important}
+  #bottomNav{background:rgba(255,255,255,0.98)!important;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid #e2e8f0;padding-bottom:env(safe-area-inset-bottom, 0)}
+  body.dark #bottomNav{background:rgba(30,41,59,0.98)!important;border-color:#334155}
+  .nav-btn{color:#94a3b8;border-top:3px solid transparent;transition:all 0.2s}
+  .nav-btn.active{color:#bf953f!important;border-top-color:#bf953f;background:linear-gradient(to top, rgba(191,149,63,0.08), transparent)}
+  .nav-btn.active span:first-child{transform:scale(1.15)}
+  .stats-grid{grid-template-columns:repeat(2,1fr)!important;gap:8px!important}
+  .stats-grid > div{padding:12px 8px!important;border-radius:16px!important}
+  #saleBox{padding:16px!important;border-radius:18px!important}
+  .qty-group button{padding:12px 16px!important;font-size:18px!important;min-width:48px;background:#f1f5f9!important}
+  .entry-card{padding:12px!important;border-radius:16px!important}
+  .group-products{max-height:100px;overflow-y:auto;font-size:11px!important;border-radius:10px!important}
+  .group-actions{display:grid!important;grid-template-columns:1fr 1fr;gap:6px!important}
+  .group-actions button{padding:10px 6px!important;font-size:12px!important;width:100%;border-radius:10px!important}
+  .group-actions .full-width{grid-column:1/-1}
+  #editModal>div,#paymentModal>div,#cashModal>div,#invoiceModal>div,#withdrawModal>div,#reportDetailsModal>div,#customerProfileModal>div,#monthCloseModal>div{padding:20px!important;border-radius:22px!important;margin:8px!important;max-height:92vh;overflow-y:auto}
+  #editModal input,#editModal select,#paymentModal input,#cashModal input,#withdrawModal input,#invoiceModal input{font-size:15px!important;padding:12px!important}
+  *{max-width:100%;box-sizing:border-box} html,body{overflow-x:hidden}
+}
 </style>
 </head>
 <body class="min-h-screen" id="body">
 
 <!-- Header -->
-<div class="bg-[#0f172a] text-white p-4 flex justify-between items-center sticky top-0 z-50 shadow-lg">
-<div class="flex gap-4 items-center">
-<img src="logo.jpg" alt="Alherz" class="h-10 w-auto object-contain rounded-md bg-white p-1" onerror="this.outerHTML='&lt;div class=\'text-gold font-black text-2xl\'&gt;Alherz&lt;/div&gt;'">
+<div class="app-header bg-[#0f172a] text-white p-4 flex justify-between items-center sticky top-0 z-50 shadow-lg">
+<div class="flex gap-3 items-center">
+<img src="logo.jpg" alt="Alherz" class="h-10 w-auto object-contain rounded-md bg-white p-1" onerror="this.outerHTML='&lt;div class=\'text-gold font-black text-xl\'&gt;Alherz&lt;/div&gt;'">
 <div class="font-black text-gold text-2xl tracking-wide hidden sm:block">Alherz</div>
 </div>
 <div class="flex gap-2 sm:gap-4 items-center text-sm">
 <div id="syncBadge" class="sync-badge sync-offline">⏳ جاري الاتصال</div>
 <button onclick="manualSync()" id="syncBtn" class="hidden bg-blue-800 hover:bg-blue-700 px-3 py-2 rounded-full transition-colors text-xs font-bold">🔄 مزامنة</button>
-<button onclick="toggleDark()" class="bg-slate-800 hover:bg-slate-700 px-3 sm:px-4 py-2 rounded-full transition-colors">🌙</button>
+<button onclick="toggleDark()" id="darkToggleBtn" class="bg-slate-800 hover:bg-slate-700 px-3 sm:px-4 py-2 rounded-full transition-colors">🌙</button>
 <div id="userBadge" class="hidden bg-slate-800 px-3 sm:px-4 py-2 rounded-full font-bold text-xs sm:text-sm"></div>
 <button onclick="logout()" id="logoutBtn" class="hidden bg-red-900 hover:bg-red-800 px-3 sm:px-4 py-2 rounded-full transition-colors text-xs sm:text-sm">🚪</button>
 </div>
 </div>
 
-<!-- Login -->
+<!-- Login Screen -->
 <div id="loginScreen" class="w-full max-w-md mx-auto mt-24 p-4 animate-fade-in">
 <div class="glass-card p-10 border border-slate-200">
 <div class="text-center mb-10">
@@ -87,7 +113,7 @@ body.dark .text-slate-500{color:#94a3b8!important}
 </div>
 </div>
 
-<!-- Main -->
+<!-- Main App -->
 <div id="mainApp" class="hidden w-full px-4 py-4">
 <div class="grid grid-cols-3 sm:flex sm:flex-wrap gap-2 justify-center mb-6 bg-white p-2 rounded-2xl shadow-sm border border-slate-200 max-w-4xl mx-auto">
 <button onclick="switchTab('sales')" id="tab_sales" class="tab-active rounded-xl px-3 py-3 text-xs sm:text-sm font-black btn-hover transition-all">🛒 البيع</button>
@@ -98,9 +124,9 @@ body.dark .text-slate-500{color:#94a3b8!important}
 <button onclick="switchTab('settings')" id="tab_settings" class="tab-inactive rounded-xl px-3 py-3 text-xs sm:text-sm font-black btn-hover transition-all">⚙️ الإعدادات</button>
 </div>
 
-<!-- Sales -->
+<!-- Sales Tab -->
 <div id="salesTab" class="animate-fade-in w-full max-w-7xl mx-auto">
-<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3 mb-6">
+<div class="stats-grid grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3 mb-6">
 <div class="glass-card p-2 sm:p-4 text-center"><div id="labelSales" class="text-[10px] sm:text-xs font-bold text-slate-500 mb-1">المبيع</div><div id="totalSales" class="font-black text-blue-600 text-base sm:text-xl">0 $</div></div>
 <div id="cardProfit" class="glass-card p-2 sm:p-4 text-center"><div class="text-[10px] sm:text-xs font-bold text-slate-500 mb-1">إجمالي الربح</div><div id="totalProfit" class="font-black text-green-600 text-base sm:text-xl">0 $</div></div>
 <div class="glass-card p-2 sm:p-4 text-center"><div class="text-[10px] sm:text-xs font-bold text-slate-500 mb-1">الديون</div><div id="totalDebts" class="font-black text-orange-500 text-base sm:text-xl">0 $</div></div>
@@ -111,8 +137,8 @@ body.dark .text-slate-500{color:#94a3b8!important}
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
 <div class="lg:col-span-5">
 <div class="flex gap-2 mb-4">
-<button onclick="setViewMode('جملة')" id="viewWholesale" class="bg-[#0f172a] text-white border-2 border-[#0f172a] rounded-xl py-3 text-sm font-black btn-hover shadow-md flex-1">🏷️ جملة</button>
-<button onclick="setViewMode('مفرق')" id="viewRetail" class="bg-white text-slate-600 border-2 border-slate-200 rounded-xl py-3 text-sm font-black btn-hover shadow-sm flex-1">🛍️ مفرق</button>
+<button onclick="setViewMode('جملة')" id="viewWholesale" class="view-mode-btn bg-[#0f172a] text-white border-2 border-[#0f172a] rounded-xl py-3 text-sm font-black btn-hover shadow-md flex-1">🏷️ جملة</button>
+<button onclick="setViewMode('مفرق')" id="viewRetail" class="view-mode-btn bg-white text-slate-600 border-2 border-slate-200 rounded-xl py-3 text-sm font-black btn-hover shadow-sm flex-1">🛍️ مفرق</button>
 </div>
 <div id="saleBox" class="glass-card p-6">
 <div class="flex gap-2 mb-5">
@@ -126,7 +152,7 @@ body.dark .text-slate-500{color:#94a3b8!important}
 </div>
 <input type="date" id="entryDate" class="w-full custom-input p-3 mb-4 text-sm font-bold text-slate-700">
 <div class="flex flex-col sm:flex-row gap-3 mb-4">
-<div class="flex items-center custom-input overflow-hidden w-full sm:w-32 bg-white">
+<div class="qty-group flex items-center custom-input overflow-hidden w-full sm:w-32 bg-white">
 <button onclick="changeQty(-1)" class="bg-slate-100 px-4 py-3 font-bold text-lg">-</button>
 <input id="quantity" type="number" value="1" min="1" max="100" class="w-full text-center font-black p-1 outline-none border-none bg-transparent">
 <button onclick="changeQty(1)" class="bg-slate-100 px-4 py-3 font-bold text-lg">+</button>
@@ -171,7 +197,7 @@ body.dark .text-slate-500{color:#94a3b8!important}
 </div>
 </div>
 
-<!-- Debts -->
+<!-- Debts Tab -->
 <div id="debtsTab" class="hidden animate-fade-in w-full max-w-5xl mx-auto">
 <div class="glass-card p-6">
 <h3 class="font-black mb-4 text-slate-900 text-2xl text-center">📓 كشف ديون الزبائن</h3>
@@ -184,10 +210,10 @@ body.dark .text-slate-500{color:#94a3b8!important}
 </div>
 </div>
 
-<!-- Loyalty -->
+<!-- Loyalty Tab -->
 <div id="loyaltyTab" class="hidden animate-fade-in w-full max-w-4xl mx-auto">
 <div class="glass-card p-8">
-<h3 class="font-black mb-6 text-slate-900 text-2xl text-center">💳 بطاقات الولاء (Golden Member)</h3>
+<h3 class="font-black mb-6 text-slate-900 text-2xl text-center">💳 بطاقات الولاء</h3>
 <div class="bg-slate-50 p-6 border border-slate-200 rounded-2xl mb-8 flex flex-col md:flex-row gap-4 items-end">
 <div class="flex-1 w-full"><label class="text-xs font-bold text-slate-500 block mb-1">اسم الزبون</label><input id="loyName" placeholder="الاسم" class="w-full custom-input p-3 text-sm font-bold"></div>
 <div class="flex-1 w-full"><label class="text-xs font-bold text-slate-500 block mb-1">رقم الواتساب</label><input id="loyPhone" type="tel" placeholder="961..." class="w-full custom-input p-3 text-sm font-bold text-left" dir="ltr"></div>
@@ -197,18 +223,12 @@ body.dark .text-slate-500{color:#94a3b8!important}
 </div>
 </div>
 
-<!-- Employees -->
+<!-- Employees Tab -->
 <div id="employeesTab" class="hidden animate-fade-in w-full max-w-5xl mx-auto">
 <div class="glass-card p-4 mb-4 flex flex-col md:flex-row gap-3 items-end">
-<div class="flex-1 w-full">
-<label class="text-xs font-bold text-slate-500 block mb-1">اسم الموظفة الجديدة</label>
-<input id="newEmpName" placeholder="مثال: aya dika" class="w-full custom-input p-3 text-sm font-bold">
-</div>
-<div class="w-full md:w-40">
-<label class="text-xs font-bold text-slate-500 block mb-1">الراتب الشهري $</label>
-<input id="newEmpSalary" type="number" placeholder="0" class="w-full custom-input p-3 text-sm font-bold">
-</div>
-<button onclick="addEmployee()" class="bg-[#0f172a] text-white rounded-xl p-3 px-6 font-black text-sm btn-hover w-full md:w-auto">➕ إضافة موظفة</button>
+<div class="flex-1 w-full"><label class="text-xs font-bold text-slate-500 block mb-1">اسم الموظفة</label><input id="newEmpName" class="w-full custom-input p-3 text-sm font-bold"></div>
+<div class="w-full md:w-40"><label class="text-xs font-bold text-slate-500 block mb-1">الراتب $</label><input id="newEmpSalary" type="number" class="w-full custom-input p-3 text-sm font-bold"></div>
+<button onclick="addEmployee()" class="bg-[#0f172a] text-white rounded-xl p-3 px-6 font-black text-sm btn-hover w-full md:w-auto">➕ إضافة</button>
 </div>
 <div id="employeesGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
 <div class="glass-card p-6 mt-6">
@@ -217,8 +237,15 @@ body.dark .text-slate-500{color:#94a3b8!important}
 </div>
 </div>
 
-<!-- Reports -->
+<!-- Reports Tab -->
 <div id="reportsTab" class="hidden animate-fade-in w-full max-w-5xl mx-auto">
+<!-- زر إغلاق الشهر -->
+<div class="mb-6">
+  <button onclick="openMonthCloseModal()" class="w-full bg-gradient-to-r from-amber-500 to-yellow-600 text-white rounded-2xl p-4 font-black shadow-lg btn-hover flex items-center justify-center gap-3">
+    <span class="text-2xl">🔒</span>
+    <span>إغلاق الشهر المالي وأرشفته</span>
+  </button>
+</div>
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
 <div class="glass-card p-6">
 <div class="flex justify-between items-center mb-6 border-b pb-4">
@@ -234,22 +261,23 @@ body.dark .text-slate-500{color:#94a3b8!important}
 </div>
 <div class="glass-card p-6">
 <h3 class="font-black mb-6 border-b pb-4 text-slate-900 text-xl flex items-center gap-2">📅 تقارير الأيام المغلقة</h3>
-<div id="reportsList" class="space-y-4 overflow-y-auto pr-2" style="max-height: 600px;"></div>
+<div id="reportsList" class="space-y-4 overflow-y-auto pr-2" style="max-height: 400px;"></div>
+<h3 class="font-black mb-4 border-b pb-4 text-slate-900 text-xl flex items-center gap-2 mt-6">🗄️ أرشيف الأشهر المغلقة</h3>
+<div id="monthsArchiveList" class="space-y-3"></div>
 </div>
 </div>
 </div>
 
-<!-- Settings -->
+<!-- Settings Tab -->
 <div id="settingsTab" class="hidden animate-fade-in w-full max-w-xl mx-auto">
 <div class="glass-card p-8">
 <h3 class="font-black mb-6 border-b pb-4 text-slate-900 text-2xl">⚙️ الإعدادات</h3>
 <div class="mb-8">
 <h4 class="font-bold text-slate-700 mb-1">🔁 المصاريف الشهرية الثابتة</h4>
-<p class="text-xs text-slate-500 mb-3">تُسجَّل تلقائياً كل شهر عند فتح التطبيق في يوم الاستحقاق (مرة واحدة فقط لكل شهر).</p>
 <div class="grid grid-cols-6 gap-2 mb-3">
-<input id="fxName" placeholder="الاسم (مثال: إيجار المحل)" class="col-span-6 custom-input p-3 text-sm font-bold">
+<input id="fxName" placeholder="الاسم" class="col-span-6 custom-input p-3 text-sm font-bold">
 <input id="fxAmount" type="number" placeholder="المبلغ $" class="col-span-3 custom-input p-3 text-sm font-bold">
-<input id="fxDay" type="number" min="1" max="31" placeholder="اليوم من الشهر" class="col-span-3 custom-input p-3 text-sm font-bold">
+<input id="fxDay" type="number" min="1" max="31" placeholder="اليوم" class="col-span-3 custom-input p-3 text-sm font-bold">
 <button onclick="addFixedExpense()" class="col-span-6 bg-[#0f172a] text-white rounded-xl p-3 font-black text-sm btn-hover">➕ إضافة مصروف ثابت</button>
 </div>
 <div id="fixedTotal" class="text-xs font-bold text-slate-600 mb-2"></div>
@@ -258,8 +286,8 @@ body.dark .text-slate-500{color:#94a3b8!important}
 <div class="mb-8">
 <h4 class="font-bold text-slate-700 mb-3">💾 النسخ الاحتياطي</h4>
 <div class="flex gap-3">
-<button onclick="exportData()" class="flex-1 bg-green-600 text-white rounded-xl p-4 font-black text-sm btn-hover">⬇️ تصدير نسخة</button>
-<label class="flex-1 bg-[#0f172a] text-white rounded-xl p-4 font-black text-sm text-center cursor-pointer btn-hover">⬆️ استيراد نسخة<input type="file" id="importFile" accept=".json" class="hidden" onchange="importData(event)"></label>
+<button onclick="exportData()" class="flex-1 bg-green-600 text-white rounded-xl p-4 font-black text-sm btn-hover">⬇️ تصدير</button>
+<label class="flex-1 bg-[#0f172a] text-white rounded-xl p-4 font-black text-sm text-center cursor-pointer btn-hover">⬆️ استيراد<input type="file" id="importFile" accept=".json" class="hidden" onchange="importData(event)"></label>
 </div>
 </div>
 <div>
@@ -273,51 +301,45 @@ body.dark .text-slate-500{color:#94a3b8!important}
 </div>
 </div>
 
+<!-- Bottom Navigation -->
+<div id="bottomNav" class="hidden fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 shadow-2xl z-[500] sm:hidden">
+  <div class="grid grid-cols-6 gap-0">
+    <button onclick="switchTab('sales')" id="nav_sales" class="nav-btn flex flex-col items-center py-2 text-slate-400"><span class="text-xl">🛒</span><span class="text-[9px] font-black mt-0.5">البيع</span></button>
+    <button onclick="switchTab('debts')" id="nav_debts" class="nav-btn flex flex-col items-center py-2 text-slate-400"><span class="text-xl">📓</span><span class="text-[9px] font-black mt-0.5">الديون</span></button>
+    <button onclick="switchTab('loyalty')" id="nav_loyalty" class="nav-btn flex flex-col items-center py-2 text-slate-400"><span class="text-xl">💳</span><span class="text-[9px] font-black mt-0.5">الولاء</span></button>
+    <button onclick="switchTab('employees')" id="nav_employees" class="nav-btn flex flex-col items-center py-2 text-slate-400 manager-only"><span class="text-xl">👥</span><span class="text-[9px] font-black mt-0.5">الموظفين</span></button>
+    <button onclick="switchTab('reports')" id="nav_reports" class="nav-btn flex flex-col items-center py-2 text-slate-400 manager-only"><span class="text-xl">📊</span><span class="text-[9px] font-black mt-0.5">التقارير</span></button>
+    <button onclick="switchTab('settings')" id="nav_settings" class="nav-btn flex flex-col items-center py-2 text-slate-400 manager-only"><span class="text-xl">⚙️</span><span class="text-[9px] font-black mt-0.5">الإعدادات</span></button>
+  </div>
+</div>
+
+<!-- ================= MODALS ================= -->
+
 <!-- Edit Modal -->
 <div id="editModal" class="hidden fixed inset-0 bg-black/60 z-[1000] flex items-center justify-center p-4 backdrop-blur-md overflow-y-auto">
 <div class="bg-white w-full max-w-md rounded-[24px] p-6 shadow-2xl animate-fade-in my-8">
 <h3 class="font-black text-xl mb-5 text-center text-slate-800">✏️ تعديل العملية</h3>
 <input type="hidden" id="editId">
 <div class="space-y-3 text-sm">
-  <div>
-    <label class="text-[10px] font-bold text-slate-500 block mb-1">نوع العملية</label>
-    <select id="editType" onchange="toggleEditTypeFields()" class="w-full custom-input p-3 font-bold">
-      <option value="sale">🛒 بيع</option>
-      <option value="debt">📓 دين</option>
-      <option value="expense">💸 مصروف</option>
-      <option value="return">🔄 مرتجع</option>
-    </select>
-  </div>
-  <div id="editSaleKindBox">
-    <label class="text-[10px] font-bold text-slate-500 block mb-1">نوع البيع</label>
-    <select id="editSaleKind" class="w-full custom-input p-3 font-bold">
-      <option value="مفرق">🛍️ مفرق</option>
-      <option value="جملة">🏷️ جملة</option>
-    </select>
-  </div>
+  <div><select id="editType" onchange="toggleEditTypeFields()" class="w-full custom-input p-3 font-bold"><option value="sale">🛒 بيع</option><option value="debt">📓 دين</option><option value="expense">💸 مصروف</option><option value="return">🔄 مرتجع</option></select></div>
+  <div id="editSaleKindBox"><select id="editSaleKind" class="w-full custom-input p-3 font-bold"><option value="مفرق">🛍️ مفرق</option><option value="جملة">🏷️ جملة</option></select></div>
   <input id="editCust" placeholder="اسم الزبون" class="w-full custom-input p-3 font-bold">
   <input id="editPhone" type="tel" placeholder="رقم الزبون" class="w-full custom-input p-3 font-bold" dir="ltr">
   <input id="editCat" placeholder="اسم المنتج" class="w-full custom-input p-3 font-bold">
-  <div>
-    <label class="text-[10px] font-bold text-slate-500 block mb-1">التاريخ</label>
-    <input id="editDate" type="date" class="w-full custom-input p-3 font-bold">
-  </div>
+  <input id="editDate" type="date" class="w-full custom-input p-3 font-bold">
   <div class="grid grid-cols-2 gap-3">
-    <div><label class="text-[10px] font-bold text-slate-500 block mb-1">الكمية</label><input id="editQty" type="number" min="1" max="100" class="w-full custom-input p-3 font-bold"></div>
-    <div><label class="text-[10px] font-bold text-slate-500 block mb-1">سعر المبيع</label><input id="editAmount" type="number" class="w-full custom-input p-3 font-bold"></div>
+    <div><input id="editQty" type="number" class="w-full custom-input p-3 font-bold"></div>
+    <div><input id="editAmount" type="number" class="w-full custom-input p-3 font-bold"></div>
   </div>
-  <div id="editCostBox">
-    <label class="text-[10px] font-bold text-slate-500 block mb-1">رأس المال (للوحدة)</label>
-    <input id="editCost" type="number" class="w-full custom-input p-3 font-bold">
-  </div>
+  <div id="editCostBox"><input id="editCost" type="number" placeholder="رأس المال" class="w-full custom-input p-3 font-bold"></div>
   <div id="editDebtBox" class="grid grid-cols-2 gap-3">
-    <div><label class="text-[10px] font-bold text-slate-500 block mb-1">المدفوع</label><input id="editPaid" type="number" class="w-full custom-input p-3 font-bold"></div>
-    <div><label class="text-[10px] font-bold text-slate-500 block mb-1">تاريخ الاستحقاق</label><input id="editDue" type="date" class="w-full custom-input p-3 font-bold"></div>
+    <div><input id="editPaid" type="number" placeholder="المدفوع" class="w-full custom-input p-3 font-bold"></div>
+    <div><input id="editDue" type="date" class="w-full custom-input p-3 font-bold"></div>
   </div>
   <input id="editNotes" placeholder="ملاحظات" class="w-full custom-input p-3 font-bold">
 </div>
 <div class="flex gap-3 mt-6">
-  <button onclick="saveEdit()" class="flex-1 bg-[#0f172a] text-white font-black py-3 rounded-xl btn-hover shadow-lg">💾 حفظ</button>
+  <button onclick="saveEdit()" class="flex-1 bg-[#0f172a] text-white font-black py-3 rounded-xl btn-hover">💾 حفظ</button>
   <button onclick="closeEdit()" class="bg-slate-100 text-slate-600 font-black py-3 px-6 rounded-xl btn-hover">إلغاء</button>
 </div>
 </div>
@@ -329,303 +351,159 @@ body.dark .text-slate-500{color:#94a3b8!important}
     <h3 class="font-black text-xl mb-2 text-center text-slate-800">💰 تسجيل دفعة</h3>
     <input type="hidden" id="payEntryId">
     <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 mb-4 text-sm space-y-1">
-      <div class="flex justify-between"><span class="text-slate-500 font-bold">الزبون:</span><span id="payCustomerName" class="font-black text-slate-900"></span></div>
-      <div class="flex justify-between"><span class="text-slate-500 font-bold">إجمالي الدين:</span><span id="payTotal" class="font-black text-blue-600"></span></div>
-      <div class="flex justify-between"><span class="text-slate-500 font-bold">مدفوع سابقاً:</span><span id="payPaidSoFar" class="font-black text-green-600"></span></div>
-      <div class="flex justify-between border-t pt-1 mt-1"><span class="text-slate-500 font-bold">المتبقي:</span><span id="payRemaining" class="font-black text-orange-600 text-lg"></span></div>
+      <div class="flex justify-between"><span class="text-slate-500">الزبون:</span><span id="payCustomerName" class="font-black"></span></div>
+      <div class="flex justify-between"><span class="text-slate-500">إجمالي:</span><span id="payTotal" class="font-black text-blue-600"></span></div>
+      <div class="flex justify-between"><span class="text-slate-500">مدفوع:</span><span id="payPaidSoFar" class="font-black text-green-600"></span></div>
+      <div class="flex justify-between border-t pt-1 mt-1"><span class="text-slate-500">متبقي:</span><span id="payRemaining" class="font-black text-orange-600"></span></div>
     </div>
     <div class="space-y-3 text-sm">
-      <div>
-        <label class="text-[10px] font-bold text-slate-500 block mb-1">المبلغ المدفوع ($)</label>
-        <input id="payAmount" type="number" placeholder="0.00" class="w-full custom-input p-3 font-black text-lg">
-      </div>
-      <div>
-        <label class="text-[10px] font-bold text-slate-500 block mb-1">التاريخ</label>
-        <input id="payDate" type="date" class="w-full custom-input p-3 font-bold">
-      </div>
-      <div>
-        <label class="text-[10px] font-bold text-slate-500 block mb-1">ملاحظة (اختياري)</label>
-        <input id="payNote" placeholder="مثال: دفعة أولى" class="w-full custom-input p-3 font-bold">
-      </div>
+      <div><input id="payAmount" type="number" placeholder="المبلغ" class="w-full custom-input p-3 font-black text-lg"></div>
+      <div><input id="payDate" type="date" class="w-full custom-input p-3 font-bold"></div>
+      <div><input id="payNote" placeholder="ملاحظة (اختياري)" class="w-full custom-input p-3 font-bold"></div>
     </div>
     <div class="flex gap-3 mt-6">
-      <button onclick="savePayment()" class="flex-1 bg-[#0f172a] text-white font-black py-3 rounded-xl btn-hover shadow-lg">💾 حفظ الدفعة</button>
+      <button onclick="savePayment()" class="flex-1 bg-[#0f172a] text-white font-black py-3 rounded-xl btn-hover">💾 حفظ</button>
       <button onclick="closePaymentModal()" class="bg-slate-100 text-slate-600 font-black py-3 px-6 rounded-xl btn-hover">إلغاء</button>
     </div>
   </div>
 </div>
 
-<!-- Withdraw Modal -->
-<div id="withdrawModal" class="hidden fixed inset-0 bg-black/60 z-[1000] flex items-center justify-center p-4 backdrop-blur-md">
-<div class="bg-white w-full max-w-sm rounded-[24px] p-6 shadow-2xl animate-fade-in">
-<h3 class="font-black text-xl mb-5 text-center text-slate-800" id="withdrawModalTitle">💵 تسجيل سحب</h3>
-<input type="hidden" id="wdEmp">
-<input type="hidden" id="wdId">
-<div class="space-y-3 text-sm">
-  <div><label class="text-[10px] font-bold text-slate-500 block mb-1">المبلغ ($)</label><input id="wdAmount" type="number" placeholder="0.00" class="w-full custom-input p-3 font-black text-lg"></div>
-  <div><label class="text-[10px] font-bold text-slate-500 block mb-1">التاريخ</label><input id="wdDate" type="date" class="w-full custom-input p-3 font-bold"></div>
-  <div><label class="text-[10px] font-bold text-slate-500 block mb-1">ملاحظة (اختياري)</label><input id="wdNote" placeholder="مثال: سحب نص الشهر" class="w-full custom-input p-3 font-bold"></div>
-</div>
-<div class="flex gap-3 mt-6">
-  <button onclick="saveWithdrawModal()" class="flex-1 bg-[#0f172a] text-white font-black py-3 rounded-xl btn-hover shadow-lg">💾 حفظ</button>
-  <button onclick="closeWithdrawModal()" class="bg-slate-100 text-slate-600 font-black py-3 px-6 rounded-xl btn-hover">إلغاء</button>
-</div>
-</div>
-</div>
-
-<!-- Report Details Modal -->
-<div id="reportDetailsModal" class="hidden fixed inset-0 bg-black/60 z-[1000] flex items-center justify-center p-4 backdrop-blur-md overflow-y-auto">
-  <div class="bg-white w-full max-w-md rounded-[24px] p-6 shadow-2xl animate-fade-in my-8">
-    <div class="flex justify-between items-center mb-5 border-b pb-3">
-      <h3 class="font-black text-xl text-slate-800">📊 تفاصيل التقرير</h3>
-      <button onclick="closeReportDetails()" class="text-slate-400 hover:text-red-500 font-black text-xl">✕</button>
+<!-- Customer Profile Modal -->
+<div id="customerProfileModal" class="hidden fixed inset-0 bg-black/60 z-[1000] flex items-start justify-center p-4 backdrop-blur-md overflow-y-auto">
+  <div class="bg-white w-full max-w-md rounded-[24px] p-5 shadow-2xl animate-fade-in my-8">
+    <div class="flex justify-between items-center mb-4 border-b pb-3">
+      <h3 class="font-black text-xl text-slate-800">👤 ملف الزبون</h3>
+      <button onclick="document.getElementById('customerProfileModal').classList.add('hidden')" class="text-slate-400 hover:text-red-500 font-black text-xl">✕</button>
     </div>
-    <div id="reportDetailsContent" class="space-y-2 text-sm"></div>
-    <div class="flex gap-3 mt-6">
-      <button onclick="deleteReport()" class="flex-1 bg-red-600 text-white font-black py-3 rounded-xl btn-hover">🗑️ حذف</button>
-      <button onclick="closeReportDetails()" class="bg-slate-100 text-slate-600 font-black py-3 px-6 rounded-xl btn-hover">إغلاق</button>
-    </div>
-  </div>
-</div>
-
-<!-- Cash Modal -->
-<div id="cashModal" class="hidden fixed inset-0 bg-black/60 z-[1000] flex items-center justify-center p-4 backdrop-blur-md overflow-y-auto">
-  <div class="bg-white w-full max-w-sm rounded-[24px] p-6 shadow-2xl animate-fade-in my-8">
-    <h3 id="cashTitle" class="font-black text-xl mb-4 text-center text-slate-800">💵 جرد الصندوق</h3>
-    <div id="cashBreakdown" class="bg-slate-50 border border-slate-200 rounded-xl p-3 mb-4 text-sm space-y-1"></div>
-    <label class="text-[10px] font-bold text-slate-500 block mb-1">المبلغ الموجود فعلياً في الدرج ($)</label>
-    <input id="cashCounted" type="number" placeholder="0.00" oninput="updateCashDiff()" class="w-full custom-input p-3 font-black text-lg">
-    <div id="cashDiff" class="mt-3 text-center font-black text-lg"></div>
-    <div class="flex gap-3 mt-6">
-      <button onclick="confirmClose()" class="flex-1 bg-[#0f172a] text-white font-black py-3 rounded-xl btn-hover shadow-lg">🚀 تأكيد التسكير</button>
-      <button onclick="closeCashModal()" class="bg-slate-100 text-slate-600 font-black py-3 px-6 rounded-xl btn-hover">إلغاء</button>
-    </div>
+    <div id="customerProfileContent"></div>
   </div>
 </div>
 
 <!-- Invoice Modal -->
-<div id="invoiceModal" class="hidden fixed inset-0 bg-black/60 z-[1000] flex items-center justify-center p-4 backdrop-blur-md overflow-y-auto">
-  <div class="bg-white w-full max-w-sm rounded-[24px] p-6 shadow-2xl animate-fade-in my-8">
-    <div class="text-center mb-4 border-b pb-3">
-      <h2 class="font-black text-2xl text-gold">Alherz</h2>
-      <p class="text-xs text-slate-500 mt-1">فاتورة</p>
+<div id="invoiceModal" class="hidden fixed inset-0 bg-black/60 z-[1000] flex items-start justify-center p-4 backdrop-blur-md overflow-y-auto">
+  <div class="bg-white w-full max-w-md rounded-[24px] shadow-2xl animate-fade-in my-8 overflow-hidden">
+    <div id="invoicePaper" style="background:#fff; direction:rtl; font-family:'Cairo',sans-serif; padding:24px; color:#0f172a;">
+      <div style="text-align:center; padding-bottom:16px; border-bottom:3px double #bf953f; margin-bottom:16px;">
+        <div style="font-size:28px; font-weight:900; color:#bf953f; letter-spacing:1px;">Alherz</div>
+        <div id="invoiceNumber" style="display:inline-block; margin-top:8px; padding:4px 12px; background:#0f172a; color:#fff; border-radius:100px; font-size:11px; font-weight:900;"></div>
+      </div>
+      <div id="invoiceCustomerBlock" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:12px; margin-bottom:16px; font-size:12px;">
+        <div style="display:flex; justify-content:space-between; margin-bottom:4px;"><span style="color:#64748b; font-weight:bold;">👤 الزبون:</span><span id="invCustomerName" style="font-weight:900;"></span></div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:4px;"><span style="color:#64748b; font-weight:bold;">📞 الهاتف:</span><span id="invCustomerPhone" style="font-weight:900;" dir="ltr"></span></div>
+        <div style="display:flex; justify-content:space-between;"><span style="color:#64748b; font-weight:bold;">📅 التاريخ:</span><span id="invDate" style="font-weight:900;"></span></div>
+      </div>
+      <div style="margin-bottom:16px;">
+        <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:2px solid #0f172a; font-size:11px; font-weight:900; color:#0f172a;"><span style="flex:1; text-align:right;">المنتج</span><span style="width:50px; text-align:center;">الكمية</span><span style="width:70px; text-align:left;">السعر</span></div>
+        <div id="invoiceItemsList" style="font-size:12px;"></div>
+      </div>
+      <div style="background:#f8fafc; border-radius:12px; padding:12px; margin-bottom:16px;">
+        <div style="display:flex; justify-content:space-between; padding:6px 0; font-size:13px;"><span style="color:#64748b; font-weight:bold;">الإجمالي</span><span id="invTotal" style="font-weight:900; color:#2563eb; font-size:15px;"></span></div>
+        <div style="display:flex; justify-content:space-between; padding:6px 0; font-size:13px; border-top:1px dashed #cbd5e1;"><span style="color:#64748b; font-weight:bold;">المدفوع</span><span id="invPaid" style="font-weight:900; color:#16a34a; font-size:15px;"></span></div>
+        <div style="display:flex; justify-content:space-between; padding:8px 0; font-size:14px; border-top:2px solid #0f172a; margin-top:4px;"><span style="color:#0f172a; font-weight:900;">المتبقي</span><span id="invRemaining" style="font-weight:900; font-size:16px;"></span></div>
+      </div>
+      <div id="invoiceStamp" style="text-align:center; margin-bottom:16px;"></div>
+      <div style="text-align:center; font-size:10px; color:#94a3b8; padding-top:12px; border-top:1px solid #e2e8f0;">شكراً لتعاملكم مع Alherz 🙏</div>
     </div>
-    <div id="invoiceContent" class="space-y-2 text-sm"></div>
-    <div class="flex gap-3 mt-6 no-print">
-      <button onclick="sendInvoiceWA()" class="flex-1 bg-green-600 text-white font-black py-3 rounded-xl btn-hover">📲 واتساب</button>
-      <button onclick="window.print()" class="flex-1 bg-slate-800 text-white font-black py-3 rounded-xl btn-hover">🖨️ طباعة</button>
-      <button onclick="closeInvoiceModal()" class="bg-slate-100 text-slate-600 font-black py-3 px-6 rounded-xl btn-hover">إغلاق</button>
+    <div class="flex gap-2 p-4 no-print flex-wrap" style="background:#f8fafc; border-top:1px solid #e2e8f0;">
+      <button onclick="downloadInvoice()" class="flex-1 bg-blue-600 text-white font-black py-3 px-2 rounded-xl btn-hover text-sm">🖼️ تحميل صورة</button>
+      <button onclick="sendInvoiceWA()" class="flex-1 bg-green-600 text-white font-black py-3 px-2 rounded-xl btn-hover text-sm">📲 واتساب</button>
+      <button onclick="window.print()" class="flex-1 bg-slate-800 text-white font-black py-3 px-2 rounded-xl btn-hover text-sm">🖨️ طباعة</button>
+      <button onclick="closeInvoiceModal()" class="bg-slate-200 text-slate-700 font-black py-3 px-4 rounded-xl btn-hover text-sm">✕</button>
     </div>
   </div>
 </div>
 
+<!-- Month Close Modal -->
+<div id="monthCloseModal" class="hidden fixed inset-0 bg-black/70 z-[1100] flex items-start justify-center p-4 backdrop-blur-md overflow-y-auto">
+  <div class="bg-white w-full max-w-md rounded-[24px] p-6 shadow-2xl animate-fade-in my-8">
+    <h3 class="font-black text-xl mb-4 text-center text-slate-800">🔒 إغلاق الشهر المالي</h3>
+    <div class="mb-4"><input id="monthToClose" type="month" class="w-full custom-input p-3 font-bold"></div>
+    <div id="monthCloseSummary" class="bg-slate-50 border border-slate-200 rounded-xl p-3 mb-4 text-sm space-y-1"></div>
+    <div class="flex gap-3 mt-6">
+      <button onclick="confirmCloseMonth()" class="flex-1 bg-gradient-to-r from-amber-600 to-yellow-600 text-white font-black py-3 rounded-xl btn-hover shadow-lg">🔒 تأكيد الإغلاق</button>
+      <button onclick="document.getElementById('monthCloseModal').classList.add('hidden')" class="bg-slate-100 text-slate-600 font-black py-3 px-6 rounded-xl btn-hover">إلغاء</button>
+    </div>
+  </div>
+</div>
+
+
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import {
-  initializeFirestore, persistentLocalCache, persistentMultipleTabManager,
-  collection, doc, addDoc, setDoc, getDoc, onSnapshot, updateDoc, deleteDoc,
-  query, orderBy, serverTimestamp
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { initializeFirestore, persistentLocalCache, persistentMultipleTabManager, collection, doc, addDoc, setDoc, getDoc, onSnapshot, updateDoc, deleteDoc, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyCDkBjcnaWqGz-yBhpGxDSLWiW3OFA2v8U",
-  authDomain: "alherzapp.firebaseapp.com",
-  projectId: "alherzapp",
-  storageBucket: "alherzapp.firebasestorage.app",
-  messagingSenderId: "965113446124",
-  appId: "1:965113446124:web:b11d1299049abbbad6afc9"
-};
-
+const firebaseConfig = { apiKey: "AIzaSyCDkBjcnaWqGz-yBhpGxDSLWiW3OFA2v8U", authDomain: "alherzapp.firebaseapp.com", projectId: "alherzapp", storageBucket: "alherzapp.firebasestorage.app", messagingSenderId: "965113446124", appId: "1:965113446124:web:b11d1299049abbbad6afc9" };
 const app = initializeApp(firebaseConfig);
-let db;
-try {
-  db = initializeFirestore(app, { localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() }) });
-} catch (e) {
-  db = initializeFirestore(app, {});
-}
+let db; try { db = initializeFirestore(app, { localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() }) }); } catch (e) { db = initializeFirestore(app, {}); }
 const auth = getAuth(app);
 
-const PASS_HASHES = {
-  ahmad: '1408b3861e67fc9c4e28ca50a864b8e9b8d9de5411e5225d327c63894179cd43',
-  amal:  '30757720c1d3d1eef3e3fd4d5f198ea10071ae657f1ce9b04ed8723119f277f0',
-  nurr:  '5ba72d09ba477e954dbf81e0a6e531b2eb964e8ab222329836be7654301345de'
-};
-async function sha256Hex(str) {
-  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
-  return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
-}
+const PASS_HASHES = { ahmad: '1408b3861e67fc9c4e28ca50a864b8e9b8d9de5411e5225d327c63894179cd43', amal: '30757720c1d3d1eef3e3fd4d5f198ea10071ae657f1ce9b04ed8723119f277f0', nurr: '5ba72d09ba477e954dbf81e0a6e531b2eb964e8ab222329836be7654301345de' };
+async function sha256Hex(str) { const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str)); return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join(''); }
 
-let currentUser = null;
-let pendingUser = null;
-let currentView = 'جملة';
-let currentType = 'sale';
-let entries = [];
-let loyaltyCards = [];
-let employees = [];
-let reports = [];
-let settings = { phone: '96181439656' };
-let unsubscribers = [];
-let currentReportId = null;
-let currentInvoiceGroup = null;
-let firebaseReady = false;
-let pendingClose = null;
+let currentUser = null, pendingUser = null, currentView = 'جملة', currentType = 'sale', entries = [], loyaltyCards = [], employees = [], reports = [], closedMonths = [], settings = { phone: '96181439656' }, unsubscribers = [], currentInvoiceGroup = null, firebaseReady = false, pendingClose = null, fixedRunning = false, entriesLoaded = false, settingsLoaded = false;
 const openDebtCustomers = new Set();
-let fixedRunning = false, entriesLoaded = false, settingsLoaded = false;
-
 const isManager = () => currentUser === 'ahmad';
 
-function normPhone(p) {
-  let d = String(p || '').replace(/[^0-9]/g, '');
-  if (d.startsWith('00')) d = d.slice(2);
-  if (d.startsWith('0')) d = '961' + d.slice(1);
-  else if (d.length > 0 && d.length <= 8) d = '961' + d;
-  return d;
-}
-
+function normPhone(p) { let d = String(p || '').replace(/[^0-9]/g, ''); if (d.startsWith('00')) d = d.slice(2); if (d.startsWith('0')) d = '961' + d.slice(1); else if (d.length > 0 && d.length <= 8) d = '961' + d; return d; }
 const fmt = (n) => (Number(n) || 0).toFixed(2);
-const todayStr = () => {
-  const d = new Date();
-  const p = (n) => String(n).padStart(2, '0');
-  return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
-};
+const todayStr = () => { const d = new Date(); const p = (n) => String(n).padStart(2, '0'); return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate()); };
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const sumPayments = (e) => (e.payments || []).reduce((s, p) => s + (Number(p.amount) || 0), 0);
 const paidOf = (e) => (Number(e.paid) || 0) + sumPayments(e);
-const toastMsg = (msg) => {
-  const t = document.createElement('div');
-  t.className = 'toast';
-  t.textContent = msg;
-  document.body.appendChild(t);
-  setTimeout(() => t.remove(), 2500);
-};
+const toastMsg = (msg) => { const t = document.createElement('div'); t.className = 'toast'; t.textContent = msg; document.body.appendChild(t); setTimeout(() => t.remove(), 2500); };
 
 function updateSyncBadge(state, text) {
-  const badge = document.getElementById('syncBadge');
-  if (!badge) return;
+  const badge = document.getElementById('syncBadge'); if (!badge) return;
   badge.className = 'sync-badge sync-' + state;
-  const icons = { ok: '✅', saving: '🔄', error: '⚠️', offline: '📴' };
-  const labels = { ok: 'متزامن', saving: 'جاري الحفظ', error: 'خطأ', offline: 'غير متصل' };
-  badge.textContent = (icons[state] || '') + ' ' + (text || labels[state] || '');
+  badge.textContent = ({ ok: '✅', saving: '🔄', error: '⚠️', offline: '📴' }[state] || '') + ' ' + (text || { ok: 'متزامن', saving: 'جاري الحفظ', error: 'خطأ', offline: 'غير متصل' }[state] || '');
 }
 
 async function initFirebase() {
   updateSyncBadge('offline', 'جاري الاتصال');
-  onAuthStateChanged(auth, (user) => {
-    if (user) { firebaseReady = true; startListeners(); }
-  });
-  try { await signInAnonymously(auth); }
-  catch (e) {
-    console.error('Auth error', e);
-    updateSyncBadge('error');
-    alert('حدث خطأ في الاتصال بـ Firebase: \n' + e.message);
-  }
-}
-
-function onListenError(name, err) {
-  console.error('Listener error:', name, err);
-  updateSyncBadge('error');
-  toastMsg('❌ لا يمكن قراءة ' + name + ' (' + (err && err.code ? err.code : 'error') + ')');
+  onAuthStateChanged(auth, (user) => { if (user) { firebaseReady = true; startListeners(); } });
+  try { await signInAnonymously(auth); } catch (e) { updateSyncBadge('error'); alert('حدث خطأ في الاتصال: ' + e.message); }
 }
 
 function startListeners() {
-  unsubscribers.forEach(u => u());
-  unsubscribers = [];
-
-  unsubscribers.push(onSnapshot(collection(db, 'entries'), snap => {
-    entries = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-    render(); updateDashboard(); populateDatalists(); renderDebts();
-    entriesLoaded = true;
-    maybeRunFixed();
-    updateSyncBadge('ok');
-  }, () => updateSyncBadge('error')));
-
-  unsubscribers.push(onSnapshot(collection(db, 'loyaltyCards'), snap => {
-    loyaltyCards = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-    renderLoyalty();
-  }, (err) => onListenError('loyaltyCards', err)));
-
-  unsubscribers.push(onSnapshot(collection(db, 'employees'), snap => {
-    employees = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-    renderEmployees();
-  }, (err) => onListenError('employees', err)));
-
-  unsubscribers.push(onSnapshot(query(collection(db, 'reports'), orderBy('closedAt', 'desc')), snap => {
-    reports = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-    renderReports();
-  }, (err) => onListenError('reports', err)));
-
-  unsubscribers.push(onSnapshot(doc(db, 'settings', 'config'), snap => {
-    if (snap.exists()) {
-      settings = snap.data();
-      const el = document.getElementById('ahmadNumber');
-      if (el && settings.phone) el.value = settings.phone;
-    }
-    settingsLoaded = true;
-    renderFixedList();
-    maybeRunFixed();
-  }, (err) => onListenError('settings', err)));
-
+  unsubscribers.forEach(u => u()); unsubscribers = [];
+  unsubscribers.push(onSnapshot(collection(db, 'entries'), snap => { entries = snap.docs.map(d => ({ id: d.id, ...d.data() })); render(); updateDashboard(); populateDatalists(); renderDebts(); entriesLoaded = true; maybeRunFixed(); updateSyncBadge('ok'); }, () => updateSyncBadge('error')));
+  unsubscribers.push(onSnapshot(collection(db, 'loyaltyCards'), snap => { loyaltyCards = snap.docs.map(d => ({ id: d.id, ...d.data() })); renderLoyalty(); }));
+  unsubscribers.push(onSnapshot(collection(db, 'employees'), snap => { employees = snap.docs.map(d => ({ id: d.id, ...d.data() })); renderEmployees(); }));
+  unsubscribers.push(onSnapshot(query(collection(db, 'reports'), orderBy('closedAt', 'desc')), snap => { reports = snap.docs.map(d => ({ id: d.id, ...d.data() })); renderReports(); }));
+  unsubscribers.push(onSnapshot(collection(db, 'closedMonths'), snap => { closedMonths = snap.docs.map(d => ({ id: d.id, ...d.data() })); closedMonths.sort((a, b) => (b.month || '').localeCompare(a.month || '')); renderMonthsArchive(); }));
+  unsubscribers.push(onSnapshot(doc(db, 'settings', 'config'), snap => { if (snap.exists()) { settings = snap.data(); const el = document.getElementById('ahmadNumber'); if (el && settings.phone) el.value = settings.phone; } settingsLoaded = true; renderFixedList(); maybeRunFixed(); }));
   updateSyncBadge('ok');
 }
 
-window.selectUser = (user) => {
-  pendingUser = user;
-  document.querySelectorAll('.userBtn').forEach(b => b.classList.remove('ring-2', 'ring-[#bf953f]'));
-  const btn = document.getElementById('btn_' + user);
-  if (btn) btn.classList.add('ring-2', 'ring-[#bf953f]');
-  document.getElementById('passBox').classList.remove('hidden');
-  document.getElementById('loginMsg').textContent = '';
-  document.getElementById('password').value = '';
-  document.getElementById('password').focus();
-};
-
+window.selectUser = (user) => { pendingUser = user; document.querySelectorAll('.userBtn').forEach(b => b.classList.remove('ring-2', 'ring-[#bf953f]')); const btn = document.getElementById('btn_' + user); if (btn) btn.classList.add('ring-2', 'ring-[#bf953f]'); document.getElementById('passBox').classList.remove('hidden'); document.getElementById('loginMsg').textContent = ''; document.getElementById('password').value = ''; document.getElementById('password').focus(); };
 window.login = async () => {
-  const pw = document.getElementById('password').value;
-  if (!pendingUser) return;
-  let ok = false;
-  try { ok = (await sha256Hex('alherz:' + pw)) === PASS_HASHES[pendingUser]; }
-  catch (e) { ok = false; }
-  if (ok) {
-    currentUser = pendingUser;
-    localStorage.setItem('alherz_user', currentUser);
-    applyLogin();
-  } else {
-    document.getElementById('loginMsg').textContent = 'كلمة السر غير صحيحة';
-  }
+  const pw = document.getElementById('password').value; if (!pendingUser) return;
+  let ok = false; try { ok = (await sha256Hex('alherz:' + pw)) === PASS_HASHES[pendingUser]; } catch (e) { ok = false; }
+  if (ok) { currentUser = pendingUser; localStorage.setItem('alherz_user', currentUser); applyLogin(); }
+  else { document.getElementById('loginMsg').textContent = 'كلمة السر غير صحيحة'; }
 };
-
 window.logout = () => { localStorage.removeItem('alherz_user'); location.reload(); };
+window.toggleDark = () => { const isDark = document.body.classList.toggle('dark'); localStorage.setItem('alherz_dark', isDark ? '1' : '0'); const btn = document.getElementById('darkToggleBtn'); if (btn) btn.textContent = isDark ? '☀️' : '🌙'; };
 
 function applyLogin() {
-  document.getElementById('loginScreen').classList.add('hidden');
-  document.getElementById('mainApp').classList.remove('hidden');
-  const ub = document.getElementById('userBadge');
-  ub.textContent = currentUser;
-  ub.classList.remove('hidden');
-  document.getElementById('logoutBtn').classList.remove('hidden');
-  document.getElementById('syncBtn').classList.remove('hidden');
-  applyRole();
-  maybeRunFixed();
-  render(); updateDashboard();
+  document.getElementById('loginScreen').classList.add('hidden'); document.getElementById('mainApp').classList.remove('hidden');
+  const ub = document.getElementById('userBadge'); ub.textContent = currentUser; ub.classList.remove('hidden');
+  document.getElementById('logoutBtn').classList.remove('hidden'); document.getElementById('syncBtn').classList.remove('hidden');
+  document.getElementById('bottomNav').classList.remove('hidden');
+  document.getElementById('nav_sales').classList.add('active');
+  applyRole(); maybeRunFixed(); render(); updateDashboard();
 }
 
 window.switchTab = (tab) => {
   if (!isManager() && ['employees', 'reports', 'settings'].includes(tab)) return;
   const tabs = ['sales', 'debts', 'loyalty', 'employees', 'reports', 'settings'];
   tabs.forEach(t => {
-    const btn = document.getElementById('tab_' + t);
-    const content = document.getElementById(t + 'Tab');
+    const btn = document.getElementById('tab_' + t); const content = document.getElementById(t + 'Tab');
     if (btn) btn.className = (t === tab ? 'tab-active' : 'tab-inactive') + ' rounded-xl px-3 py-3 text-xs sm:text-sm font-black btn-hover transition-all';
     if (content) content.classList.toggle('hidden', t !== tab);
+    const navBtn = document.getElementById('nav_' + t); if (navBtn) navBtn.classList.toggle('active', t === tab);
   });
-  if (tab === 'reports') renderMonthly();
-  if (tab === 'debts') renderDebts();
-};
-
-window.toggleDark = () => {
-  document.body.classList.toggle('dark');
-  localStorage.setItem('alherz_dark', document.body.classList.contains('dark') ? '1' : '0');
+  if (tab === 'reports') renderMonthly(); if (tab === 'debts') renderDebts();
 };
 
 window.setViewMode = (mode) => {
@@ -638,527 +516,196 @@ window.setViewMode = (mode) => {
 };
 
 window.setType = (type) => {
-  currentType = type;
-  const debtExtra = document.getElementById('debtExtra');
-  const costBox = document.getElementById('costBox');
-  const btnSale = document.getElementById('btnSale');
-  const sel = document.getElementById('otherTypeSelect');
-
-  btnSale.className = type === 'sale'
-    ? 'flex-1 bg-[#0f172a] text-white rounded-xl py-3 text-sm font-bold shadow-md btn-hover'
-    : 'flex-1 bg-white text-slate-600 border border-slate-200 rounded-xl py-3 text-sm font-bold btn-hover';
+  currentType = type; const debtExtra = document.getElementById('debtExtra'), costBox = document.getElementById('costBox'), btnSale = document.getElementById('btnSale'), sel = document.getElementById('otherTypeSelect');
+  btnSale.className = type === 'sale' ? 'flex-1 bg-[#0f172a] text-white rounded-xl py-3 text-sm font-bold shadow-md btn-hover' : 'flex-1 bg-white text-slate-600 border border-slate-200 rounded-xl py-3 text-sm font-bold btn-hover';
   sel.value = type === 'sale' ? 'none' : type;
-
-  if (type === 'debt') {
-    debtExtra.classList.remove('hidden');
-    costBox.style.display = isManager() ? '' : 'none';
-  } else {
-    debtExtra.classList.add('hidden');
-    costBox.style.display = (!isManager() || type === 'expense' || type === 'return') ? 'none' : '';
-  }
+  if (type === 'debt') { debtExtra.classList.remove('hidden'); costBox.style.display = isManager() ? '' : 'none'; }
+  else { debtExtra.classList.add('hidden'); costBox.style.display = (!isManager() || type === 'expense' || type === 'return') ? 'none' : ''; }
 };
 
-window.changeQty = (delta) => {
-  const q = document.getElementById('quantity');
-  let v = parseInt(q.value) || 1;
-  v = Math.max(1, Math.min(100, v + delta));
-  q.value = v;
-};
+window.changeQty = (delta) => { const q = document.getElementById('quantity'); let v = parseInt(q.value) || 1; v = Math.max(1, Math.min(100, v + delta)); q.value = v; };
 
 window.addEntry = async () => {
   if (!firebaseReady) { toastMsg('⚠️ لم يتصل بقاعدة البيانات بعد'); return; }
-  const date = document.getElementById('entryDate').value || todayStr();
-  const customerName = document.getElementById('custName').value.trim();
-  const customerPhone = document.getElementById('custPhone').value.trim();
-  const productName = document.getElementById('category').value.trim();
-  const quantity = parseInt(document.getElementById('quantity').value) || 1;
-  const amount = parseFloat(document.getElementById('amount').value) || 0;
-  const costPrice = parseFloat(document.getElementById('costPrice').value) || 0;
-  const notes = document.getElementById('notes').value.trim();
-  const paid = parseFloat(document.getElementById('paidAmount').value) || 0;
-  const dueDate = document.getElementById('dueDate').value || '';
-
+  const date = document.getElementById('entryDate').value || todayStr(), customerName = document.getElementById('custName').value.trim(), customerPhone = document.getElementById('custPhone').value.trim(), productName = document.getElementById('category').value.trim(), quantity = parseInt(document.getElementById('quantity').value) || 1, amount = parseFloat(document.getElementById('amount').value) || 0, costPrice = parseFloat(document.getElementById('costPrice').value) || 0, notes = document.getElementById('notes').value.trim(), paid = parseFloat(document.getElementById('paidAmount').value) || 0, dueDate = document.getElementById('dueDate').value || '';
   if (currentType !== 'expense' && currentType !== 'return' && !productName) { toastMsg('⚠️ أدخل اسم المنتج'); return; }
   if (amount <= 0) { toastMsg('⚠️ أدخل المبلغ'); return; }
   if (currentType === 'debt' && !customerName) { toastMsg('⚠️ أدخل اسم الزبون للدين'); return; }
-
-  const entryData = {
-    type: currentType,
-    saleKind: (currentType === 'sale' || currentType === 'debt') ? currentView : '',
-    customerName, customerPhone, productName, quantity, amount, costPrice,
-    paid: currentType === 'debt' ? paid : (currentType === 'sale' ? amount : 0),
-    dueDate, notes, date,
-    payments: [],
-    user: currentUser,
-    timestamp: serverTimestamp()
-  };
-
+  const entryData = { type: currentType, saleKind: (currentType === 'sale' || currentType === 'debt') ? currentView : '', customerName, customerPhone, productName, quantity, amount, costPrice, paid: currentType === 'debt' ? paid : (currentType === 'sale' ? amount : 0), dueDate, notes, date, payments: [], user: currentUser, timestamp: serverTimestamp() };
   updateSyncBadge('saving');
   try {
     await addDoc(collection(db, 'entries'), entryData);
-    ['custName','custPhone','category','amount','costPrice','notes','paidAmount','dueDate'].forEach(id => {
-      const el = document.getElementById(id); if (el) el.value = '';
-    });
-    document.getElementById('quantity').value = 1;
-    toastMsg('✅ تمت إضافة العملية');
-  } catch (e) { console.error(e); toastMsg('❌ فشل الحفظ'); updateSyncBadge('error'); }
+    ['custName','custPhone','category','amount','costPrice','notes','paidAmount','dueDate'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+    document.getElementById('quantity').value = 1; toastMsg('✅ تمت إضافة العملية');
+  } catch (e) { toastMsg('❌ فشل الحفظ'); updateSyncBadge('error'); }
 };
 
 function calcTotals(list) {
   let sales = 0, profit = 0, debts = 0, returns = 0, expenses = 0;
-  list.forEach(e => {
-    const q = Number(e.quantity) || 1, a = Number(e.amount) || 0;
-    if (e.type === 'sale' || e.type === 'debt') {
-      sales += a * q;
-      profit += (a - (Number(e.costPrice) || 0)) * q;
-    }
-    if (e.type === 'debt') debts += Math.max(0, a * q - paidOf(e));
-    if (e.type === 'return') returns += a * q;
-    if (e.type === 'expense') expenses += a * q;
-  });
+  list.forEach(e => { const q = Number(e.quantity) || 1, a = Number(e.amount) || 0; if (e.type === 'sale' || e.type === 'debt') { sales += a * q; profit += (a - (Number(e.costPrice) || 0)) * q; } if (e.type === 'debt') debts += Math.max(0, a * q - paidOf(e)); if (e.type === 'return') returns += a * q; if (e.type === 'expense') expenses += a * q; });
   return { sales, profit, debts, returns, expenses, net: profit - expenses - returns };
 }
 
 function updateDashboard() {
   const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = fmt(v) + ' $'; };
-  if (!isManager()) {
-    const mine = entries.filter(e => e.user === currentUser);
-    set('totalSales', calcTotals(mine.filter(e => e.date === todayStr())).sales);
-    set('totalDebts', calcTotals(mine).debts);
-    return;
-  }
-  const t = calcTotals(entries);
-  set('totalSales', t.sales); set('totalProfit', t.profit); set('totalDebts', t.debts);
-  set('totalReturns', t.returns); set('totalExpenses', t.expenses); set('netProfit', t.net);
+  if (!isManager()) { const mine = entries.filter(e => e.user === currentUser); set('totalSales', calcTotals(mine.filter(e => e.date === todayStr())).sales); set('totalDebts', calcTotals(mine).debts); return; }
+  const t = calcTotals(entries); set('totalSales', t.sales); set('totalProfit', t.profit); set('totalDebts', t.debts); set('totalReturns', t.returns); set('totalExpenses', t.expenses); set('netProfit', t.net);
 }
 
-/* ============================================================
-   التجميع: كل عمليات نفس الزبون في نفس اليوم = فاتورة واحدة
-   ============================================================ */
-function groupKey(e) {
-  const name = (e.customerName || '').trim().toLowerCase();
-  const date = e.date || '';
-  return date + '||' + name;
-}
-
-function groupEntries(list) {
-  const groups = new Map();
-  list.forEach(e => {
-    const k = groupKey(e);
-    if (!groups.has(k)) groups.set(k, []);
-    groups.get(k).push(e);
-  });
-  return groups;
-}
-
-function groupTotals(items) {
-  let total = 0, paid = 0, cost = 0, qty = 0;
-  items.forEach(e => {
-    const q = Number(e.quantity) || 1, a = Number(e.amount) || 0;
-    total += a * q;
-    paid += paidOf(e);
-    cost += (Number(e.costPrice) || 0) * q;
-    qty += q;
-  });
-  return { total, paid, cost, qty, remaining: Math.max(0, total - paid) };
-}
+function groupKey(e) { const name = (e.customerName || '').trim().toLowerCase(); const date = e.date || ''; return date + '||' + name; }
+function groupTotals(items) { let total = 0, paid = 0, cost = 0, qty = 0; items.forEach(e => { const q = Number(e.quantity) || 1, a = Number(e.amount) || 0; total += a * q; paid += paidOf(e); cost += (Number(e.costPrice) || 0) * q; qty += q; }); return { total, paid, cost, qty, remaining: Math.max(0, total - paid) }; }
 
 window.render = () => {
-  const list = document.getElementById('list');
-  if (!list) return;
-  const filterDate = document.getElementById('filterDate').value;
-  const allDates = document.getElementById('searchAllDates').checked;
-  const bothKinds = document.getElementById('searchBothKinds').checked;
-  const search = (document.getElementById('searchBox').value || '').toLowerCase().trim();
-
-  let filtered = entries.slice();
-  if (!isManager()) filtered = filtered.filter(e => e.user === currentUser);
+  const list = document.getElementById('list'); if (!list) return;
+  const filterDate = document.getElementById('filterDate').value, allDates = document.getElementById('searchAllDates').checked, bothKinds = document.getElementById('searchBothKinds').checked, search = (document.getElementById('searchBox').value || '').toLowerCase().trim();
+  let filtered = entries.slice(); if (!isManager()) filtered = filtered.filter(e => e.user === currentUser);
   if (!allDates && filterDate) filtered = filtered.filter(e => e.date === filterDate);
-  if (!bothKinds) {
-    filtered = filtered.filter(e => {
-      const isSaleLike = e.type === 'sale' || e.type === 'debt';
-      return !isSaleLike || (e.saleKind || '') === currentView;
-    });
-  }
-  if (search) {
-    filtered = filtered.filter(e =>
-      (e.customerName || '').toLowerCase().includes(search) ||
-      (e.productName || '').toLowerCase().includes(search) ||
-      (e.customerPhone || '').includes(search)
-    );
-  }
-
-  if (!filtered.length) {
-    list.innerHTML = '<div class="text-center text-slate-400 py-10 font-bold">لا توجد عمليات</div>';
-    return;
-  }
-
-  const typeLabels = { sale: '🛒 بيع', debt: '📓 دين', expense: '💸 مصروف', return: '🔄 مرتجع' };
-  const typeColors = { sale: 'blue', debt: 'orange', expense: 'red', return: 'red' };
-
-  if (currentView === 'مفرق' || bothKinds) {
-    // مفرق: كل عملية منفصلة
-    filtered.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
-    list.innerHTML = filtered.map(e => renderSingleEntry(e, typeLabels, typeColors)).join('');
-  } else {
-    // جملة: تجميع حسب (زبون + يوم)
-    const groups = groupEntries(filtered);
-    const arr = [...groups.values()];
-    arr.sort((a, b) => (b[0].date || '').localeCompare(a[0].date || ''));
-    list.innerHTML = arr.map(items => renderGroupCard(items, typeLabels, typeColors)).join('');
-  }
+  if (!bothKinds) filtered = filtered.filter(e => { const isSaleLike = e.type === 'sale' || e.type === 'debt'; return !isSaleLike || (e.saleKind || '') === currentView; });
+  if (search) filtered = filtered.filter(e => (e.customerName || '').toLowerCase().includes(search) || (e.productName || '').toLowerCase().includes(search) || (e.customerPhone || '').includes(search));
+  if (!filtered.length) { list.innerHTML = '<div class="text-center text-slate-400 py-10 font-bold">لا توجد عمليات</div>'; return; }
+  const typeLabels = { sale: '🛒 بيع', debt: '📓 دين', expense: '💸 مصروف', return: '🔄 مرتجع' }, typeColors = { sale: 'blue', debt: 'orange', expense: 'red', return: 'red' };
+  if (currentView === 'مفرق' || bothKinds) { filtered.sort((a, b) => (b.date || '').localeCompare(a.date || '')); list.innerHTML = filtered.map(e => renderSingleEntry(e, typeLabels, typeColors)).join(''); }
+  else { const groups = {}; filtered.forEach(e => { const k = groupKey(e); if (!groups[k]) groups[k] = []; groups[k].push(e); }); const arr = Object.values(groups); arr.sort((a, b) => (b[0].date || '').localeCompare(a[0].date || '')); list.innerHTML = arr.map(items => renderGroupCard(items, typeLabels, typeColors)).join(''); }
 };
 
 function renderSingleEntry(e, typeLabels, typeColors) {
-  const total = (e.amount * e.quantity);
-  const remaining = e.type === 'debt' ? Math.max(0, total - paidOf(e)) : 0;
-  const settled = e.type === 'debt' && remaining <= 0;
-  const id = esc(e.id);
-  return `
-  <div class="border border-slate-200 rounded-xl p-3 hover:bg-slate-50 transition cursor-pointer" onclick="openInvoice('${id}')">
-    <div class="flex justify-between items-start mb-1">
-      <div class="flex-1 min-w-0">
-        <div class="font-black text-slate-900 text-sm truncate">${esc(e.customerName) || '-'}</div>
-        <div class="text-xs text-slate-500 truncate">${esc(e.productName)} ${e.saleKind ? '(' + esc(e.saleKind) + ')' : ''}</div>
-      </div>
-      <div class="text-left mr-2">
-        <div class="font-black text-${typeColors[e.type] || 'blue'}-600">${fmt(total)} $</div>
-        <div class="text-[10px] text-slate-500">${typeLabels[e.type] || ''}</div>
-      </div>
-    </div>
-    <div class="flex justify-between items-center mt-2 text-[10px] text-slate-500">
-      <span>📅 ${esc(e.date)} · ×${esc(e.quantity || 1)}</span>
-      ${e.type === 'debt' && remaining > 0 ? `<span class="text-red-600 font-bold">متبقي: ${fmt(remaining)} $</span>` : ''}
-      ${settled ? '<span class="text-green-600 font-bold">✅ مسدّد</span>' : ''}
-    </div>
-    <div class="flex gap-1 mt-2 no-print">
-      ${isManager() ? `<button onclick="event.stopPropagation();editEntry('${id}')" class="text-xs bg-slate-100 hover:bg-slate-200 rounded-md px-2 py-1">✏️</button>` : ''}
-      ${isManager() ? `<button onclick="event.stopPropagation();deleteEntryConfirm('${id}')" class="text-xs bg-red-50 hover:bg-red-100 text-red-600 rounded-md px-2 py-1">🗑️</button>` : ''}
-      ${e.type === 'debt' && remaining > 0 ? `<button onclick="event.stopPropagation();openPayment('${id}')" class="text-xs bg-green-50 hover:bg-green-100 text-green-600 rounded-md px-2 py-1">💰 دفعة</button>` : ''}
-    </div>
+  const total = (e.amount * e.quantity), remaining = e.type === 'debt' ? Math.max(0, total - paidOf(e)) : 0, settled = e.type === 'debt' && remaining <= 0, id = esc(e.id);
+  return `<div class="entry-card border border-slate-200 rounded-xl p-3 hover:bg-slate-50 transition cursor-pointer" onclick="openInvoice('${id}')">
+    <div class="flex justify-between items-start mb-1"><div class="flex-1 min-w-0"><div class="card-title font-black text-slate-900 text-sm truncate">${esc(e.customerName) || '-'}</div><div class="card-subtitle text-xs text-slate-500 truncate">${esc(e.productName)} ${e.saleKind ? '(' + esc(e.saleKind) + ')' : ''}</div></div><div class="text-left mr-2"><div class="card-amount font-black text-${typeColors[e.type] || 'blue'}-600">${fmt(total)} $</div><div class="text-[10px] text-slate-500">${typeLabels[e.type] || ''}</div></div></div>
+    <div class="flex justify-between items-center mt-2 text-[10px] text-slate-500"><span>📅 ${esc(e.date)} · ×${esc(e.quantity || 1)}</span>${e.type === 'debt' && remaining > 0 ? `<span class="text-red-600 font-bold">متبقي: ${fmt(remaining)} $</span>` : ''}${settled ? '<span class="text-green-600 font-bold">✅ مسدّد</span>' : ''}</div>
+    <div class="flex gap-1 mt-2 no-print">${isManager() ? `<button onclick="event.stopPropagation();editEntry('${id}')" class="text-xs bg-slate-100 hover:bg-slate-200 rounded-md px-2 py-1">✏️</button>` : ''}${isManager() ? `<button onclick="event.stopPropagation();deleteEntryConfirm('${id}')" class="text-xs bg-red-50 hover:bg-red-100 text-red-600 rounded-md px-2 py-1">🗑️</button>` : ''}${e.type === 'debt' && remaining > 0 ? `<button onclick="event.stopPropagation();openPayment('${id}')" class="text-xs bg-green-50 hover:bg-green-100 text-green-600 rounded-md px-2 py-1">💰 دفعة</button>` : ''}</div>
   </div>`;
 }
 
 function renderGroupCard(items, typeLabels, typeColors) {
-  const gk = groupKey(items[0]);
-  const safeKey = encodeURIComponent(gk).replace(/'/g, '%27');
-  const t = groupTotals(items);
-  const name = items[0].customerName || 'زبون';
-  const date = items[0].date || '';
-  const firstType = items[0].type;
-  const hasDebt = items.some(e => e.type === 'debt');
-  const settled = hasDebt && t.remaining <= 0;
-
-  const productsHtml = items.map(e => {
-    const tot = (Number(e.amount) || 0) * (Number(e.quantity) || 1);
-    return `<div class="flex justify-between text-[11px] py-0.5">
-      <span class="truncate">• ${esc(e.productName)} ×${esc(e.quantity || 1)}</span>
-      <span class="font-bold shrink-0 mr-2">${fmt(tot)} $</span>
-    </div>`;
-  }).join('');
-
-  return `
-  <div class="border border-slate-200 rounded-xl p-3 hover:bg-slate-50 transition">
+  const gk = groupKey(items[0]), safeKey = encodeURIComponent(gk).replace(/'/g, '%27'), t = groupTotals(items), name = items[0].customerName || 'زبون', date = items[0].date || '', hasDebt = items.some(e => e.type === 'debt'), settled = hasDebt && t.remaining <= 0;
+  const productsHtml = items.map(e => { const tot = (Number(e.amount) || 0) * (Number(e.quantity) || 1); return `<div class="flex justify-between text-[11px] py-0.5"><span class="truncate">• ${esc(e.productName)} ×${esc(e.quantity || 1)}</span><span class="font-bold shrink-0 mr-2">${fmt(tot)} $</span></div>`; }).join('');
+  return `<div class="entry-card border border-slate-200 rounded-xl p-3 hover:bg-slate-50 transition">
     <div class="flex justify-between items-start mb-2 cursor-pointer" onclick="openGroupInvoice('${safeKey}')">
-      <div class="flex-1 min-w-0">
-        <div class="font-black text-slate-900 text-sm truncate">👤 ${esc(name)}</div>
-        <div class="text-[10px] text-slate-500">📅 ${esc(date)} · ${items.length} منتج · ×${t.qty}</div>
-      </div>
-      <div class="text-left mr-2">
-        <div class="font-black text-blue-600">${fmt(t.total)} $</div>
-        ${hasDebt ? (settled
-          ? '<div class="text-[10px] text-green-600 font-bold">✅ مسدّد</div>'
-          : `<div class="text-[10px] text-red-600 font-bold">متبقي: ${fmt(t.remaining)} $</div>`) : ''}
-      </div>
+      <div class="flex-1 min-w-0"><div class="card-title font-black text-slate-900 truncate cursor-pointer hover:text-gold" onclick="event.stopPropagation();openCustomerProfile('${encodeURIComponent(name.trim().toLowerCase()).replace(/'/g, '%27')}')">👤 ${esc(name)}</div><div class="card-subtitle text-[10px] text-slate-500">📅 ${esc(date)} · ${items.length} منتج · ×${t.qty}</div></div>
+      <div class="text-left mr-2"><div class="card-amount font-black text-blue-600">${fmt(t.total)} $</div>${hasDebt ? (settled ? '<div class="text-[10px] text-green-600 font-bold">✅ مسدّد</div>' : `<div class="text-[10px] text-red-600 font-bold">متبقي: ${fmt(t.remaining)} $</div>`) : ''}</div>
     </div>
-    <div class="bg-slate-50 rounded-lg p-2 mb-2 cursor-pointer" onclick="openGroupInvoice('${safeKey}')">${productsHtml}</div>
-    ${hasDebt ? `
-    <div class="grid grid-cols-3 gap-1 text-[10px] mb-2 bg-white border rounded-lg p-1.5">
-      <div class="text-center"><div class="text-slate-500">الإجمالي</div><div class="font-black text-blue-600">${fmt(t.total)} $</div></div>
-      <div class="text-center border-x"><div class="text-slate-500">المدفوع</div><div class="font-black text-green-600">${fmt(t.paid)} $</div></div>
-      <div class="text-center"><div class="text-slate-500">المتبقي</div><div class="font-black text-red-600">${fmt(t.remaining)} $</div></div>
-    </div>` : ''}
-    <div class="flex gap-1 flex-wrap">
-      <button onclick="openGroupInvoice('${safeKey}')" class="flex-1 text-xs bg-[#0f172a] text-white rounded-md px-2 py-1.5 font-bold">🧾 عرض الفاتورة</button>
-      ${hasDebt && t.remaining > 0 ? `<button onclick="openGroupPayment('${safeKey}')" class="text-xs bg-green-50 hover:bg-green-100 text-green-600 rounded-md px-2 py-1.5 font-bold">💰 دفعة</button>` : ''}
-    </div>
+    <div class="group-products bg-slate-50 rounded-lg p-2 mb-2 cursor-pointer" onclick="openGroupInvoice('${safeKey}')">${productsHtml}</div>
+    ${hasDebt ? `<div class="grid grid-cols-3 gap-1 text-[10px] mb-2 bg-white border rounded-lg p-1.5"><div class="text-center"><div class="text-slate-500">الإجمالي</div><div class="font-black text-blue-600">${fmt(t.total)} $</div></div><div class="text-center border-x"><div class="text-slate-500">المدفوع</div><div class="font-black text-green-600">${fmt(t.paid)} $</div></div><div class="text-center"><div class="text-slate-500">المتبقي</div><div class="font-black text-red-600">${fmt(t.remaining)} $</div></div></div>` : ''}
+    <div class="group-actions flex gap-1 flex-wrap"><button onclick="openGroupInvoice('${safeKey}')" class="${hasDebt && t.remaining > 0 ? '' : 'full-width'} text-xs bg-[#0f172a] text-white rounded-md px-2 py-1.5 font-bold">🧾 الفاتورة</button>${hasDebt && t.remaining > 0 ? `<button onclick="openGroupPayment('${safeKey}')" class="text-xs bg-green-50 hover:bg-green-100 text-green-600 rounded-md px-2 py-1.5 font-bold">💰 دفعة</button>` : ''}</div>
   </div>`;
 }
 
-function populateDatalists() {
-  const customers = new Set();
-  const products = new Set();
-  entries.forEach(e => {
-    if (e.customerName) customers.add(e.customerName);
-    if (e.productName) products.add(e.productName);
-  });
-  const cl = document.getElementById('customer-list');
-  const pl = document.getElementById('category-list');
-  if (cl) cl.innerHTML = [...customers].map(c => `<option value="${esc(c)}">`).join('');
-  if (pl) pl.innerHTML = [...products].map(p => `<option value="${esc(p)}">`).join('');
-}
+function populateDatalists() { const customers = new Set(), products = new Set(); entries.forEach(e => { if (e.customerName) customers.add(e.customerName); if (e.productName) products.add(e.productName); }); const cl = document.getElementById('customer-list'), pl = document.getElementById('category-list'); if (cl) cl.innerHTML = [...customers].map(c => `<option value="${esc(c)}">`).join(''); if (pl) pl.innerHTML = [...products].map(p => `<option value="${esc(p)}">`).join(''); }
+window.autoFillPrice = () => { const name = document.getElementById('category').value.trim(); if (!name) return; const recent = entries.filter(e => e.productName === name && (e.type === 'sale' || e.type === 'debt')).sort((a, b) => (b.date || '').localeCompare(a.date || ''))[0]; if (recent) { document.getElementById('amount').value = recent.amount; document.getElementById('costPrice').value = recent.costPrice || ''; } };
 
-window.autoFillPrice = () => {
-  const name = document.getElementById('category').value.trim();
-  if (!name) return;
-  const recent = entries.filter(e => e.productName === name && (e.type === 'sale' || e.type === 'debt')).sort((a, b) => (b.date || '').localeCompare(a.date || ''))[0];
-  if (recent) {
-    document.getElementById('amount').value = recent.amount;
-    document.getElementById('costPrice').value = recent.costPrice || '';
-  }
-};
-
-/* ============================================================
-   الفاتورة المجمعة
-   ============================================================ */
 window.openGroupInvoice = (safeKey) => {
-  const key = decodeURIComponent(safeKey);
-  const items = entries.filter(e => groupKey(e) === key);
+  const key = decodeURIComponent(safeKey), items = entries.filter(e => groupKey(e) === key);
   if (!items.length) return;
   currentInvoiceGroup = items;
-  const t = groupTotals(items);
-  const name = items[0].customerName || 'زبون';
-  const phone = items.find(e => e.customerPhone)?.customerPhone || '';
-  const date = items[0].date || '';
-
-  const productsRows = items.map(e => {
-    const tot = (Number(e.amount) || 0) * (Number(e.quantity) || 1);
-    return `<div class="flex justify-between border-b py-1 text-xs">
-      <span>${esc(e.productName)} ×${esc(e.quantity || 1)}</span>
-      <span class="font-bold">${fmt(tot)} $</span>
-    </div>`;
-  }).join('');
-
-  document.getElementById('invoiceContent').innerHTML = `
-    <div class="flex justify-between"><span class="text-slate-500">الزبون:</span><span class="font-bold">${esc(name)}</span></div>
-    ${phone ? `<div class="flex justify-between"><span class="text-slate-500">الهاتف:</span><span class="font-bold" dir="ltr">${esc(phone)}</span></div>` : ''}
-    <div class="flex justify-between"><span class="text-slate-500">التاريخ:</span><span class="font-bold">${esc(date)}</span></div>
-    <div class="border-t pt-2 mt-2">
-      <div class="text-slate-500 text-xs mb-1">المنتجات (${items.length}):</div>
-      ${productsRows}
-    </div>
-    <div class="flex justify-between border-t pt-2 mt-2">
-      <span class="text-slate-500 font-bold">الإجمالي:</span>
-      <span class="font-black text-lg text-blue-600">${fmt(t.total)} $</span>
-    </div>
-    <div class="flex justify-between"><span class="text-slate-500">المدفوع:</span><span class="font-bold text-green-600">${fmt(t.paid)} $</span></div>
-    <div class="flex justify-between border-t pt-1 mt-1"><span class="text-slate-500 font-bold">المتبقي:</span><span class="font-black ${t.remaining > 0 ? 'text-red-600' : 'text-green-600'}">${fmt(t.remaining)} $</span></div>
-    ${t.remaining > 0 ? `<div class="text-center mt-2 text-xs font-bold ${t.remaining > 0 ? 'text-red-600' : 'text-green-600'}">${t.remaining > 0 ? '⚠️ الفاتورة غير مسدّدة' : '✅ مسدّدة'}</div>` : '<div class="text-center mt-2 text-xs font-bold text-green-600">✅ مسدّدة</div>'}
-  `;
+  const t = groupTotals(items), name = items[0].customerName || 'زبون', phone = items.find(e => e.customerPhone)?.customerPhone || '', date = items[0].date || '', hasDebt = items.some(e => e.type === 'debt');
+  const dateKey = date.replace(/-/g, ''), countToday = entries.filter(e => (e.date || '') === date && (e.customerName || '').trim().toLowerCase() === (items[0].customerName || '').trim().toLowerCase()).length;
+  document.getElementById('invoiceNumber').textContent = `#AH-${dateKey}-${String(countToday).padStart(3, '0')}`;
+  document.getElementById('invCustomerName').textContent = name;
+  document.getElementById('invCustomerPhone').textContent = phone || '—';
+  document.getElementById('invCustomerPhone').style.display = phone ? 'inline' : 'none';
+  document.getElementById('invDate').textContent = date;
+  document.getElementById('invoiceItemsList').innerHTML = items.map(e => { const tot = (Number(e.amount) || 0) * (Number(e.quantity) || 1); return `<div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #f1f5f9;"><span style="flex:1; text-align:right; font-weight:bold;">${esc(e.productName)}</span><span style="width:50px; text-align:center; color:#64748b;">×${esc(e.quantity || 1)}</span><span style="width:70px; text-align:left; font-weight:900;">${fmt(tot)} $</span></div>`; }).join('');
+  document.getElementById('invTotal').textContent = fmt(t.total) + ' $';
+  document.getElementById('invPaid').textContent = fmt(t.paid) + ' $';
+  const remEl = document.getElementById('invRemaining'); remEl.textContent = fmt(t.remaining) + ' $'; remEl.style.color = t.remaining > 0 ? '#dc2626' : '#16a34a';
+  const stampEl = document.getElementById('invoiceStamp');
+  if (hasDebt) { stampEl.innerHTML = t.remaining <= 0 ? `<span style="display:inline-block; padding:6px 20px; background:#dcfce7; color:#166534; border:2px solid #16a34a; border-radius:100px; font-weight:900; font-size:13px; transform:rotate(-3deg);">✅ مسدّدة بالكامل</span>` : `<span style="display:inline-block; padding:6px 20px; background:#fee2e2; color:#991b1b; border:2px solid #dc2626; border-radius:100px; font-weight:900; font-size:13px; transform:rotate(-3deg);">⚠️ غير مسدّدة</span>`; }
+  else { stampEl.innerHTML = `<span style="display:inline-block; padding:6px 20px; background:#dbeafe; color:#1e40af; border:2px solid #2563eb; border-radius:100px; font-weight:900; font-size:13px;">💵 مبيعات نقدية</span>`; }
   document.getElementById('invoiceModal').classList.remove('hidden');
 };
 
 window.openGroupPayment = (safeKey) => {
-  const key = decodeURIComponent(safeKey);
-  const items = entries.filter(e => groupKey(e) === key && e.type === 'debt');
+  const key = decodeURIComponent(safeKey), items = entries.filter(e => groupKey(e) === key && e.type === 'debt');
   if (!items.length) return;
   const firstOpen = items.find(e => (Number(e.amount) * (Number(e.quantity)||1)) - paidOf(e) > 0);
   if (!firstOpen) { toastMsg('✅ الفاتورة مسدّدة'); return; }
   openPayment(firstOpen.id);
 };
 
-/* ============================================================
-   تسكير الفاتورة (ملخص)
-   ============================================================ */
+window.openCustomerProfile = (safeName) => {
+  const name = decodeURIComponent(safeName), nameLower = name.trim().toLowerCase(), customerEntries = entries.filter(e => (e.customerName || '').trim().toLowerCase() === nameLower);
+  if (!customerEntries.length) { toastMsg('لا توجد عمليات لهذا الزبون'); return; }
+  let totalSales = 0, totalPaid = 0, totalDebt = 0;
+  customerEntries.forEach(e => { const q = Number(e.quantity) || 1, a = Number(e.amount) || 0; if (e.type === 'sale' || e.type === 'debt') { totalSales += a * q; totalPaid += paidOf(e); if (e.type === 'debt') totalDebt += Math.max(0, a * q - paidOf(e)); } });
+  const byDate = {}; customerEntries.forEach(e => { const d = e.date || ''; if (!byDate[d]) byDate[d] = []; byDate[d].push(e); });
+  const sortedDates = Object.keys(byDate).sort().reverse(), recentDates = sortedDates.slice(0, 5), phone = customerEntries.find(e => e.customerPhone)?.customerPhone || '', lastDate = customerEntries.reduce((max, e) => (!max || (e.date||'') > max) ? e.date : max, '');
+  const html = `<div class="bg-gradient-to-br from-[#0f172a] to-[#334155] rounded-2xl p-5 text-white mb-4"><div class="flex items-center gap-3 mb-3"><div class="w-14 h-14 rounded-full bg-gold flex items-center justify-center text-2xl font-black text-slate-900">${esc(name.charAt(0).toUpperCase())}</div><div class="flex-1 min-w-0"><div class="font-black text-lg truncate">${esc(name)}</div>${phone ? `<div class="text-xs text-slate-300" dir="ltr">📞 ${esc(phone)}</div>` : '<div class="text-xs text-slate-400">لا يوجد رقم</div>'}</div></div><div class="grid grid-cols-3 gap-2 text-center mt-3"><div class="bg-white/10 rounded-xl p-2"><div class="text-[10px] text-slate-300">إجمالي الشراء</div><div class="font-black text-gold text-sm">${fmt(totalSales)} $</div></div><div class="bg-white/10 rounded-xl p-2"><div class="text-[10px] text-slate-300">إجمالي الدفع</div><div class="font-black text-green-400 text-sm">${fmt(totalPaid)} $</div></div><div class="bg-white/10 rounded-xl p-2"><div class="text-[10px] text-slate-300">المتبقي</div><div class="font-black ${totalDebt > 0 ? 'text-red-400' : 'text-green-400'} text-sm">${fmt(totalDebt)} $</div></div></div></div><div class="grid grid-cols-2 gap-2 mb-4 text-xs"><div class="bg-slate-50 rounded-xl p-2 text-center"><div class="text-slate-500 font-bold">عدد الفواتير</div><div class="font-black text-slate-900">${customerEntries.length}</div></div><div class="bg-slate-50 rounded-xl p-2 text-center"><div class="text-slate-500 font-bold">آخر زيارة</div><div class="font-black text-slate-900 text-[10px]">${esc(lastDate)}</div></div></div><div class="text-sm font-black text-slate-700 mb-2">📅 آخر 5 فواتير:</div><div class="space-y-2 mb-4 max-h-64 overflow-y-auto">${recentDates.map(d => { const dayItems = byDate[d], gt = groupTotals(dayItems); return `<div class="border border-slate-200 rounded-xl p-3"><div class="flex justify-between items-center mb-1"><span class="font-black text-sm">📅 ${esc(d)}</span><span class="font-black text-blue-600">${fmt(gt.total)} $</span></div><div class="text-[10px] text-slate-500 mb-1">${dayItems.length} منتج · مدفوع: ${fmt(gt.paid)} $ · متبقي: ${fmt(gt.remaining)} $</div><div class="flex gap-1"><button onclick="document.getElementById('customerProfileModal').classList.add('hidden'); openGroupInvoice('${encodeURIComponent((d + '||' + nameLower).replace(/'/g, '%27'))}')" class="flex-1 bg-slate-100 hover:bg-slate-200 rounded-md py-1 text-[10px] font-bold">🧾 عرض</button>${gt.remaining > 0 ? `<button onclick="document.getElementById('customerProfileModal').classList.add('hidden'); openGroupPayment('${encodeURIComponent((d + '||' + nameLower).replace(/'/g, '%27'))}')" class="bg-green-50 hover:bg-green-100 text-green-600 rounded-md py-1 px-2 text-[10px] font-bold">💰 دفعة</button>` : ''}</div></div>`; }).join('')}${sortedDates.length > 5 ? `<div class="text-center text-[10px] text-slate-400 py-1">... و ${sortedDates.length - 5} فاتورة قديمة</div>` : ''}</div><div class="grid grid-cols-2 gap-2"><button onclick="sendCustomerStatement('${encodeURIComponent(nameLower).replace(/'/g, '%27')}')" class="bg-green-600 text-white rounded-xl py-3 text-sm font-black btn-hover">📲 إرسال كشف حساب</button><button onclick="document.getElementById('customerProfileModal').classList.add('hidden')" class="bg-slate-100 text-slate-600 rounded-xl py-3 text-sm font-black btn-hover">إغلاق</button></div>`;
+  document.getElementById('customerProfileContent').innerHTML = html;
+  document.getElementById('customerProfileModal').classList.remove('hidden');
+};
+
+window.sendCustomerStatement = (safeName) => {
+  const name = decodeURIComponent(safeName), nameLower = name.trim().toLowerCase(), customerEntries = entries.filter(e => (e.customerName || '').trim().toLowerCase() === nameLower);
+  if (!customerEntries.length) { toastMsg('لا توجد عمليات'); return; }
+  const phone = customerEntries.find(e => e.customerPhone)?.customerPhone || ''; let targetPhone = normPhone(phone);
+  if (!targetPhone) { const p = prompt('رقم واتساب ' + name + ':'); if (!p) return; targetPhone = normPhone(p); }
+  let totalSales = 0, totalPaid = 0, totalRemaining = 0;
+  customerEntries.forEach(e => { const q = Number(e.quantity) || 1, a = Number(e.amount) || 0; if (e.type === 'sale' || e.type === 'debt') { totalSales += a * q; totalPaid += paidOf(e); } });
+  totalRemaining = totalSales - totalPaid;
+  const byDate = {}; customerEntries.forEach(e => { const d = e.date || ''; if (!byDate[d]) byDate[d] = []; byDate[d].push(e); });
+  const sortedDates = Object.keys(byDate).sort().reverse().slice(0, 5);
+  let msg = `👤 كشف حساب - Alherz\n\nالاسم: ${name}\n━━━━━━━━━━━━━\n📊 إجمالي الشراء: ${fmt(totalSales)} $\n✅ إجمالي الدفع: ${fmt(totalPaid)} $\n⏳ المتبقي عليك: ${fmt(totalRemaining)} $\n━━━━━━━━━━━━━\n\n📅 آخر الفواتير:\n`;
+  sortedDates.forEach(d => { const dayItems = byDate[d], gt = groupTotals(dayItems); msg += `\n📌 ${d} - ${fmt(gt.total)} $ (متبقي: ${fmt(gt.remaining)} $)\n`; dayItems.slice(0, 3).forEach(e => { const tot = (Number(e.amount) || 0) * (Number(e.quantity) || 1); msg += `  • ${e.productName} ×${e.quantity}: ${fmt(tot)} $\n`; }); if (dayItems.length > 3) msg += `  ... و ${dayItems.length - 3} منتج آخر\n`; });
+  if (totalRemaining > 0) msg += `\n\n⚠️ يرجى تسديد المبلغ المتبقي في أقرب وقت.\n`;
+  msg += `\nشكراً لتعاملكم مع Alherz 🙏`;
+  window.open(`https://wa.me/${targetPhone}?text=${encodeURIComponent(msg)}`, '_blank');
+};
+
 window.closeBox = async () => {
   if (!isManager()) { toastMsg('⚠️ التسكير للمدير فقط'); return; }
   if (!firebaseReady) { toastMsg('⚠️ غير متصل'); return; }
-  const today = todayStr();
-  const todaysEntries = entries.filter(e => e.date === today);
+  const today = todayStr(), todaysEntries = entries.filter(e => e.date === today);
   if (!todaysEntries.length) { toastMsg('⚠️ لا توجد عمليات اليوم'); return; }
-  let exists = false;
-  try { exists = (await getDoc(doc(db, 'reports', 'day_' + today))).exists(); } catch (e) {}
-  const c = calcCash(today);
-  pendingClose = { today, todaysEntries, exists, cash: c };
+  let exists = false; try { exists = (await getDoc(doc(db, 'reports', 'day_' + today))).exists(); } catch (e) {}
+  const c = calcCash(today); pendingClose = { today, todaysEntries, exists, cash: c };
   document.getElementById('cashTitle').textContent = exists ? '💵 جرد الصندوق (تحديث تقرير ' + today + ')' : '💵 جرد الصندوق - ' + today;
   const row = (l, v, cls) => `<div class="flex justify-between"><span class="text-slate-500 font-bold">${l}</span><span class="font-black ${cls || ''}">${fmt(v)} $</span></div>`;
-  document.getElementById('cashBreakdown').innerHTML =
-    row('مبيع نقدي', c.sales) + row('مقدّم الديون', c.debtPaid) + row('دفعات ديون مستلمة', c.payments) +
-    row('مرتجع (−)', c.returns, 'text-red-600') + row('مصاريف (−)', c.expenses, 'text-red-600') + row('سحوبات موظفات (−)', c.withdrawals, 'text-red-600') +
-    `<div class="flex justify-between border-t pt-1 mt-1"><span class="text-slate-700 font-black">المتوقع في الدرج</span><span class="font-black text-blue-600 text-lg">${fmt(c.expected)} $</span></div>`;
-  document.getElementById('cashCounted').value = '';
-  document.getElementById('cashDiff').textContent = '';
-  document.getElementById('cashModal').classList.remove('hidden');
+  document.getElementById('cashBreakdown').innerHTML = row('مبيع نقدي', c.sales) + row('مقدّم الديون', c.debtPaid) + row('دفعات ديون مستلمة', c.payments) + row('مرتجع (−)', c.returns, 'text-red-600') + row('مصاريف (−)', c.expenses, 'text-red-600') + row('سحوبات موظفات (−)', c.withdrawals, 'text-red-600') + `<div class="flex justify-between border-t pt-1 mt-1"><span class="text-slate-700 font-black">المتوقع في الدرج</span><span class="font-black text-blue-600 text-lg">${fmt(c.expected)} $</span></div>`;
+  document.getElementById('cashCounted').value = ''; document.getElementById('cashDiff').textContent = ''; document.getElementById('cashModal').classList.remove('hidden');
 };
 
-window.closeCashModal = () => { document.getElementById('cashModal').classList.add('hidden'); pendingClose = null; };
-
-window.updateCashDiff = () => {
-  const el = document.getElementById('cashDiff');
-  const v = document.getElementById('cashCounted').value;
-  if (!pendingClose || v === '') { el.textContent = ''; return; }
-  const d = (parseFloat(v) || 0) - pendingClose.cash.expected;
-  el.textContent = cashDiffText(d);
-  el.className = 'mt-3 text-center font-black text-lg ' + (Math.abs(d) < 0.005 ? 'text-green-600' : (d < 0 ? 'text-red-600' : 'text-blue-600'));
-};
-
-const cashDiffText = (d) => {
-  d = Number(d) || 0;
-  return d === 0 ? 'مطابق ✅' : (d < 0 ? 'نقص ' + fmt(Math.abs(d)) + ' $' : 'زيادة ' + fmt(d) + ' $');
-};
-
-function calcCash(day) {
-  let sales = 0, debtPaid = 0, payments = 0, returns = 0, expenses = 0, withdrawals = 0;
-  entries.forEach(e => {
-    const tot = (Number(e.amount) || 0) * (Number(e.quantity) || 1);
-    if (e.date === day) {
-      if (e.type === 'sale') sales += (e.payments || []).length ? (Number(e.paid) || 0) : tot;
-      if (e.type === 'debt') debtPaid += Number(e.paid) || 0;
-      if (e.type === 'return') returns += tot;
-      if (e.type === 'expense' && !e.auto) expenses += tot;
-    }
-    (e.payments || []).forEach(p => { if (p.date === day) payments += Number(p.amount) || 0; });
-  });
-  employees.forEach(emp => (emp.withdrawals || []).forEach(w => { if (w.date === day) withdrawals += Number(w.amount) || 0; }));
-  return { sales, debtPaid, payments, returns, expenses, withdrawals, expected: sales + debtPaid + payments - returns - expenses - withdrawals };
-}
+const cashDiffText = (d) => { d = Number(d) || 0; return d === 0 ? 'مطابق ✅' : (d < 0 ? 'نقص ' + fmt(Math.abs(d)) + ' $' : 'زيادة ' + fmt(d) + ' $'); };
+function calcCash(day) { let sales = 0, debtPaid = 0, payments = 0, returns = 0, expenses = 0, withdrawals = 0; entries.forEach(e => { const tot = (Number(e.amount) || 0) * (Number(e.quantity) || 1); if (e.date === day) { if (e.type === 'sale') sales += (e.payments || []).length ? (Number(e.paid) || 0) : tot; if (e.type === 'debt') debtPaid += Number(e.paid) || 0; if (e.type === 'return') returns += tot; if (e.type === 'expense' && !e.auto) expenses += tot; } (e.payments || []).forEach(p => { if (p.date === day) payments += Number(p.amount) || 0; }); }); employees.forEach(emp => (emp.withdrawals || []).forEach(w => { if (w.date === day) withdrawals += Number(w.amount) || 0; })); return { sales, debtPaid, payments, returns, expenses, withdrawals, expected: sales + debtPaid + payments - returns - expenses - withdrawals }; }
+window.updateCashDiff = () => { const el = document.getElementById('cashDiff'), v = document.getElementById('cashCounted').value; if (!pendingClose || v === '') { el.textContent = ''; return; } const d = (parseFloat(v) || 0) - pendingClose.cash.expected; el.textContent = cashDiffText(d); el.className = 'mt-3 text-center font-black text-lg ' + (Math.abs(d) < 0.005 ? 'text-green-600' : (d < 0 ? 'text-red-600' : 'text-blue-600')); };
 
 window.confirmClose = async () => {
   if (!pendingClose) return;
-  const v = document.getElementById('cashCounted').value;
-  if (v === '') { toastMsg('⚠️ أدخل المبلغ الموجود في الدرج'); return; }
-  const { today, todaysEntries, exists, cash } = pendingClose;
-  const counted = parseFloat(v) || 0;
-  const diff = Math.round((counted - cash.expected) * 100) / 100;
-  const t = calcTotals(todaysEntries);
-  const report = {
-    date: today,
-    totalSales: t.sales, totalProfit: t.profit, totalDebts: t.debts,
-    totalReturns: t.returns, totalExpenses: t.expenses,
-    netProfit: t.net,
-    entriesCount: todaysEntries.length,
-    cashExpected: cash.expected, cashCounted: counted, cashDiff: diff,
-    user: currentUser, closedAt: serverTimestamp()
-  };
+  const v = document.getElementById('cashCounted').value; if (v === '') { toastMsg('⚠️ أدخل المبلغ الموجود في الدرج'); return; }
+  const { today, todaysEntries, exists, cash } = pendingClose, counted = parseFloat(v) || 0, diff = Math.round((counted - cash.expected) * 100) / 100, t = calcTotals(todaysEntries);
+  const report = { date: today, totalSales: t.sales, totalProfit: t.profit, totalDebts: t.debts, totalReturns: t.returns, totalExpenses: t.expenses, netProfit: t.net, entriesCount: todaysEntries.length, cashExpected: cash.expected, cashCounted: counted, cashDiff: diff, user: currentUser, closedAt: serverTimestamp() };
   try {
-    await setDoc(doc(db, 'reports', 'day_' + today), report);
-    closeCashModal();
-    toastMsg(exists ? '✅ تم تحديث تقرير اليوم' : '✅ تم تسكير الصندوق');
-    const phone = settings.phone || '96181439656';
-    const msg = `📊 تقرير ${today}\n\n🛒 المبيع: ${fmt(t.sales)} $\n📈 الربح: ${fmt(t.profit)} $\n📓 الديون: ${fmt(t.debts)} $\n🔄 المرتجع: ${fmt(t.returns)} $\n💸 المصاريف: ${fmt(t.expenses)} $\n💰 الصافي: ${fmt(t.net)} $\n\n💵 الكاش المتوقع: ${fmt(cash.expected)} $\n💵 الكاش الفعلي: ${fmt(counted)} $\n⚖️ الفرق: ${cashDiffText(diff)}\n\nعدد العمليات: ${todaysEntries.length}`;
+    await setDoc(doc(db, 'reports', 'day_' + today), report); closeCashModal(); toastMsg(exists ? '✅ تم تحديث تقرير اليوم' : '✅ تم تسكير الصندوق');
+    const phone = settings.phone || '96181439656', msg = `📊 تقرير ${today}\n\n🛒 المبيع: ${fmt(t.sales)} $\n📈 الربح: ${fmt(t.profit)} $\n📓 الديون: ${fmt(t.debts)} $\n🔄 المرتجع: ${fmt(t.returns)} $\n💸 المصاريف: ${fmt(t.expenses)} $\n💰 الصافي: ${fmt(t.net)} $\n\n💵 الكاش المتوقع: ${fmt(cash.expected)} $\n💵 الكاش الفعلي: ${fmt(counted)} $\n⚖️ الفرق: ${cashDiffText(diff)}\n\nعدد العمليات: ${todaysEntries.length}`;
     if (confirm('هل تريد إرسال التقرير عبر واتساب؟')) window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
-  } catch (e) { console.error(e); toastMsg('❌ فشل التسكير'); }
+  } catch (e) { toastMsg('❌ فشل التسكير'); }
 };
 
-/* ============================================================
-   الديون
-   ============================================================ */
-function debtGroups() {
-  const src = isManager() ? entries : entries.filter(e => e.user === currentUser);
-  const map = {};
-  src.filter(e => e.type === 'debt' && (e.customerName || '').trim()).forEach(e => {
-    const name = e.customerName.trim();
-    const k = name.toLowerCase();
-    const g = map[k] || (map[k] = { key: k, name, phone: '', total: 0, paid: 0, remaining: 0, oldest: '', overdue: 0, items: [] });
-    const tot = (Number(e.amount) || 0) * (Number(e.quantity) || 1);
-    const pd = Math.min(tot, paidOf(e));
-    const rem = Math.max(0, tot - pd);
-    g.total += tot; g.paid += pd; g.remaining += rem;
-    if (e.customerPhone) g.phone = e.customerPhone;
-    if (rem > 0) {
-      if (!g.oldest || (e.date || '') < g.oldest) g.oldest = e.date || '';
-      if (e.dueDate && e.dueDate < todayStr()) g.overdue++;
-    }
-    g.items.push({ e, tot, pd, rem });
-  });
-  return Object.values(map);
-}
+function debtGroups() { const src = isManager() ? entries : entries.filter(e => e.user === currentUser), map = {}; src.filter(e => e.type === 'debt' && (e.customerName || '').trim()).forEach(e => { const name = e.customerName.trim(), k = name.toLowerCase(), g = map[k] || (map[k] = { key: k, name, phone: '', total: 0, paid: 0, remaining: 0, oldest: '', overdue: 0, items: [] }); const tot = (Number(e.amount) || 0) * (Number(e.quantity) || 1), pd = Math.min(tot, paidOf(e)), rem = Math.max(0, tot - pd); g.total += tot; g.paid += pd; g.remaining += rem; if (e.customerPhone) g.phone = e.customerPhone; if (rem > 0) { if (!g.oldest || (e.date || '') < g.oldest) g.oldest = e.date || ''; if (e.dueDate && e.dueDate < todayStr()) g.overdue++; } g.items.push({ e, tot, pd, rem }); }); return Object.values(map); }
 
 window.renderDebts = () => {
-  const box = document.getElementById('debtsList');
-  if (!box) return;
-  const showPaid = document.getElementById('debtShowPaid').checked;
-  const q = (document.getElementById('debtSearch').value || '').toLowerCase().trim();
-  const all = debtGroups();
-  const open = all.filter(g => g.remaining > 0);
-  const overdueCount = open.filter(g => g.overdue > 0).length;
+  const box = document.getElementById('debtsList'); if (!box) return;
+  const showPaid = document.getElementById('debtShowPaid').checked, q = (document.getElementById('debtSearch').value || '').toLowerCase().trim(), all = debtGroups(), open = all.filter(g => g.remaining > 0), overdueCount = open.filter(g => g.overdue > 0).length;
   const sumBox = (label, val, cls) => `<div class="bg-slate-50 border border-slate-200 rounded-xl p-2"><div class="text-[10px] font-bold text-slate-500">${label}</div><div class="font-black ${cls}">${val}</div></div>`;
-  document.getElementById('debtSummary').innerHTML =
-    sumBox('إجمالي المتبقي', fmt(open.reduce((s, g) => s + g.remaining, 0)) + ' $', 'text-orange-600') +
-    sumBox('عدد المدينين', open.length, 'text-blue-600') +
-    sumBox('زبائن متأخرون', overdueCount, overdueCount ? 'text-red-600' : 'text-green-600');
-
-  let groups = showPaid ? all : open;
-  if (q) groups = groups.filter(g => g.name.toLowerCase().includes(q) || (g.phone || '').includes(q));
-  groups.sort((a, b) => ((b.overdue > 0) - (a.overdue > 0)) || (b.remaining - a.remaining));
+  document.getElementById('debtSummary').innerHTML = sumBox('إجمالي المتبقي', fmt(open.reduce((s, g) => s + g.remaining, 0)) + ' $', 'text-orange-600') + sumBox('عدد المدينين', open.length, 'text-blue-600') + sumBox('زبائن متأخرون', overdueCount, overdueCount ? 'text-red-600' : 'text-green-600');
+  let groups = showPaid ? all : open; if (q) groups = groups.filter(g => g.name.toLowerCase().includes(q) || (g.phone || '').includes(q)); groups.sort((a, b) => ((b.overdue > 0) - (a.overdue > 0)) || (b.remaining - a.remaining));
   if (!groups.length) { box.innerHTML = '<div class="text-center text-slate-400 py-10 font-bold">لا توجد ديون 🎉</div>'; return; }
-
   box.innerHTML = groups.map(g => {
-    const k = encodeURIComponent(g.key).replace(/'/g, '%27');
-    const items = g.items.filter(x => showPaid || x.rem > 0).sort((a, b) => (a.e.date || '').localeCompare(b.e.date || ''));
-    const late = g.overdue > 0;
-    return `
-    <details class="border ${late ? 'border-red-300 bg-red-50' : 'border-slate-200 bg-white'} rounded-xl p-3" ${openDebtCustomers.has(k) ? 'open' : ''} ontoggle="toggleDebtOpen('${k}', this.open)">
-      <summary class="cursor-pointer flex justify-between items-center gap-2">
-        <div class="min-w-0">
-          <div class="font-black text-slate-900 truncate">${esc(g.name)} ${late ? `<span class="text-[10px] text-red-600">⚠️ ${g.overdue} متأخر</span>` : ''}</div>
-          <div class="text-[10px] text-slate-500">${g.remaining > 0 ? 'أقدم دين: ' + esc(g.oldest) : '✅ مسدّد بالكامل'}</div>
-        </div>
-        <div class="font-black text-lg ${g.remaining > 0 ? 'text-orange-600' : 'text-green-600'}">${fmt(g.remaining)} $</div>
-      </summary>
-      <div class="mt-3 space-y-2">
-        ${g.remaining > 0 ? `<button onclick="remindDebt('${k}')" class="w-full bg-green-600 text-white rounded-lg py-2 text-xs font-bold">📲 إرسال تذكير واتساب</button>` : ''}
-        ${items.map(x => {
-          const od = x.e.dueDate && x.e.dueDate < todayStr() && x.rem > 0;
-          return `<div class="flex justify-between items-center text-xs bg-white border rounded-lg p-2 gap-2">
-            <div class="min-w-0">
-              <div class="font-bold truncate">${esc(x.e.productName)} ×${esc(x.e.quantity)}</div>
-              <div class="text-[10px] text-slate-500">📅 ${esc(x.e.date)}${x.e.dueDate ? ' · استحقاق: <span class="' + (od ? 'text-red-600 font-bold' : '') + '">' + esc(x.e.dueDate) + '</span>' : ''}</div>
-              <div class="text-[10px] text-slate-500">الإجمالي ${fmt(x.tot)} $ · مدفوع ${fmt(x.pd)} $</div>
-            </div>
-            <div class="text-left shrink-0">
-              <div class="font-black ${x.rem > 0 ? 'text-orange-600' : 'text-green-600'}">${x.rem > 0 ? fmt(x.rem) + ' $' : '✅'}</div>
-              ${x.rem > 0 ? `<button onclick="openPayment('${esc(x.e.id)}')" class="mt-1 bg-green-50 text-green-600 rounded-md px-2 py-1 text-[10px] font-bold">💰 دفعة</button>` : ''}
-            </div>
-          </div>`;
-        }).join('')}
-      </div>
-    </details>`;
+    const k = encodeURIComponent(g.key).replace(/'/g, '%27'), items = g.items.filter(x => showPaid || x.rem > 0).sort((a, b) => (a.e.date || '').localeCompare(b.e.date || '')), late = g.overdue > 0;
+    return `<details class="border ${late ? 'border-red-300 bg-red-50' : 'border-slate-200 bg-white'} rounded-xl p-3" ${openDebtCustomers.has(k) ? 'open' : ''} ontoggle="toggleDebtOpen('${k}', this.open)"><summary class="cursor-pointer flex justify-between items-center gap-2"><div class="min-w-0"><div class="font-black text-slate-900 truncate">${esc(g.name)} ${late ? `<span class="text-[10px] text-red-600">⚠️ ${g.overdue} متأخر</span>` : ''}</div><div class="text-[10px] text-slate-500">${g.remaining > 0 ? 'أقدم دين: ' + esc(g.oldest) : '✅ مسدّد بالكامل'}</div></div><div class="font-black text-lg ${g.remaining > 0 ? 'text-orange-600' : 'text-green-600'}">${fmt(g.remaining)} $</div></summary><div class="mt-3 space-y-2">${g.remaining > 0 ? `<button onclick="remindDebt('${k}')" class="w-full bg-green-600 text-white rounded-lg py-2 text-xs font-bold">📲 إرسال تذكير واتساب</button>` : ''}${items.map(x => { const od = x.e.dueDate && x.e.dueDate < todayStr() && x.rem > 0; return `<div class="flex justify-between items-center text-xs bg-white border rounded-lg p-2 gap-2"><div class="min-w-0"><div class="font-bold truncate">${esc(x.e.productName)} ×${esc(x.e.quantity)}</div><div class="text-[10px] text-slate-500">📅 ${esc(x.e.date)}${x.e.dueDate ? ' · استحقاق: <span class="' + (od ? 'text-red-600 font-bold' : '') + '">' + esc(x.e.dueDate) + '</span>' : ''}</div><div class="text-[10px] text-slate-500">الإجمالي ${fmt(x.tot)} $ · مدفوع ${fmt(x.pd)} $</div></div><div class="text-left shrink-0"><div class="font-black ${x.rem > 0 ? 'text-orange-600' : 'text-green-600'}">${x.rem > 0 ? fmt(x.rem) + ' $' : '✅'}</div>${x.rem > 0 ? `<button onclick="openPayment('${esc(x.e.id)}')" class="mt-1 bg-green-50 text-green-600 rounded-md px-2 py-1 text-[10px] font-bold">💰 دفعة</button>` : ''}</div></div>`; }).join('')}</div></details>`;
   }).join('');
 };
 
 window.toggleDebtOpen = (k, open) => { if (open) openDebtCustomers.add(k); else openDebtCustomers.delete(k); };
+window.remindDebt = (k) => { const key = decodeURIComponent(k), g = debtGroups().find(x => x.key === key); if (!g || g.remaining <= 0) return; let phone = normPhone(g.phone); if (!phone) { const p = prompt('رقم واتساب ' + g.name + ':'); if (!p) return; phone = normPhone(p); } const lines = g.items.filter(x => x.rem > 0).sort((a, b) => (a.e.date || '').localeCompare(b.e.date || '')).map(x => `• ${x.e.date} ${x.e.productName || ''} ×${x.e.quantity}: ${fmt(x.rem)} $`).join('\n'); const msg = `مرحباً ${g.name} 👋\nتذكير ودّي من Alherz:\nالمتبقي عليك ${fmt(g.remaining)} $\n\n${lines}\n${g.overdue ? '\n⚠️ بعض الدفعات تجاوزت تاريخ الاستحقاق.\n' : ''}\nشكراً لتعاملك معنا 🙏`; window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank'); };
 
-window.remindDebt = (k) => {
-  const key = decodeURIComponent(k);
-  const g = debtGroups().find(x => x.key === key);
-  if (!g || g.remaining <= 0) return;
-  let phone = normPhone(g.phone);
-  if (!phone) { const p = prompt('رقم واتساب ' + g.name + ':'); if (!p) return; phone = normPhone(p); }
-  const lines = g.items.filter(x => x.rem > 0).sort((a, b) => (a.e.date || '').localeCompare(b.e.date || ''))
-    .map(x => `• ${x.e.date} ${x.e.productName || ''} ×${x.e.quantity}: ${fmt(x.rem)} $`).join('\n');
-  const msg = `مرحباً ${g.name} 👋\nتذكير ودّي من Alherz:\nالمتبقي عليك ${fmt(g.remaining)} $\n\n${lines}\n${g.overdue ? '\n⚠️ بعض الدفعات تجاوزت تاريخ الاستحقاق.\n' : ''}\nشكراً لتعاملك معنا 🙏`;
-  window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
-};
-
-/* ============================================================
-   الفاتورة الفردية (مفرق)
-   ============================================================ */
 window.openInvoice = (id) => {
-  const e = entries.find(x => x.id === id); if (!e) return;
-  currentInvoiceGroup = [e];
-  const total = e.amount * e.quantity;
-  const paid = paidOf(e);
-  const remaining = Math.max(0, total - paid);
-  const typeLabels = { sale: 'بيع', debt: 'دين', expense: 'مصروف', return: 'مرتجع' };
-  const pays = (e.payments || []).map(p => `<div class="flex justify-between text-xs text-slate-500"><span>${esc(p.date)} ${p.note ? '- ' + esc(p.note) : ''}</span><span>${fmt(p.amount)} $</span></div>`).join('');
-  document.getElementById('invoiceContent').innerHTML = `
-    <div class="flex justify-between"><span class="text-slate-500">النوع:</span><span class="font-bold">${typeLabels[e.type] || ''}</span></div>
-    <div class="flex justify-between"><span class="text-slate-500">التاريخ:</span><span class="font-bold">${esc(e.date)}</span></div>
-    ${e.customerName ? `<div class="flex justify-between"><span class="text-slate-500">الزبون:</span><span class="font-bold">${esc(e.customerName)}</span></div>` : ''}
-    ${e.customerPhone ? `<div class="flex justify-between"><span class="text-slate-500">الهاتف:</span><span class="font-bold" dir="ltr">${esc(e.customerPhone)}</span></div>` : ''}
-    ${e.productName ? `<div class="flex justify-between"><span class="text-slate-500">المنتج:</span><span class="font-bold">${esc(e.productName)}</span></div>` : ''}
-    <div class="flex justify-between"><span class="text-slate-500">الكمية:</span><span class="font-bold">${esc(e.quantity)}</span></div>
-    <div class="flex justify-between"><span class="text-slate-500">السعر:</span><span class="font-bold">${fmt(e.amount)} $</span></div>
-    <div class="flex justify-between border-t pt-2 mt-2"><span class="text-slate-500 font-bold">الإجمالي:</span><span class="font-black text-lg text-blue-600">${fmt(total)} $</span></div>
-    ${e.type === 'debt' ? `
-      <div class="flex justify-between"><span class="text-slate-500">مدفوع:</span><span class="font-bold text-green-600">${fmt(paid)} $</span></div>
-      ${pays}
-      <div class="flex justify-between"><span class="text-slate-500">متبقي:</span><span class="font-black text-red-600">${fmt(remaining)} $</span></div>
-    ` : ''}
-    ${e.notes ? `<div class="border-t pt-2 mt-2"><div class="text-slate-500 text-xs mb-1">ملاحظات:</div><div class="font-bold text-sm">${esc(e.notes)}</div></div>` : ''}
-    <div class="text-center text-xs text-slate-400 mt-4 pt-3 border-t">شكراً لتعاملكم مع Alherz</div>
-  `;
+  const e = entries.find(x => x.id === id); if (!e) return; currentInvoiceGroup = [e];
+  const total = e.amount * e.quantity, paid = paidOf(e), remaining = Math.max(0, total - paid), typeLabels = { sale: 'بيع', debt: 'دين', expense: 'مصروف', return: 'مرتجع' }, dateKey = (e.date || '').replace(/-/g, ''), invoiceNo = `#AH-${dateKey}-${e.id.substring(0, 4).toUpperCase()}`;
+  document.getElementById('invoiceNumber').textContent = invoiceNo; document.getElementById('invCustomerName').textContent = e.customerName || '-'; document.getElementById('invCustomerPhone').textContent = e.customerPhone || '—'; document.getElementById('invCustomerPhone').style.display = e.customerPhone ? 'inline' : 'none'; document.getElementById('invDate').textContent = e.date;
+  document.getElementById('invoiceItemsList').innerHTML = `<div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #f1f5f9;"><span style="flex:1; text-align:right; font-weight:bold;">${esc(e.productName || typeLabels[e.type])}</span><span style="width:50px; text-align:center; color:#64748b;">×${esc(e.quantity || 1)}</span><span style="width:70px; text-align:left; font-weight:900;">${fmt(total)} $</span></div>`;
+  document.getElementById('invTotal').textContent = fmt(total) + ' $'; document.getElementById('invPaid').textContent = fmt(paid) + ' $'; const remEl = document.getElementById('invRemaining'); remEl.textContent = fmt(remaining) + ' $'; remEl.style.color = remaining > 0 ? '#dc2626' : '#16a34a';
+  const stampEl = document.getElementById('invoiceStamp'); if (e.type === 'debt') { stampEl.innerHTML = remaining <= 0 ? `<span style="display:inline-block; padding:6px 20px; background:#dcfce7; color:#166534; border:2px solid #16a34a; border-radius:100px; font-weight:900; font-size:13px; transform:rotate(-3deg);">✅ مسدّدة</span>` : `<span style="display:inline-block; padding:6px 20px; background:#fee2e2; color:#991b1b; border:2px solid #dc2626; border-radius:100px; font-weight:900; font-size:13px; transform:rotate(-3deg);">⚠️ دين - غير مسدّد</span>`; } else if (e.type === 'return') { stampEl.innerHTML = `<span style="display:inline-block; padding:6px 20px; background:#fef3c7; color:#92400e; border:2px solid #f59e0b; border-radius:100px; font-weight:900; font-size:13px;">🔄 مرتجع</span>`; } else if (e.type === 'expense') { stampEl.innerHTML = `<span style="display:inline-block; padding:6px 20px; background:#fee2e2; color:#991b1b; border:2px solid #dc2626; border-radius:100px; font-weight:900; font-size:13px;">💸 مصروف</span>`; } else { stampEl.innerHTML = `<span style="display:inline-block; padding:6px 20px; background:#dbeafe; color:#1e40af; border:2px solid #2563eb; border-radius:100px; font-weight:900; font-size:13px;">💵 مبيعات نقدية</span>`; }
   document.getElementById('invoiceModal').classList.remove('hidden');
 };
 
@@ -1166,657 +713,140 @@ window.closeInvoiceModal = () => document.getElementById('invoiceModal').classLi
 
 window.sendInvoiceWA = () => {
   if (!currentInvoiceGroup || !currentInvoiceGroup.length) return;
-  const items = currentInvoiceGroup;
-  const first = items[0];
-  let phone = normPhone(items.find(e => e.customerPhone)?.customerPhone || '');
-  if (!phone) { const p = prompt('رقم واتساب الزبون:'); if (!p) return; phone = normPhone(p); }
-
+  const items = currentInvoiceGroup, first = items[0];
+  let phone = normPhone(items.find(e => e.customerPhone)?.customerPhone || ''); if (!phone) { const p = prompt('رقم واتساب الزبون:'); if (!p) return; phone = normPhone(p); }
   if (items.length === 1) {
-    const e = first;
-    const total = e.amount * e.quantity;
-    const paid = paidOf(e);
-    const typeLabels = { sale: 'بيع', debt: 'دين', expense: 'مصروف', return: 'مرتجع' };
-    let msg = `🧾 فاتورة - Alherz\n\n📅 ${e.date}\n`;
-    if (e.customerName) msg += `👤 ${e.customerName}\n`;
-    msg += `🔖 ${typeLabels[e.type] || ''}\n`;
-    if (e.productName) msg += `📦 ${e.productName}\n`;
-    msg += `🔢 الكمية: ${e.quantity}\n💵 السعر: ${fmt(e.amount)} $\n━━━━━━━━\n💰 الإجمالي: ${fmt(total)} $`;
-    if (e.type === 'debt') {
-      msg += `\n✅ مدفوع: ${fmt(paid)} $\n⏳ متبقي: ${fmt(Math.max(0, total - paid))} $`;
-      if (e.dueDate) msg += `\n📆 الاستحقاق: ${e.dueDate}`;
-    }
-    msg += `\n\nشكراً لتعاملكم مع Alherz 🙏`;
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
-    return;
+    const e = first, total = e.amount * e.quantity, paid = paidOf(e), typeLabels = { sale: 'بيع', debt: 'دين', expense: 'مصروف', return: 'مرتجع' };
+    let msg = `🧾 فاتورة - Alherz\n\n📅 ${e.date}\n`; if (e.customerName) msg += `👤 ${e.customerName}\n`; msg += `🔖 ${typeLabels[e.type] || ''}\n`; if (e.productName) msg += `📦 ${e.productName}\n`; msg += `🔢 الكمية: ${e.quantity}\n💵 السعر: ${fmt(e.amount)} $\n━━━━━━━━\n💰 الإجمالي: ${fmt(total)} $`;
+    if (e.type === 'debt') { msg += `\n✅ مدفوع: ${fmt(paid)} $\n⏳ متبقي: ${fmt(Math.max(0, total - paid))} $`; if (e.dueDate) msg += `\n📆 الاستحقاق: ${e.dueDate}`; }
+    msg += `\n\nشكراً لتعاملكم مع Alherz 🙏`; window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank'); return;
   }
-
-  const t = groupTotals(items);
-  const name = first.customerName || 'زبون';
-  const date = first.date || '';
+  const t = groupTotals(items), name = first.customerName || 'زبون', date = first.date || '';
   let msg = `🧾 فاتورة - Alherz\n\n👤 ${name}\n📅 ${date}\n━━━━━━━━\n`;
-  items.forEach(e => {
-    const tot = (Number(e.amount) || 0) * (Number(e.quantity) || 1);
-    msg += `• ${e.productName} ×${e.quantity}: ${fmt(tot)} $\n`;
-  });
+  items.forEach(e => { const tot = (Number(e.amount) || 0) * (Number(e.quantity) || 1); msg += `• ${e.productName} ×${e.quantity}: ${fmt(tot)} $\n`; });
   msg += `━━━━━━━━\n💰 الإجمالي: ${fmt(t.total)} $\n✅ المدفوع: ${fmt(t.paid)} $\n⏳ المتبقي: ${fmt(t.remaining)} $\n\nشكراً لتعاملكم مع Alherz 🙏`;
   window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
 };
 
-/* ============================================================
-   تعديل / حذف / دفعات
-   ============================================================ */
-window.editEntry = (id) => {
-  const e = entries.find(x => x.id === id); if (!e) return;
-  document.getElementById('editId').value = id;
-  document.getElementById('editType').value = e.type;
-  document.getElementById('editSaleKind').value = e.saleKind || 'مفرق';
-  document.getElementById('editCust').value = e.customerName || '';
-  document.getElementById('editPhone').value = e.customerPhone || '';
-  document.getElementById('editCat').value = e.productName || '';
-  document.getElementById('editDate').value = e.date || todayStr();
-  document.getElementById('editQty').value = e.quantity || 1;
-  document.getElementById('editAmount').value = e.amount || 0;
-  document.getElementById('editCost').value = e.costPrice || 0;
-  document.getElementById('editPaid').value = e.paid || 0;
-  document.getElementById('editDue').value = e.dueDate || '';
-  document.getElementById('editNotes').value = e.notes || '';
-  toggleEditTypeFields();
-  document.getElementById('editModal').classList.remove('hidden');
+window.downloadInvoice = async () => {
+  const paper = document.getElementById('invoicePaper'); if (!paper) return;
+  const invoiceNo = document.getElementById('invoiceNumber').textContent.replace('#', '').replace(/\//g, '-');
+  try { toastMsg('⏳ جاري إنشاء الصورة...'); const canvas = await html2canvas(paper, { backgroundColor: '#ffffff', scale: 3, useCORS: true, logging: false }); const link = document.createElement('a'); link.download = 'Invoice-' + invoiceNo + '.png'; link.href = canvas.toDataURL('image/png'); link.click(); toastMsg('✅ تم تحميل الفاتورة'); } catch (e) { console.error(e); toastMsg('❌ فشل التحميل'); }
 };
 
-window.toggleEditTypeFields = () => {
-  const t = document.getElementById('editType').value;
-  document.getElementById('editSaleKindBox').style.display = (t === 'sale' || t === 'debt') ? '' : 'none';
-  document.getElementById('editCostBox').style.display = (t === 'sale' || t === 'debt') ? '' : 'none';
-  document.getElementById('editDebtBox').style.display = t === 'debt' ? '' : 'none';
-};
-
+window.editEntry = (id) => { const e = entries.find(x => x.id === id); if (!e) return; document.getElementById('editId').value = id; document.getElementById('editType').value = e.type; document.getElementById('editSaleKind').value = e.saleKind || 'مفرق'; document.getElementById('editCust').value = e.customerName || ''; document.getElementById('editPhone').value = e.customerPhone || ''; document.getElementById('editCat').value = e.productName || ''; document.getElementById('editDate').value = e.date || todayStr(); document.getElementById('editQty').value = e.quantity || 1; document.getElementById('editAmount').value = e.amount || 0; document.getElementById('editCost').value = e.costPrice || 0; document.getElementById('editPaid').value = e.paid || 0; document.getElementById('editDue').value = e.dueDate || ''; document.getElementById('editNotes').value = e.notes || ''; toggleEditTypeFields(); document.getElementById('editModal').classList.remove('hidden'); };
+window.toggleEditTypeFields = () => { const t = document.getElementById('editType').value; document.getElementById('editSaleKindBox').style.display = (t === 'sale' || t === 'debt') ? '' : 'none'; document.getElementById('editCostBox').style.display = (t === 'sale' || t === 'debt') ? '' : 'none'; document.getElementById('editDebtBox').style.display = t === 'debt' ? '' : 'none'; };
 window.closeEdit = () => document.getElementById('editModal').classList.add('hidden');
-
 window.saveEdit = async () => {
-  const id = document.getElementById('editId').value;
-  const type = document.getElementById('editType').value;
-  const amount = parseFloat(document.getElementById('editAmount').value) || 0;
-  const isSaleLike = type === 'sale' || type === 'debt';
-  const data = {
-    type,
-    saleKind: isSaleLike ? document.getElementById('editSaleKind').value : '',
-    customerName: document.getElementById('editCust').value.trim(),
-    customerPhone: document.getElementById('editPhone').value.trim(),
-    productName: document.getElementById('editCat').value.trim(),
-    date: document.getElementById('editDate').value,
-    quantity: parseInt(document.getElementById('editQty').value) || 1,
-    amount,
-    costPrice: parseFloat(document.getElementById('editCost').value) || 0,
-    paid: type === 'debt' ? (parseFloat(document.getElementById('editPaid').value) || 0) : (type === 'sale' ? amount : 0),
-    dueDate: document.getElementById('editDue').value,
-    notes: document.getElementById('editNotes').value.trim(),
-    updatedAt: serverTimestamp()
-  };
-  updateSyncBadge('saving');
-  try { await updateDoc(doc(db, 'entries', id), data); closeEdit(); toastMsg('✅ تم التعديل'); }
-  catch (e) { console.error(e); toastMsg('❌ فشل التعديل'); }
+  const targetDate = document.getElementById('editDate').value, targetMonth = targetDate ? targetDate.slice(0, 7) : '';
+  if (closedMonths.some(m => m.month === targetMonth)) { toastMsg('🔒 هذا الشهر مغلق ولا يمكن التعديل'); return; }
+  const id = document.getElementById('editId').value, type = document.getElementById('editType').value, amount = parseFloat(document.getElementById('editAmount').value) || 0, isSaleLike = type === 'sale' || type === 'debt';
+  const data = { type, saleKind: isSaleLike ? document.getElementById('editSaleKind').value : '', customerName: document.getElementById('editCust').value.trim(), customerPhone: document.getElementById('editPhone').value.trim(), productName: document.getElementById('editCat').value.trim(), date: document.getElementById('editDate').value, quantity: parseInt(document.getElementById('editQty').value) || 1, amount, costPrice: parseFloat(document.getElementById('editCost').value) || 0, paid: type === 'debt' ? (parseFloat(document.getElementById('editPaid').value) || 0) : (type === 'sale' ? amount : 0), dueDate: document.getElementById('editDue').value, notes: document.getElementById('editNotes').value.trim(), updatedAt: serverTimestamp() };
+  updateSyncBadge('saving'); try { await updateDoc(doc(db, 'entries', id), data); closeEdit(); toastMsg('✅ تم التعديل'); } catch (e) { console.error(e); toastMsg('❌ فشل التعديل'); }
 };
+window.deleteEntryConfirm = async (id) => { const entryToDelete = entries.find(e => e.id === id); if (entryToDelete && entryToDelete.date) { const m = entryToDelete.date.slice(0, 7); if (closedMonths.some(x => x.month === m)) { toastMsg('🔒 الشهر مغلق، لا يمكن الحذف'); return; } } if (!confirm('هل تريد حذف هذه العملية نهائياً؟')) return; try { await deleteDoc(doc(db, 'entries', id)); toastMsg('🗑️ تم الحذف'); } catch (e) { toastMsg('❌ فشل الحذف'); } };
 
-window.deleteEntryConfirm = async (id) => {
-  if (!confirm('هل تريد حذف هذه العملية نهائياً؟')) return;
-  try { await deleteDoc(doc(db, 'entries', id)); toastMsg('🗑️ تم الحذف'); }
-  catch (e) { toastMsg('❌ فشل الحذف'); }
-};
-
-window.openPayment = (id) => {
-  const e = entries.find(x => x.id === id); if (!e) return;
-  const total = e.amount * e.quantity;
-  const paid = paidOf(e);
-  document.getElementById('payEntryId').value = id;
-  document.getElementById('payCustomerName').textContent = e.customerName || '-';
-  document.getElementById('payTotal').textContent = fmt(total) + ' $';
-  document.getElementById('payPaidSoFar').textContent = fmt(paid) + ' $';
-  document.getElementById('payRemaining').textContent = fmt(Math.max(0, total - paid)) + ' $';
-  document.getElementById('payAmount').value = '';
-  document.getElementById('payDate').value = todayStr();
-  document.getElementById('payNote').value = '';
-  document.getElementById('paymentModal').classList.remove('hidden');
-};
-
+window.openPayment = (id) => { const e = entries.find(x => x.id === id); if (!e) return; const total = e.amount * e.quantity, paid = paidOf(e); document.getElementById('payEntryId').value = id; document.getElementById('payCustomerName').textContent = e.customerName || '-'; document.getElementById('payTotal').textContent = fmt(total) + ' $'; document.getElementById('payPaidSoFar').textContent = fmt(paid) + ' $'; document.getElementById('payRemaining').textContent = fmt(Math.max(0, total - paid)) + ' $'; document.getElementById('payAmount').value = ''; document.getElementById('payDate').value = todayStr(); document.getElementById('payNote').value = ''; document.getElementById('paymentModal').classList.remove('hidden'); };
 window.closePaymentModal = () => document.getElementById('paymentModal').classList.add('hidden');
+window.savePayment = async () => { const id = document.getElementById('payEntryId').value, amount = parseFloat(document.getElementById('payAmount').value) || 0; if (amount <= 0) { toastMsg('⚠️ أدخل المبلغ'); return; } const e = entries.find(x => x.id === id); if (!e) return; const remaining = Math.max(0, e.amount * e.quantity - paidOf(e)); if (amount > remaining + 0.001 && !confirm('المبلغ أكبر من المتبقي (' + fmt(remaining) + ' $). متابعة؟')) return; const payment = { amount, date: document.getElementById('payDate').value || todayStr(), note: document.getElementById('payNote').value.trim(), user: currentUser }; try { await updateDoc(doc(db, 'entries', id), { payments: [...(e.payments || []), payment] }); closePaymentModal(); toastMsg('✅ تم تسجيل الدفعة'); } catch (err) { console.error(err); toastMsg('❌ فشل الحفظ'); } };
 
-window.savePayment = async () => {
-  const id = document.getElementById('payEntryId').value;
-  const amount = parseFloat(document.getElementById('payAmount').value) || 0;
-  if (amount <= 0) { toastMsg('⚠️ أدخل المبلغ'); return; }
-  const e = entries.find(x => x.id === id); if (!e) return;
-  const remaining = Math.max(0, e.amount * e.quantity - paidOf(e));
-  if (amount > remaining + 0.001 && !confirm('المبلغ أكبر من المتبقي (' + fmt(remaining) + ' $). متابعة؟')) return;
-  const payment = { amount, date: document.getElementById('payDate').value || todayStr(), note: document.getElementById('payNote').value.trim(), user: currentUser };
-  try { await updateDoc(doc(db, 'entries', id), { payments: [...(e.payments || []), payment] }); closePaymentModal(); toastMsg('✅ تم تسجيل الدفعة'); }
-  catch (err) { console.error(err); toastMsg('❌ فشل الحفظ'); }
-};
+window.addLoyaltyCard = async () => { const name = document.getElementById('loyName').value.trim(), phone = document.getElementById('loyPhone').value.trim(); if (!name || !phone) { toastMsg('⚠️ أدخل الاسم والرقم'); return; } try { await addDoc(collection(db, 'loyaltyCards'), { name, phone, points: 0, createdAt: serverTimestamp(), user: currentUser }); document.getElementById('loyName').value = ''; document.getElementById('loyPhone').value = ''; toastMsg('✅ تمت الإضافة'); } catch (e) { toastMsg('❌ فشل'); } };
+function renderLoyalty() { const el = document.getElementById('loyaltyList'); if (!el) return; if (!loyaltyCards.length) { el.innerHTML = '<div class="text-center text-slate-400 py-6">لا توجد بطاقات</div>'; return; } el.innerHTML = loyaltyCards.map(c => `<div class="border border-slate-200 rounded-xl p-4 bg-gradient-to-br from-yellow-50 to-white"><div class="flex justify-between items-start"><div><div class="font-black text-slate-900">${esc(c.name)}</div><div class="text-xs text-slate-500" dir="ltr">${esc(c.phone)}</div></div><div class="text-gold font-black text-lg">${esc(c.points || 0)} ⭐</div></div><div class="flex gap-2 mt-3"><button onclick="changePoints('${esc(c.id)}',-1)" class="bg-slate-100 rounded-lg px-3 py-2 text-xs font-black">−</button><button onclick="changePoints('${esc(c.id)}',1)" class="bg-yellow-50 text-yellow-700 rounded-lg px-3 py-2 text-xs font-black">+ ⭐</button><button onclick="waLoyalty('${esc(c.id)}')" class="flex-1 bg-green-600 text-white rounded-lg py-2 text-xs font-bold">💬 واتساب</button>${isManager() ? `<button onclick="deleteLoyalty('${esc(c.id)}')" class="bg-red-50 text-red-600 rounded-lg px-3 py-2 text-xs font-bold">🗑️</button>` : ''}</div></div>`).join(''); }
+window.changePoints = async (id, delta) => { const c = loyaltyCards.find(x => x.id === id); if (!c) return; const cur = Number(c.points) || 0, pts = Math.max(0, cur + delta); if (pts === cur) return; const h = { action: delta > 0 ? 'إضافة نقطة' : 'خصم نقطة', time: new Date().toLocaleString('ar-LB'), pointsAfter: pts, user: currentUser }; try { await updateDoc(doc(db, 'loyaltyCards', id), { points: pts, history: [h, ...(c.history || [])] }); } catch (e) { toastMsg('❌ فشل'); } };
+window.waLoyalty = (id) => { const c = loyaltyCards.find(x => x.id === id); if (!c) return; const phone = normPhone(c.phone); window.open(`https://wa.me/${phone}?text=${encodeURIComponent('مرحباً ' + c.name + ' 👋\nمن Alherz')}`, '_blank'); };
+window.deleteLoyalty = async (id) => { if (!confirm('حذف هذه البطاقة؟')) return; try { await deleteDoc(doc(db, 'loyaltyCards', id)); } catch (e) { toastMsg('❌ فشل الحذف'); } };
 
-/* ============================================================
-   بطاقات الولاء
-   ============================================================ */
-window.addLoyaltyCard = async () => {
-  const name = document.getElementById('loyName').value.trim();
-  const phone = document.getElementById('loyPhone').value.trim();
-  if (!name || !phone) { toastMsg('⚠️ أدخل الاسم والرقم'); return; }
-  try {
-    await addDoc(collection(db, 'loyaltyCards'), { name, phone, points: 0, createdAt: serverTimestamp(), user: currentUser });
-    document.getElementById('loyName').value = ''; document.getElementById('loyPhone').value = '';
-    toastMsg('✅ تمت الإضافة');
-  } catch (e) { toastMsg('❌ فشل'); }
-};
-
-function renderLoyalty() {
-  const el = document.getElementById('loyaltyList');
-  if (!el) return;
-  if (!loyaltyCards.length) { el.innerHTML = '<div class="text-center text-slate-400 py-6">لا توجد بطاقات</div>'; return; }
-  el.innerHTML = loyaltyCards.map(c => `
-    <div class="border border-slate-200 rounded-xl p-4 bg-gradient-to-br from-yellow-50 to-white">
-      <div class="flex justify-between items-start">
-        <div><div class="font-black text-slate-900">${esc(c.name)}</div><div class="text-xs text-slate-500" dir="ltr">${esc(c.phone)}</div></div>
-        <div class="text-gold font-black text-lg">${esc(c.points || 0)} ⭐</div>
-      </div>
-      <div class="flex gap-2 mt-3">
-        <button onclick="changePoints('${esc(c.id)}',-1)" class="bg-slate-100 rounded-lg px-3 py-2 text-xs font-black">−</button>
-        <button onclick="changePoints('${esc(c.id)}',1)" class="bg-yellow-50 text-yellow-700 rounded-lg px-3 py-2 text-xs font-black">+ ⭐</button>
-        <button onclick="waLoyalty('${esc(c.id)}')" class="flex-1 bg-green-600 text-white rounded-lg py-2 text-xs font-bold">💬 واتساب</button>
-        ${isManager() ? `<button onclick="deleteLoyalty('${esc(c.id)}')" class="bg-red-50 text-red-600 rounded-lg px-3 py-2 text-xs font-bold">🗑️</button>` : ''}
-      </div>
-    </div>`).join('');
-}
-
-window.changePoints = async (id, delta) => {
-  const c = loyaltyCards.find(x => x.id === id); if (!c) return;
-  const cur = Number(c.points) || 0;
-  const pts = Math.max(0, cur + delta);
-  if (pts === cur) return;
-  const h = { action: delta > 0 ? 'إضافة نقطة' : 'خصم نقطة', time: new Date().toLocaleString('ar-LB'), pointsAfter: pts, user: currentUser };
-  try { await updateDoc(doc(db, 'loyaltyCards', id), { points: pts, history: [h, ...(c.history || [])] }); }
-  catch (e) { toastMsg('❌ فشل'); }
-};
-
-window.waLoyalty = (id) => {
-  const c = loyaltyCards.find(x => x.id === id); if (!c) return;
-  const phone = normPhone(c.phone);
-  window.open(`https://wa.me/${phone}?text=${encodeURIComponent('مرحباً ' + c.name + ' 👋\nمن Alherz')}`, '_blank');
-};
-
-window.deleteLoyalty = async (id) => {
-  if (!confirm('حذف هذه البطاقة؟')) return;
-  try { await deleteDoc(doc(db, 'loyaltyCards', id)); } catch (e) { toastMsg('❌ فشل الحذف'); }
-};
-
-/* ============================================================
-   الموظفين
-   ============================================================ */
-window.addEmployee = async () => {
-  const name = document.getElementById('newEmpName').value.trim();
-  if (!name) { toastMsg('⚠️ أدخل الاسم'); return; }
-  try {
-    await addDoc(collection(db, 'employees'), { name, salary: parseFloat(document.getElementById('newEmpSalary').value) || 0, withdrawals: [], createdAt: serverTimestamp() });
-    document.getElementById('newEmpName').value = ''; document.getElementById('newEmpSalary').value = '';
-    toastMsg('✅ تمت الإضافة');
-  } catch (e) { toastMsg('❌ فشل'); }
-};
-
-function renderEmployees() {
-  const grid = document.getElementById('employeesGrid');
-  if (!grid) return;
-  if (!employees.length) { grid.innerHTML = '<div class="text-center text-slate-400 py-6 col-span-2">لا يوجد موظفون</div>'; }
-  else grid.innerHTML = employees.map(emp => {
-    const withdrawals = emp.withdrawals || [];
-    const total = withdrawals.reduce((s, w) => s + (Number(w.amount) || 0), 0);
-    const mKey = todayStr().slice(0, 7);
-    const monthTotal = withdrawals.filter(w => (w.date || '').startsWith(mKey)).reduce((s, w) => s + (Number(w.amount) || 0), 0);
-    const salary = Number(emp.salary) || 0;
-    const left = salary - monthTotal;
-    return `
-    <div class="glass-card p-5">
-      <div class="flex justify-between items-center mb-3">
-        <div class="font-black text-lg text-slate-900">👤 ${esc(emp.name)}</div>
-        <button onclick="deleteEmployee('${esc(emp.id)}')" class="text-red-500 text-xs">🗑️</button>
-      </div>
-      <div class="bg-slate-50 rounded-xl p-3 mb-3">
-        <div class="text-xs text-slate-500 mb-1">إجمالي السحوبات</div>
-        <div class="font-black text-orange-600 text-xl">${fmt(total)} $</div>
-        ${salary > 0 ? `<div class="mt-2 space-y-1 text-xs border-t pt-2">
-          <div class="flex justify-between"><span>الراتب الشهري</span><b>${fmt(salary)} $</b></div>
-          <div class="flex justify-between"><span>سحوبات هذا الشهر</span><b class="text-orange-600">${fmt(monthTotal)} $</b></div>
-          <div class="flex justify-between"><span>المتبقي من الراتب</span><b class="${left < 0 ? 'text-red-600' : 'text-green-600'}">${fmt(left)} $</b></div>
-        </div>` : '<div class="text-[10px] text-slate-400 mt-1">لم يُحدَّد راتب شهري</div>'}
-      </div>
-      <div class="space-y-1 text-xs mb-3 max-h-32 overflow-y-auto">
-        ${withdrawals.length ? withdrawals.slice().reverse().map(w => `
-          <div class="flex justify-between bg-white rounded p-2 border"><span>${esc(w.date)} ${w.note ? '- ' + esc(w.note) : ''}</span><span class="font-bold">${fmt(w.amount)} $</span></div>
-        `).join('') : '<div class="text-slate-400 text-center py-2">لا توجد سحوبات</div>'}
-      </div>
-      <div class="flex gap-2">
-        <button onclick="openWithdraw('${esc(emp.id)}')" class="flex-1 bg-[#0f172a] text-white rounded-xl py-2 text-sm font-bold">💵 تسجيل سحب</button>
-        <button onclick="setSalary('${esc(emp.id)}')" class="bg-slate-100 text-slate-700 rounded-xl px-3 py-2 text-sm font-bold">💰 الراتب</button>
-      </div>
-    </div>`;
-  }).join('');
-  const hist = document.getElementById('withdrawHistory');
-  if (hist) {
-    const all = [];
-    employees.forEach(emp => (emp.withdrawals || []).forEach(w => all.push({ ...w, empName: emp.name })));
-    all.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
-    hist.innerHTML = all.length ? all.map(w => `
-      <div class="flex justify-between border-b pb-1"><span><b>${esc(w.empName)}</b> - ${esc(w.date)} ${w.note ? '(' + esc(w.note) + ')' : ''}</span><span class="font-bold text-orange-600">${fmt(w.amount)} $</span></div>
-    `).join('') : '<div class="text-center text-slate-400 py-4">لا توجد سحوبات</div>';
-  }
-}
-
-window.setSalary = async (id) => {
-  if (!isManager()) return;
-  const emp = employees.find(e => e.id === id); if (!emp) return;
-  const v = prompt('الراتب الشهري لـ ' + emp.name + ' ($):', emp.salary || '');
-  if (v === null) return;
-  const sal = parseFloat(v);
-  if (!(sal >= 0)) { toastMsg('⚠️ رقم غير صحيح'); return; }
-  try { await updateDoc(doc(db, 'employees', id), { salary: sal }); toastMsg('✅ تم حفظ الراتب'); } catch (e) { toastMsg('❌ فشل'); }
-};
-
-window.deleteEmployee = async (id) => {
-  if (!confirm('حذف الموظف وكل سحوباته؟')) return;
-  try { await deleteDoc(doc(db, 'employees', id)); } catch (e) { toastMsg('❌ فشل الحذف'); }
-};
-
-window.openWithdraw = (empId) => {
-  const emp = employees.find(e => e.id === empId); if (!emp) return;
-  document.getElementById('wdEmp').value = empId;
-  document.getElementById('wdId').value = '';
-  document.getElementById('withdrawModalTitle').textContent = '💵 سحب لـ ' + emp.name;
-  document.getElementById('wdAmount').value = '';
-  document.getElementById('wdDate').value = todayStr();
-  document.getElementById('wdNote').value = '';
-  document.getElementById('withdrawModal').classList.remove('hidden');
-};
-
+window.addEmployee = async () => { const name = document.getElementById('newEmpName').value.trim(); if (!name) { toastMsg('⚠️ أدخل الاسم'); return; } try { await addDoc(collection(db, 'employees'), { name, salary: parseFloat(document.getElementById('newEmpSalary').value) || 0, withdrawals: [], createdAt: serverTimestamp() }); document.getElementById('newEmpName').value = ''; document.getElementById('newEmpSalary').value = ''; toastMsg('✅ تمت الإضافة'); } catch (e) { toastMsg('❌ فشل'); } };
+function renderEmployees() { const grid = document.getElementById('employeesGrid'); if (!grid) return; if (!employees.length) { grid.innerHTML = '<div class="text-center text-slate-400 py-6 col-span-2">لا يوجد موظفون</div>'; } else grid.innerHTML = employees.map(emp => { const withdrawals = emp.withdrawals || [], total = withdrawals.reduce((s, w) => s + (Number(w.amount) || 0), 0), mKey = todayStr().slice(0, 7), monthTotal = withdrawals.filter(w => (w.date || '').startsWith(mKey)).reduce((s, w) => s + (Number(w.amount) || 0), 0), salary = Number(emp.salary) || 0, left = salary - monthTotal; return `<div class="glass-card p-5"><div class="flex justify-between items-center mb-3"><div class="font-black text-lg text-slate-900">👤 ${esc(emp.name)}</div><button onclick="deleteEmployee('${esc(emp.id)}')" class="text-red-500 text-xs">🗑️</button></div><div class="bg-slate-50 rounded-xl p-3 mb-3"><div class="text-xs text-slate-500 mb-1">إجمالي السحوبات</div><div class="font-black text-orange-600 text-xl">${fmt(total)} $</div>${salary > 0 ? `<div class="mt-2 space-y-1 text-xs border-t pt-2"><div class="flex justify-between"><span>الراتب الشهري</span><b>${fmt(salary)} $</b></div><div class="flex justify-between"><span>سحوبات هذا الشهر</span><b class="text-orange-600">${fmt(monthTotal)} $</b></div><div class="flex justify-between"><span>المتبقي من الراتب</span><b class="${left < 0 ? 'text-red-600' : 'text-green-600'}">${fmt(left)} $</b></div></div>` : '<div class="text-[10px] text-slate-400 mt-1">لم يُحدَّد راتب شهري</div>'}</div><div class="space-y-1 text-xs mb-3 max-h-32 overflow-y-auto">${withdrawals.length ? withdrawals.slice().reverse().map(w => `<div class="flex justify-between bg-white rounded p-2 border"><span>${esc(w.date)} ${w.note ? '- ' + esc(w.note) : ''}</span><span class="font-bold">${fmt(w.amount)} $</span></div>`).join('') : '<div class="text-slate-400 text-center py-2">لا توجد سحوبات</div>'}</div><div class="flex gap-2"><button onclick="openWithdraw('${esc(emp.id)}')" class="flex-1 bg-[#0f172a] text-white rounded-xl py-2 text-sm font-bold">💵 تسجيل سحب</button><button onclick="setSalary('${esc(emp.id)}')" class="bg-slate-100 text-slate-700 rounded-xl px-3 py-2 text-sm font-bold">💰 الراتب</button></div></div>`; }).join(''); const hist = document.getElementById('withdrawHistory'); if (hist) { const all = []; employees.forEach(emp => (emp.withdrawals || []).forEach(w => all.push({ ...w, empName: emp.name }))); all.sort((a, b) => (b.date || '').localeCompare(a.date || '')); hist.innerHTML = all.length ? all.map(w => `<div class="flex justify-between border-b pb-1"><span><b>${esc(w.empName)}</b> - ${esc(w.date)} ${w.note ? '(' + esc(w.note) + ')' : ''}</span><span class="font-bold text-orange-600">${fmt(w.amount)} $</span></div>`).join('') : '<div class="text-center text-slate-400 py-4">لا توجد سحوبات</div>'; } }
+window.setSalary = async (id) => { if (!isManager()) return; const emp = employees.find(e => e.id === id); if (!emp) return; const v = prompt('الراتب الشهري لـ ' + emp.name + ' ($):', emp.salary || ''); if (v === null) return; const sal = parseFloat(v); if (!(sal >= 0)) { toastMsg('⚠️ رقم غير صحيح'); return; } try { await updateDoc(doc(db, 'employees', id), { salary: sal }); toastMsg('✅ تم حفظ الراتب'); } catch (e) { toastMsg('❌ فشل'); } };
+window.deleteEmployee = async (id) => { if (!confirm('حذف الموظف وكل سحوباته؟')) return; try { await deleteDoc(doc(db, 'employees', id)); } catch (e) { toastMsg('❌ فشل الحذف'); } };
+window.openWithdraw = (empId) => { const emp = employees.find(e => e.id === empId); if (!emp) return; document.getElementById('wdEmp').value = empId; document.getElementById('wdId').value = ''; document.getElementById('withdrawModalTitle').textContent = '💵 سحب لـ ' + emp.name; document.getElementById('wdAmount').value = ''; document.getElementById('wdDate').value = todayStr(); document.getElementById('wdNote').value = ''; document.getElementById('withdrawModal').classList.remove('hidden'); };
 window.closeWithdrawModal = () => document.getElementById('withdrawModal').classList.add('hidden');
+window.saveWithdrawModal = async () => { const empId = document.getElementById('wdEmp').value, amount = parseFloat(document.getElementById('wdAmount').value) || 0; if (amount <= 0) { toastMsg('⚠️ أدخل المبلغ'); return; } const emp = employees.find(e => e.id === empId); if (!emp) return; const withdrawal = { amount, date: document.getElementById('wdDate').value || todayStr(), note: document.getElementById('wdNote').value.trim(), user: currentUser }; try { await updateDoc(doc(db, 'employees', empId), { withdrawals: [...(emp.withdrawals || []), withdrawal] }); closeWithdrawModal(); toastMsg('✅ تم تسجيل السحب'); } catch (e) { toastMsg('❌ فشل'); } };
 
-window.saveWithdrawModal = async () => {
-  const empId = document.getElementById('wdEmp').value;
-  const amount = parseFloat(document.getElementById('wdAmount').value) || 0;
-  if (amount <= 0) { toastMsg('⚠️ أدخل المبلغ'); return; }
-  const emp = employees.find(e => e.id === empId); if (!emp) return;
-  const withdrawal = { amount, date: document.getElementById('wdDate').value || todayStr(), note: document.getElementById('wdNote').value.trim(), user: currentUser };
-  try { await updateDoc(doc(db, 'employees', empId), { withdrawals: [...(emp.withdrawals || []), withdrawal] }); closeWithdrawModal(); toastMsg('✅ تم تسجيل السحب'); }
-  catch (e) { toastMsg('❌ فشل'); }
-};
-
-/* ============================================================
-   التقارير
-   ============================================================ */
-function renderReports() {
-  const el = document.getElementById('reportsList');
-  if (!el) return;
-  if (!reports.length) { el.innerHTML = '<div class="text-center text-slate-400 py-6">لا توجد تقارير</div>'; return; }
-  el.innerHTML = reports.map(r => `
-    <div class="border border-slate-200 rounded-xl p-3 hover:bg-slate-50 cursor-pointer" onclick="openReportDetails('${esc(r.id)}')">
-      <div class="flex justify-between items-center mb-1">
-        <span class="font-black text-slate-900">📅 ${esc(r.date)}</span>
-        <span class="text-xs text-slate-500">${esc(r.entriesCount || 0)} عملية</span>
-      </div>
-      <div class="grid grid-cols-2 gap-1 text-xs">
-        <span>🛒 ${fmt(r.totalSales)} $</span>
-        <span>📈 ${fmt(r.totalProfit)} $</span>
-        <span class="text-orange-600">📓 ${fmt(r.totalDebts)} $</span>
-        <span class="text-red-600">💸 ${fmt(r.totalExpenses)} $</span>
-      </div>
-      <div class="font-black text-green-600 mt-1">صافي: ${fmt(r.netProfit)} $</div>
-      ${r.cashCounted != null ? `<div class="text-xs font-bold mt-1 ${r.cashDiff < 0 ? 'text-red-600' : (r.cashDiff > 0 ? 'text-blue-600' : 'text-green-600')}">💵 ${cashDiffText(r.cashDiff)}</div>` : ''}
-    </div>`).join('');
-}
-
-window.openReportDetails = (id) => {
-  const r = reports.find(x => x.id === id); if (!r) return;
-  currentReportId = id;
-  document.getElementById('reportDetailsContent').innerHTML = `
-    <div class="flex justify-between"><span class="text-slate-500">التاريخ:</span><span class="font-bold">${esc(r.date)}</span></div>
-    <div class="flex justify-between"><span class="text-slate-500">عدد العمليات:</span><span class="font-bold">${esc(r.entriesCount || 0)}</span></div>
-    <div class="flex justify-between"><span class="text-slate-500">المبيع:</span><span class="font-bold text-blue-600">${fmt(r.totalSales)} $</span></div>
-    <div class="flex justify-between"><span class="text-slate-500">الربح:</span><span class="font-bold text-green-600">${fmt(r.totalProfit)} $</span></div>
-    <div class="flex justify-between"><span class="text-slate-500">الديون:</span><span class="font-bold text-orange-600">${fmt(r.totalDebts)} $</span></div>
-    <div class="flex justify-between"><span class="text-slate-500">المرتجع:</span><span class="font-bold text-red-600">${fmt(r.totalReturns)} $</span></div>
-    <div class="flex justify-between"><span class="text-slate-500">المصاريف:</span><span class="font-bold text-red-600">${fmt(r.totalExpenses)} $</span></div>
-    ${r.cashCounted != null ? `
-    <div class="flex justify-between border-t pt-2 mt-2"><span class="text-slate-500">الكاش المتوقع:</span><span class="font-bold">${fmt(r.cashExpected)} $</span></div>
-    <div class="flex justify-between"><span class="text-slate-500">الكاش الفعلي:</span><span class="font-bold">${fmt(r.cashCounted)} $</span></div>
-    <div class="flex justify-between"><span class="text-slate-500">الفرق:</span><span class="font-black ${r.cashDiff < 0 ? 'text-red-600' : (r.cashDiff > 0 ? 'text-blue-600' : 'text-green-600')}">${cashDiffText(r.cashDiff)}</span></div>` : ''}
-    <div class="flex justify-between border-t pt-2 mt-2"><span class="text-slate-500 font-bold">الصافي:</span><span class="font-black text-green-600 text-lg">${fmt(r.netProfit)} $</span></div>
-  `;
-  document.getElementById('reportDetailsModal').classList.remove('hidden');
-};
-
+function renderReports() { const el = document.getElementById('reportsList'); if (!el) return; if (!reports.length) { el.innerHTML = '<div class="text-center text-slate-400 py-6">لا توجد تقارير</div>'; return; } el.innerHTML = reports.map(r => `<div class="border border-slate-200 rounded-xl p-3 hover:bg-slate-50 cursor-pointer" onclick="openReportDetails('${esc(r.id)}')"><div class="flex justify-between items-center mb-1"><span class="font-black text-slate-900">📅 ${esc(r.date)}</span><span class="text-xs text-slate-500">${esc(r.entriesCount || 0)} عملية</span></div><div class="grid grid-cols-2 gap-1 text-xs"><span>🛒 ${fmt(r.totalSales)} $</span><span>📈 ${fmt(r.totalProfit)} $</span><span class="text-orange-600">📓 ${fmt(r.totalDebts)} $</span><span class="text-red-600">💸 ${fmt(r.totalExpenses)} $</span></div><div class="font-black text-green-600 mt-1">صافي: ${fmt(r.netProfit)} $</div>${r.cashCounted != null ? `<div class="text-xs font-bold mt-1 ${r.cashDiff < 0 ? 'text-red-600' : (r.cashDiff > 0 ? 'text-blue-600' : 'text-green-600')}">💵 ${cashDiffText(r.cashDiff)}</div>` : ''}</div>`).join(''); }
+window.openReportDetails = (id) => { const r = reports.find(x => x.id === id); if (!r) return; currentReportId = id; document.getElementById('reportDetailsContent').innerHTML = `<div class="flex justify-between"><span class="text-slate-500">التاريخ:</span><span class="font-bold">${esc(r.date)}</span></div><div class="flex justify-between"><span class="text-slate-500">عدد العمليات:</span><span class="font-bold">${esc(r.entriesCount || 0)}</span></div><div class="flex justify-between"><span class="text-slate-500">المبيع:</span><span class="font-bold text-blue-600">${fmt(r.totalSales)} $</span></div><div class="flex justify-between"><span class="text-slate-500">الربح:</span><span class="font-bold text-green-600">${fmt(r.totalProfit)} $</span></div><div class="flex justify-between"><span class="text-slate-500">الديون:</span><span class="font-bold text-orange-600">${fmt(r.totalDebts)} $</span></div><div class="flex justify-between"><span class="text-slate-500">المرتجع:</span><span class="font-bold text-red-600">${fmt(r.totalReturns)} $</span></div><div class="flex justify-between"><span class="text-slate-500">المصاريف:</span><span class="font-bold text-red-600">${fmt(r.totalExpenses)} $</span></div>${r.cashCounted != null ? `<div class="flex justify-between border-t pt-2 mt-2"><span class="text-slate-500">الكاش المتوقع:</span><span class="font-bold">${fmt(r.cashExpected)} $</span></div><div class="flex justify-between"><span class="text-slate-500">الكاش الفعلي:</span><span class="font-bold">${fmt(r.cashCounted)} $</span></div><div class="flex justify-between"><span class="text-slate-500">الفرق:</span><span class="font-black ${r.cashDiff < 0 ? 'text-red-600' : (r.cashDiff > 0 ? 'text-blue-600' : 'text-green-600')}">${cashDiffText(r.cashDiff)}</span></div>` : ''}<div class="flex justify-between border-t pt-2 mt-2"><span class="text-slate-500 font-bold">الصافي:</span><span class="font-black text-green-600 text-lg">${fmt(r.netProfit)} $</span></div>`; document.getElementById('reportDetailsModal').classList.remove('hidden'); };
 window.closeReportDetails = () => document.getElementById('reportDetailsModal').classList.add('hidden');
-
-window.deleteReport = async () => {
-  if (!currentReportId || !confirm('حذف التقرير؟')) return;
-  try { await deleteDoc(doc(db, 'reports', currentReportId)); closeReportDetails(); toastMsg('🗑️ تم الحذف'); }
-  catch (e) { toastMsg('❌ فشل الحذف'); }
-};
+window.deleteReport = async () => { if (!currentReportId || !confirm('حذف التقرير؟')) return; try { await deleteDoc(doc(db, 'reports', currentReportId)); closeReportDetails(); toastMsg('🗑️ تم الحذف'); } catch (e) { toastMsg('❌ فشل الحذف'); } };
 
 window.renderMonthly = () => {
-  const picker = document.getElementById('monthPicker');
-  const month = picker.value || todayStr().slice(0, 7);
-  const filtered = entries.filter(e => (e.date || '').startsWith(month));
-  const t = calcTotals(filtered);
-  const products = {};
-  filtered.forEach(e => {
-    if ((e.type === 'sale' || e.type === 'debt') && e.productName) products[e.productName] = (products[e.productName] || 0) + (Number(e.quantity) || 1);
-  });
-  document.getElementById('monthlySummary').innerHTML = `
-    <div class="flex justify-between p-2 bg-blue-50 rounded"><span>🛒 المبيع</span><span class="font-black text-blue-600">${fmt(t.sales)} $</span></div>
-    <div class="flex justify-between p-2 bg-green-50 rounded"><span>📈 الربح</span><span class="font-black text-green-600">${fmt(t.profit)} $</span></div>
-    <div class="flex justify-between p-2 bg-orange-50 rounded"><span>📓 الديون</span><span class="font-black text-orange-600">${fmt(t.debts)} $</span></div>
-    <div class="flex justify-between p-2 bg-red-50 rounded"><span>🔄 المرتجع</span><span class="font-black text-red-600">${fmt(t.returns)} $</span></div>
-    <div class="flex justify-between p-2 bg-red-50 rounded"><span>💸 المصاريف</span><span class="font-black text-red-600">${fmt(t.expenses)} $</span></div>
-    <div class="flex justify-between p-3 bg-gold rounded-xl mt-2"><span class="font-black">💰 الصافي</span><span class="font-black text-lg">${fmt(t.net)} $</span></div>
-    <div class="text-center text-xs text-slate-500 mt-2">عدد العمليات: ${filtered.length}</div>
-  `;
-  const topProducts = Object.entries(products).sort((a, b) => b[1] - a[1]).slice(0, 5);
-  document.getElementById('monthlyProducts').innerHTML = topProducts.length ? `
-    <h4 class="font-black text-sm mb-2 mt-4">🔥 المنتجات الأكثر مبيعاً</h4>
-    ${topProducts.map(([name, qty]) => `<div class="flex justify-between text-xs py-1 border-b"><span>${esc(name)}</span><span class="font-bold">×${qty}</span></div>`).join('')}
-  ` : '';
+  const picker = document.getElementById('monthPicker'), month = picker.value || todayStr().slice(0, 7), filtered = entries.filter(e => (e.date || '').startsWith(month)), t = calcTotals(filtered), products = {};
+  filtered.forEach(e => { if ((e.type === 'sale' || e.type === 'debt') && e.productName) products[e.productName] = (products[e.productName] || 0) + (Number(e.quantity) || 1); });
+  document.getElementById('monthlySummary').innerHTML = `<div class="flex justify-between p-2 bg-blue-50 rounded"><span>🛒 المبيع</span><span class="font-black text-blue-600">${fmt(t.sales)} $</span></div><div class="flex justify-between p-2 bg-green-50 rounded"><span>📈 الربح</span><span class="font-black text-green-600">${fmt(t.profit)} $</span></div><div class="flex justify-between p-2 bg-orange-50 rounded"><span>📓 الديون</span><span class="font-black text-orange-600">${fmt(t.debts)} $</span></div><div class="flex justify-between p-2 bg-red-50 rounded"><span>🔄 المرتجع</span><span class="font-black text-red-600">${fmt(t.returns)} $</span></div><div class="flex justify-between p-2 bg-red-50 rounded"><span>💸 المصاريف</span><span class="font-black text-red-600">${fmt(t.expenses)} $</span></div><div class="flex justify-between p-3 bg-gold rounded-xl mt-2"><span class="font-black">💰 الصافي</span><span class="font-black text-lg">${fmt(t.net)} $</span></div><div class="text-center text-xs text-slate-500 mt-2">عدد العمليات: ${filtered.length}</div>`;
+  const topProducts = Object.entries(products).sort((a, b) => b[1] - a[1]).slice(0, 5); document.getElementById('monthlyProducts').innerHTML = topProducts.length ? `<h4 class="font-black text-sm mb-2 mt-4">🔥 المنتجات الأكثر مبيعاً</h4>${topProducts.map(([name, qty]) => `<div class="flex justify-between text-xs py-1 border-b"><span>${esc(name)}</span><span class="font-bold">×${qty}</span></div>`).join('')}` : '';
 };
 
 window.printMonthlyReport = async () => {
-  const el = document.getElementById('monthlySummary');
-  if (!el) return;
-  try {
-    const canvas = await html2canvas(el, { backgroundColor: '#ffffff', scale: 2 });
-    const link = document.createElement('a');
-    link.download = 'monthly-' + (document.getElementById('monthPicker').value || 'report') + '.png';
-    link.href = canvas.toDataURL();
-    link.click();
-  } catch (e) { toastMsg('❌ فشل التحميل'); }
+  const summaryEl = document.getElementById('monthlySummary'), productsEl = document.getElementById('monthlyProducts'), month = document.getElementById('monthPicker').value || todayStr().slice(0, 7);
+  if (!summaryEl) return;
+  const wrapper = document.createElement('div'); wrapper.style.cssText = `position:fixed;top:-9999px;left:0;width:400px;padding:24px;background:#fff;font-family:'Cairo',sans-serif;direction:rtl;box-sizing:border-box;`;
+  wrapper.innerHTML = `<div style="text-align:center; margin-bottom:16px; padding-bottom:12px; border-bottom:2px solid #bf953f;"><div style="font-size:22px; font-weight:900; color:#bf953f;">Alherz</div><div style="font-size:12px; color:#64748b; margin-top:4px;">التقرير الشهري</div><div style="font-size:14px; color:#0f172a; font-weight:bold; margin-top:6px;">${month}</div></div><div style="display:flex; justify-content:space-between; align-items:center; padding:10px 12px; background:#eff6ff; border-radius:8px; margin-bottom:8px;"><span style="font-weight:bold; font-size:13px;">🛒 المبيع</span><span style="font-weight:900; color:#2563eb; font-size:14px;">${fmt(calcTotals(entries.filter(e => (e.date||'').startsWith(month))).sales)} $</span></div><div style="display:flex; justify-content:space-between; align-items:center; padding:10px 12px; background:#f0fdf4; border-radius:8px; margin-bottom:8px;"><span style="font-weight:bold; font-size:13px;">📈 الربح</span><span style="font-weight:900; color:#16a34a; font-size:14px;">${fmt(calcTotals(entries.filter(e => (e.date||'').startsWith(month))).profit)} $</span></div><div style="display:flex; justify-content:space-between; align-items:center; padding:10px 12px; background:#fff7ed; border-radius:8px; margin-bottom:8px;"><span style="font-weight:bold; font-size:13px;">📓 الديون</span><span style="font-weight:900; color:#ea580c; font-size:14px;">${fmt(calcTotals(entries.filter(e => (e.date||'').startsWith(month))).debts)} $</span></div><div style="display:flex; justify-content:space-between; align-items:center; padding:10px 12px; background:#fef2f2; border-radius:8px; margin-bottom:8px;"><span style="font-weight:bold; font-size:13px;">🔄 المرتجع</span><span style="font-weight:900; color:#dc2626; font-size:14px;">${fmt(calcTotals(entries.filter(e => (e.date||'').startsWith(month))).returns)} $</span></div><div style="display:flex; justify-content:space-between; align-items:center; padding:10px 12px; background:#fef2f2; border-radius:8px; margin-bottom:12px;"><span style="font-weight:bold; font-size:13px;">💸 المصاريف</span><span style="font-weight:900; color:#dc2626; font-size:14px;">${fmt(calcTotals(entries.filter(e => (e.date||'').startsWith(month))).expenses)} $</span></div><div style="display:flex; justify-content:space-between; align-items:center; padding:14px 16px; background:linear-gradient(135deg,#bf953f,#fcf6ba,#b38728); border-radius:12px; margin-bottom:12px;"><span style="font-weight:900; font-size:15px;">💰 الصافي</span><span style="font-weight:900; color:#0f172a; font-size:18px;">${fmt(calcTotals(entries.filter(e => (e.date||'').startsWith(month))).net)} $</span></div><div style="text-align:center; font-size:11px; color:#64748b; padding-top:8px; border-top:1px solid #e2e8f0;">عدد العمليات: ${entries.filter(e => (e.date||'').startsWith(month)).length}</div>${productsEl && productsEl.innerHTML ? `<div style="margin-top:16px;"><div style="font-weight:900; font-size:12px; color:#0f172a; margin-bottom:8px;">🔥 المنتجات الأكثر مبيعاً</div>${productsEl.querySelectorAll('.flex.justify-between').length ? Array.from(productsEl.querySelectorAll('.flex.justify-between')).map(el => `<div style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid #f1f5f9; font-size:11px;"><span style="color:#334155;">${el.children[0]?.innerText || ''}</span><span style="font-weight:bold; color:#0f172a;">${el.children[1]?.innerText || ''}</span></div>`).join('') : ''}</div>` : ''}<div style="text-align:center; font-size:10px; color:#94a3b8; margin-top:16px; padding-top:12px; border-top:1px solid #e2e8f0;">شكراً لتعاملكم مع Alherz 🙏</div>`;
+  document.body.appendChild(wrapper);
+  try { const canvas = await html2canvas(wrapper, { backgroundColor: '#ffffff', scale: 3, useCORS: true, logging: false, width: 400, windowWidth: 400 }); const link = document.createElement('a'); link.download = 'Alherz-Report-' + month + '.png'; link.href = canvas.toDataURL('image/png'); link.click(); toastMsg('✅ تم تحميل الصورة'); } catch (e) { console.error(e); toastMsg('❌ فشل التحميل'); } finally { wrapper.remove(); }
 };
+window.sendMonthlyText = () => { const month = document.getElementById('monthPicker').value || todayStr().slice(0, 7), phone = settings.phone || '96181439656', txt = document.getElementById('monthlySummary').innerText; window.open(`https://wa.me/${phone}?text=${encodeURIComponent('📊 تقرير شهر ' + month + '\n\n' + txt)}`, '_blank'); };
 
-window.sendMonthlyText = () => {
-  const month = document.getElementById('monthPicker').value || todayStr().slice(0, 7);
-  const phone = settings.phone || '96181439656';
-  const txt = document.getElementById('monthlySummary').innerText;
-  window.open(`https://wa.me/${phone}?text=${encodeURIComponent('📊 تقرير شهر ' + month + '\n\n' + txt)}`, '_blank');
-};
+window.openMonthCloseModal = () => { const picker = document.getElementById('monthToClose'); picker.value = todayStr().slice(0, 7); updateMonthCloseSummary(); picker.onchange = updateMonthCloseSummary; document.getElementById('monthCloseModal').classList.remove('hidden'); };
+function updateMonthCloseSummary() { const month = document.getElementById('monthToClose').value; if (!month) return; const monthEntries = entries.filter(e => (e.date || '').startsWith(month)), t = calcTotals(monthEntries), isClosed = closedMonths.some(m => m.month === month); document.getElementById('monthCloseSummary').innerHTML = `<div class="flex justify-between p-2 bg-blue-50 rounded"><span>🛒 المبيع</span><span class="font-black text-blue-600">${fmt(t.sales)} $</span></div><div class="flex justify-between p-2 bg-green-50 rounded"><span>📈 الربح</span><span class="font-black text-green-600">${fmt(t.profit)} $</span></div><div class="flex justify-between p-2 bg-orange-50 rounded"><span>📓 الديون</span><span class="font-black text-orange-600">${fmt(t.debts)} $</span></div><div class="flex justify-between p-2 bg-red-50 rounded"><span>💸 المصاريف</span><span class="font-black text-red-600">${fmt(t.expenses)} $</span></div><div class="flex justify-between p-3 bg-gold rounded-xl mt-2"><span class="font-black">💰 الصافي</span><span class="font-black text-lg">${fmt(t.net)} $</span></div>${isClosed ? '<div class="text-center text-red-600 font-bold mt-2">⚠️ هذا الشهر مُغلق بالفعل</div>' : ''}`; }
+window.confirmCloseMonth = async () => { const month = document.getElementById('monthToClose').value; if (!month) { toastMsg('⚠️ اختر الشهر'); return; } if (closedMonths.some(m => m.month === month)) { toastMsg('⚠️ هذا الشهر مُغلق بالفعل'); return; } if (!confirm(`هل أنت متأكد من إغلاق شهر ${month}؟\nلن تتمكن من تعديل أي عملية فيه لاحقاً.`)) return; const monthEntries = entries.filter(e => (e.date || '').startsWith(month)); if (!monthEntries.length) { toastMsg('⚠️ لا توجد عمليات في هذا الشهر'); return; } const t = calcTotals(monthEntries), products = {}; monthEntries.forEach(e => { if ((e.type === 'sale' || e.type === 'debt') && e.productName) products[e.productName] = (products[e.productName] || 0) + (Number(e.quantity) || 1); }); try { await setDoc(doc(db, 'closedMonths', month), { month, totalSales: t.sales, totalProfit: t.profit, totalDebts: t.debts, totalReturns: t.returns, totalExpenses: t.expenses, netProfit: t.net, entriesCount: monthEntries.length, topProducts: Object.entries(products).sort((a, b) => b[1] - a[1]).slice(0, 10), closedBy: currentUser, closedAt: serverTimestamp() }); toastMsg(`✅ تم إغلاق شهر ${month} بنجاح`); document.getElementById('monthCloseModal').classList.add('hidden'); } catch (e) { console.error(e); toastMsg('❌ فشل الإغلاق'); } };
+function renderMonthsArchive() { const el = document.getElementById('monthsArchiveList'); if (!el) return; if (!closedMonths.length) { el.innerHTML = '<div class="text-center text-slate-400 py-4 text-sm">لا توجد أشهر مغلقة بعد</div>'; return; } el.innerHTML = closedMonths.map(m => `<div class="border border-amber-200 rounded-xl p-4 bg-gradient-to-br from-amber-50 to-white"><div class="flex justify-between items-center mb-2"><div class="flex items-center gap-2"><span class="text-2xl">🔒</span><div><div class="font-black text-slate-900 text-lg">${esc(m.month)}</div><div class="text-[10px] text-slate-500">أغلقه: ${esc(m.closedBy || '-')} · ${m.entriesCount || 0} عملية</div></div></div><div class="font-black text-amber-600 text-xl">${fmt(m.netProfit)} $</div></div><div class="grid grid-cols-3 gap-1 text-[10px] text-center mb-2"><div class="bg-white rounded p-1 border"><div class="text-slate-500">مبيع</div><div class="font-bold text-blue-600">${fmt(m.totalSales)} $</div></div><div class="bg-white rounded p-1 border"><div class="text-slate-500">ديون</div><div class="font-bold text-orange-600">${fmt(m.totalDebts)} $</div></div><div class="bg-white rounded p-1 border"><div class="text-slate-500">مصاريف</div><div class="font-bold text-red-600">${fmt(m.totalExpenses)} $</div></div></div><div class="flex gap-2 mt-2"><button onclick="downloadMonthReport('${esc(m.id)}')" class="flex-1 bg-slate-800 text-white rounded-lg py-2 text-xs font-bold">🖼️ تحميل صورة</button>${isManager() ? `<button onclick="unlockMonth('${esc(m.id)}')" class="bg-red-50 text-red-600 rounded-lg py-2 px-3 text-xs font-bold">🔓</button>` : ''}</div></div>`).join(''); }
+window.unlockMonth = async (id) => { if (!isManager()) return; const m = closedMonths.find(x => x.id === id); if (!m) return; const pw = prompt('أدخل كلمة سر المدير لفتح شهر ' + m.month + ':'); if (!pw) return; try { const hash = await sha256Hex('alherz:' + pw); if (hash !== PASS_HASHES.ahmad) { toastMsg('❌ كلمة سر غير صحيحة'); return; } if (!confirm('تحذير: فتح الشهر يسمح بتعديل عملياته. متابعة؟')) return; await deleteDoc(doc(db, 'closedMonths', id)); toastMsg('🔓 تم فتح الشهر'); } catch (e) { toastMsg('❌ فشل'); } };
+window.downloadMonthReport = async (id) => { const m = closedMonths.find(x => x.id === id); if (!m) return; const wrapper = document.createElement('div'); wrapper.style.cssText = `position:fixed;top:-9999px;left:0;width:400px;padding:24px;background:#fff;font-family:'Cairo',sans-serif;direction:rtl;box-sizing:border-box;`; wrapper.innerHTML = `<div style="text-align:center;padding-bottom:16px;border-bottom:3px double #bf953f;margin-bottom:16px;"><div style="font-size:26px;font-weight:900;color:#bf953f;">Alherz</div><div style="font-size:12px;color:#64748b;margin-top:4px;">التقرير الشهري المُغلق</div><div style="display:inline-block;margin-top:8px;padding:4px 12px;background:#0f172a;color:#fff;border-radius:100px;font-size:12px;font-weight:900;">${esc(m.month)}</div></div><div style="display:flex;justify-content:space-between;padding:10px 12px;background:#eff6ff;border-radius:8px;margin-bottom:8px;font-size:13px;"><span style="font-weight:bold;">🛒 المبيع</span><span style="font-weight:900;color:#2563eb;">${fmt(m.totalSales)} $</span></div><div style="display:flex;justify-content:space-between;padding:10px 12px;background:#f0fdf4;border-radius:8px;margin-bottom:8px;font-size:13px;"><span style="font-weight:bold;">📈 الربح</span><span style="font-weight:900;color:#16a34a;">${fmt(m.totalProfit)} $</span></div><div style="display:flex;justify-content:space-between;padding:10px 12px;background:#fff7ed;border-radius:8px;margin-bottom:8px;font-size:13px;"><span style="font-weight:bold;">📓 الديون</span><span style="font-weight:900;color:#ea580c;">${fmt(m.totalDebts)} $</span></div><div style="display:flex;justify-content:space-between;padding:10px 12px;background:#fef2f2;border-radius:8px;margin-bottom:8px;font-size:13px;"><span style="font-weight:bold;">🔄 المرتجع</span><span style="font-weight:900;color:#dc2626;">${fmt(m.totalReturns)} $</span></div><div style="display:flex;justify-content:space-between;padding:10px 12px;background:#fef2f2;border-radius:8px;margin-bottom:12px;font-size:13px;"><span style="font-weight:bold;">💸 المصاريف</span><span style="font-weight:900;color:#dc2626;">${fmt(m.totalExpenses)} $</span></div><div style="display:flex;justify-content:space-between;padding:14px 16px;background:linear-gradient(135deg,#bf953f,#fcf6ba,#b38728);border-radius:12px;margin-bottom:12px;"><span style="font-weight:900;font-size:15px;">💰 الصافي</span><span style="font-weight:900;color:#0f172a;font-size:18px;">${fmt(m.netProfit)} $</span></div><div style="text-align:center;font-size:11px;color:#64748b;padding-top:8px;border-top:1px solid #e2e8f0;">عدد العمليات: ${m.entriesCount || 0}<br>أغلقه: ${esc(m.closedBy || '-')}</div><div style="text-align:center;font-size:10px;color:#94a3b8;margin-top:16px;padding-top:12px;border-top:1px solid #e2e8f0;">تم إغلاقه عبر نظام Alherz 🔒</div>`; document.body.appendChild(wrapper); try { const canvas = await html2canvas(wrapper, { backgroundColor: '#ffffff', scale: 3, useCORS: true }); const link = document.createElement('a'); link.download = 'Alherz-Closed-' + m.month + '.png'; link.href = canvas.toDataURL('image/png'); link.click(); toastMsg('✅ تم التحميل'); } catch (e) { toastMsg('❌ فشل'); } finally { wrapper.remove(); } };
 
-/* ============================================================
-   الإعدادات + مصاريف ثابتة + استيراد
-   ============================================================ */
-window.saveTelegram = async () => {
-  const phone = document.getElementById('ahmadNumber').value.trim();
-  try { await setDoc(doc(db, 'settings', 'config'), { phone }, { merge: true }); settings.phone = phone; toastMsg('✅ تم الحفظ'); }
-  catch (e) { toastMsg('❌ فشل'); }
-};
+const pad2 = (n) => String(n).padStart(2, '0'), prevMonth = (m) => { let [y, mo] = m.split('-').map(Number); mo--; if (!mo) { mo = 12; y--; } return y + '-' + pad2(mo); }, daysIn = (m) => { const [y, mo] = m.split('-').map(Number); return new Date(y, mo, 0).getDate(); }, fixedList = () => Array.isArray(settings.fixedExpenses) ? settings.fixedExpenses : [], saveFixed = (list) => setDoc(doc(db, 'settings', 'config'), { fixedExpenses: list }, { merge: true });
+async function maybeRunFixed() { if (fixedRunning || !firebaseReady || !currentUser || !isManager() || !entriesLoaded || !settingsLoaded) return; const list = fixedList(); if (!list.length) return; const now = todayStr(), month = now.slice(0, 7); fixedRunning = true; try { let changed = false; const next = []; for (const it of list) { let cur = it; if (it.active !== false && it.lastMonth !== month) { const day = Math.min(Math.max(parseInt(it.day) || 1, 1), daysIn(month)), date = month + '-' + pad2(day); if (date <= now) { await setDoc(doc(db, 'entries', 'fx_' + it.id + '_' + month), { type: 'expense', saleKind: '', customerName: '', customerPhone: '', productName: it.name, quantity: 1, amount: Number(it.amount) || 0, costPrice: 0, paid: 0, dueDate: '', notes: 'مصروف شهري ثابت', date, payments: [], user: 'auto', auto: true, fixedId: it.id, timestamp: serverTimestamp() }); cur = { ...it, lastMonth: month }; changed = true; } } next.push(cur); } if (changed) { await saveFixed(next); toastMsg('🔁 تمت إضافة المصاريف الثابتة لهذا الشهر'); } } catch (e) { console.error('Fixed expenses error', e); } finally { fixedRunning = false; } }
+function renderFixedList() { const el = document.getElementById('fixedList'); if (!el) return; const list = fixedList(), total = list.filter(i => i.active !== false).reduce((s, i) => s + (Number(i.amount) || 0), 0), tEl = document.getElementById('fixedTotal'); if (tEl) tEl.textContent = list.length ? 'إجمالي المصاريف الثابتة الفعّالة: ' + fmt(total) + ' $ / شهر' : ''; if (!list.length) { el.innerHTML = '<div class="text-center text-slate-400 text-sm py-3">لا توجد مصاريف ثابتة</div>'; return; } el.innerHTML = list.map(it => `<div class="flex items-center justify-between gap-2 border border-slate-200 rounded-xl p-3 ${it.active === false ? 'opacity-50' : ''}"><div class="min-w-0"><div class="font-black text-sm truncate">${esc(it.name)}</div><div class="text-[10px] text-slate-500">يوم ${esc(it.day)} من كل شهر ${it.active === false ? '· متوقف' : ''}</div></div><div class="font-black text-red-600 text-sm shrink-0">${fmt(it.amount)} $</div><div class="flex gap-1 shrink-0"><button onclick="toggleFixed('${esc(it.id)}')" class="text-xs bg-slate-100 rounded-md px-2 py-1">${it.active === false ? '▶️' : '⏸️'}</button><button onclick="editFixed('${esc(it.id)}')" class="text-xs bg-slate-100 rounded-md px-2 py-1">✏️</button><button onclick="deleteFixed('${esc(it.id)}')" class="text-xs bg-red-50 text-red-600 rounded-md px-2 py-1">🗑️</button></div></div>`).join(''); }
+window.addFixedExpense = async () => { if (!isManager() || !firebaseReady) return; const name = document.getElementById('fxName').value.trim(), amount = parseFloat(document.getElementById('fxAmount').value) || 0, day = parseInt(document.getElementById('fxDay').value) || 0; if (!name || amount <= 0 || day < 1 || day > 31) { toastMsg('⚠️ أدخل الاسم والمبلغ ويوماً من 1 إلى 31'); return; } const now = todayStr(), month = now.slice(0, 7), due = month + '-' + pad2(Math.min(day, daysIn(month))); let lastMonth = prevMonth(month); if (due <= now && !confirm('يوم الاستحقاق مرّ هذا الشهر.\nموافق = أضف مصروف هذا الشهر الآن\nإلغاء = ابدأ من الشهر القادم')) lastMonth = month; const item = { id: Date.now().toString(36), name, amount, day, active: true, lastMonth }; try { await saveFixed([...fixedList(), item]); ['fxName', 'fxAmount', 'fxDay'].forEach(id => document.getElementById(id).value = ''); toastMsg('✅ تمت إضافة المصروف الثابت'); } catch (e) { console.error(e); toastMsg('❌ فشل الحفظ'); } };
+window.toggleFixed = async (id) => { if (!isManager()) return; const month = todayStr().slice(0, 7), list = fixedList().map(i => { if (i.id !== id) return i; if (i.active === false) return { ...i, active: true, lastMonth: month }; return { ...i, active: false }; }); try { await saveFixed(list); } catch (e) { toastMsg('❌ فشل'); } };
+window.editFixed = async (id) => { if (!isManager()) return; const it = fixedList().find(i => i.id === id); if (!it) return; const a = prompt('المبلغ الشهري ($) لـ ' + it.name + ':', it.amount); if (a === null) return; const d = prompt('يوم الاستحقاق (1-31):', it.day); if (d === null) return; const amount = parseFloat(a), day = parseInt(d); if (!(amount > 0) || !(day >= 1 && day <= 31)) { toastMsg('⚠️ قيمة غير صحيحة'); return; } try { await saveFixed(fixedList().map(i => i.id === id ? { ...i, amount, day } : i)); toastMsg('✅ تم التعديل'); } catch (e) { toastMsg('❌ فشل'); } };
+window.deleteFixed = async (id) => { if (!isManager() || !confirm('حذف هذا المصروف الثابت؟ (لا يحذف ما سُجّل سابقاً)')) return; try { await saveFixed(fixedList().filter(i => i.id !== id)); } catch (e) { toastMsg('❌ فشل'); } };
 
-window.exportData = () => {
-  const data = { entries, loyaltyCards, employees, reports, settings, exportedAt: new Date().toISOString() };
-  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-  const link = document.createElement('a');
-  link.href = URL.createObjectURL(blob);
-  link.download = 'alherz-backup-' + todayStr() + '.json';
-  link.click();
-};
-
+window.saveTelegram = async () => { const phone = document.getElementById('ahmadNumber').value.trim(); try { await setDoc(doc(db, 'settings', 'config'), { phone }, { merge: true }); settings.phone = phone; toastMsg('✅ تم الحفظ'); } catch (e) { toastMsg('❌ فشل'); } };
+window.exportData = () => { const data = { entries, loyaltyCards, employees, reports, closedMonths, settings, exportedAt: new Date().toISOString() }; const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' }); const link = document.createElement('a'); link.href = URL.createObjectURL(blob); link.download = 'alherz-backup-' + todayStr() + '.json'; link.click(); };
 const entryKey = (e) => [e.date, e.type, (e.customerName || '').trim().toLowerCase(), (e.productName || '').trim().toLowerCase(), Number(e.quantity) || 1, Number(e.amount) || 0, Number(e.costPrice) || 0].join('|');
 
 window.importData = async (event) => {
-  const file = event.target.files[0];
-  if (!file) return;
-  event.target.value = '';
+  const file = event.target.files[0]; if (!file) return; event.target.value = '';
   if (!firebaseReady) { alert('⚠️ التطبيق غير متصل بقاعدة البيانات بعد. انتظر ثواني حتى تظهر علامة (✅ متزامن) وحاول مجدداً.'); return; }
   if (!confirm('سيتم قراءة الملف وإضافة العمليات الجديدة فقط (يتم تخطي المكرر). متابعة؟')) return;
-
   try {
-    const text = await file.text();
-    const data = JSON.parse(text);
-    let entriesToImport = [];
-    if (Array.isArray(data)) entriesToImport = data;
-    else if (data && Array.isArray(data.entries)) entriesToImport = data.entries;
-    else { alert('❌ تنسيق الملف غير معروف! تأكد أنه ملف JSON صحيح.'); return; }
+    const text = await file.text(), data = JSON.parse(text); let entriesToImport = [];
+    if (Array.isArray(data)) entriesToImport = data; else if (data && Array.isArray(data.entries)) entriesToImport = data.entries; else { alert('❌ تنسيق الملف غير معروف!'); return; }
     if (entriesToImport.length === 0) { alert('⚠️ لا توجد عمليات داخل هذا الملف.'); return; }
-
-    updateSyncBadge('saving', 'جاري الاستيراد...');
-    let count = 0, skipped = 0, failed = 0;
-
-    const findValue = (obj, keys, defaultVal) => {
-      for (const k of keys) if (obj[k] !== undefined && obj[k] !== null && obj[k] !== '') return obj[k];
-      return defaultVal;
-    };
+    updateSyncBadge('saving', 'جاري الاستيراد...'); let count = 0, skipped = 0, failed = 0;
+    const findValue = (obj, keys, defaultVal) => { for (const k of keys) if (obj[k] !== undefined && obj[k] !== null && obj[k] !== '') return obj[k]; return defaultVal; };
     const num = (v) => parseFloat(String(v).replace(/[^0-9.-]+/g, '')) || 0;
-    const normDate = (v) => {
-      if (v && typeof v === 'object') {
-        if (typeof v.seconds === 'number') return new Date(v.seconds * 1000).toISOString().split('T')[0];
-        if (typeof v.toDate === 'function') return v.toDate().toISOString().split('T')[0];
-      }
-      return String(v).split('T')[0].split(' ')[0];
-    };
-
+    const normDate = (v) => { if (v && typeof v === 'object') { if (typeof v.seconds === 'number') return new Date(v.seconds * 1000).toISOString().split('T')[0]; if (typeof v.toDate === 'function') return v.toDate().toISOString().split('T')[0]; } return String(v).split('T')[0].split(' ')[0]; };
     const seen = new Set(entries.map(entryKey));
-
     for (const oldEntry of entriesToImport) {
       try {
-        const rawName = findValue(oldEntry, ['customerName', 'custName', 'name', 'client', 'customer', 'cust', 'buyer'], '');
-        const rawAmount = findValue(oldEntry, ['amount', 'price', 'total', 'value', 'salePrice'], 0);
-        const rawQty = findValue(oldEntry, ['quantity', 'qty', 'count'], 1);
-        const rawProduct = findValue(oldEntry, ['productName', 'product', 'category', 'cat', 'item'], '');
-        const rawDate = findValue(oldEntry, ['date', 'Date', 'createdAt', 'timestamp', 'time'], todayStr());
-        const rawType = findValue(oldEntry, ['type', 'action', 'kind'], 'sale');
-        const rawCost = findValue(oldEntry, ['costPrice', 'cost'], 0);
-        const rawPaid = findValue(oldEntry, ['paid'], 0);
-
-        let finalType = 'sale';
-        if (rawType === 'debt' || rawType === 'دين') finalType = 'debt';
-        else if (rawType === 'expense' || rawType === 'مصروف') finalType = 'expense';
-        else if (rawType === 'return' || rawType === 'مرتجع') finalType = 'return';
-
-        const safeEntry = {
-          type: finalType,
-          saleKind: oldEntry.saleKind || oldEntry.kind || oldEntry.view || 'جملة',
-          customerName: String(rawName).trim(),
-          customerPhone: String(findValue(oldEntry, ['customerPhone', 'phone'], '')).trim(),
-          productName: String(rawProduct).trim(),
-          quantity: parseInt(num(rawQty)) || 1,
-          amount: num(rawAmount),
-          costPrice: num(rawCost),
-          paid: num(rawPaid),
-          dueDate: String(findValue(oldEntry, ['dueDate'], '')),
-          notes: String(findValue(oldEntry, ['notes'], '')),
-          date: normDate(rawDate),
-          payments: Array.isArray(oldEntry.payments) ? oldEntry.payments : [],
-          user: ['ahmad', 'amal', 'nurr'].includes(oldEntry.user) ? oldEntry.user : 'imported',
-          timestamp: serverTimestamp()
-        };
-
-        const key = entryKey(safeEntry);
-        if (seen.has(key)) { skipped++; continue; }
-        seen.add(key);
-
-        await addDoc(collection(db, 'entries'), safeEntry);
-        count++;
-      } catch (err) { failed++; console.error('خطأ في عملية:', oldEntry, err); }
+        const rawName = findValue(oldEntry, ['customerName', 'custName', 'name', 'client', 'customer', 'cust', 'buyer'], ''), rawAmount = findValue(oldEntry, ['amount', 'price', 'total', 'value', 'salePrice'], 0), rawQty = findValue(oldEntry, ['quantity', 'qty', 'count'], 1), rawProduct = findValue(oldEntry, ['productName', 'product', 'category', 'cat', 'item'], ''), rawDate = findValue(oldEntry, ['date', 'Date', 'createdAt', 'timestamp', 'time'], todayStr()), rawType = findValue(oldEntry, ['type', 'action', 'kind'], 'sale'), rawCost = findValue(oldEntry, ['costPrice', 'cost'], 0), rawPaid = findValue(oldEntry, ['paid'], 0);
+        let finalType = 'sale'; if (rawType === 'debt' || rawType === 'دين') finalType = 'debt'; else if (rawType === 'expense' || rawType === 'مصروف') finalType = 'expense'; else if (rawType === 'return' || rawType === 'مرتجع') finalType = 'return';
+        const safeEntry = { type: finalType, saleKind: oldEntry.saleKind || oldEntry.kind || oldEntry.view || 'جملة', customerName: String(rawName).trim(), customerPhone: String(findValue(oldEntry, ['customerPhone', 'phone'], '')).trim(), productName: String(rawProduct).trim(), quantity: parseInt(num(rawQty)) || 1, amount: num(rawAmount), costPrice: num(rawCost), paid: num(rawPaid), dueDate: String(findValue(oldEntry, ['dueDate'], '')), notes: String(findValue(oldEntry, ['notes'], '')), date: normDate(rawDate), payments: Array.isArray(oldEntry.payments) ? oldEntry.payments : [], user: ['ahmad', 'amal', 'nurr'].includes(oldEntry.user) ? oldEntry.user : 'imported', timestamp: serverTimestamp() };
+        const key = entryKey(safeEntry); if (seen.has(key)) { skipped++; continue; } seen.add(key); await addDoc(collection(db, 'entries'), safeEntry); count++;
+      } catch (err) { failed++; }
     }
-
-    let loyAdded = 0, repAdded = 0, loyFail = 0, repFail = 0, lastErr = '';
-    if (data && !Array.isArray(data)) {
-      const phones = new Set(loyaltyCards.map(c => normPhone(c.phone)));
-      for (const c of (Array.isArray(data.loyaltyCards) ? data.loyaltyCards : [])) {
-        try {
-          const ph = normPhone(c.phone);
-          if (!c.name || (ph && phones.has(ph))) continue;
-          await addDoc(collection(db, 'loyaltyCards'), { name: String(c.name).trim(), phone: String(c.phone || '').trim(), points: Number(c.points) || 0, history: Array.isArray(c.history) ? c.history : [], createdAt: serverTimestamp(), user: 'imported' });
-          if (ph) phones.add(ph);
-          loyAdded++;
-        } catch (err) { console.error(err); loyFail++; lastErr = err.code || err.message; }
-      }
-      const repIds = new Set(reports.map(r => r.id));
-      for (const r of (Array.isArray(data.reports) ? data.reports : [])) {
-        try {
-          if (!r.date) continue;
-          const rid = 'day_' + r.date;
-          if (repIds.has(rid)) continue;
-          let rep;
-          if (r.totalSales !== undefined) { rep = { ...r }; delete rep.id; }
-          else {
-            const profit = Number(r.profit) || 0, ret = Number(r.returns) || 0, exps = Number(r.exps) || 0;
-            rep = { date: r.date, totalSales: Number(r.sales) || 0, totalProfit: profit, totalDebts: Number(r.debts) || 0, totalReturns: ret, totalExpenses: exps, netProfit: profit - exps - ret, entriesCount: Number(r.count) || 0, user: r.from || 'imported' };
-          }
-          rep.closedAt = new Date(r.date + 'T23:59:00');
-          await setDoc(doc(db, 'reports', rid), rep);
-          repIds.add(rid);
-          repAdded++;
-        } catch (err) { console.error(err); repFail++; lastErr = err.code || err.message; }
-      }
-    }
-
-    alert(`✅ تم استيراد ${count} عملية جديدة.${loyAdded ? '\n💳 بطاقات ولاء جديدة: ' + loyAdded : ''}${repAdded ? '\n📊 تقارير أيام: ' + repAdded : ''}${loyFail ? '\n⚠️ فشل استيراد ' + loyFail + ' بطاقة ولاء (' + lastErr + ')' : ''}${repFail ? '\n⚠️ فشل استيراد ' + repFail + ' تقرير (' + lastErr + ')' : ''}\nتم تخطي ${skipped} عملية مكررة.${failed ? '\n⚠️ فشلت ' + failed + ' عملية.' : ''}`);
-    updateSyncBadge('ok');
-  } catch (err) { console.error('Import Error:', err); alert('❌ فشل الاستيراد: ' + err.message); updateSyncBadge('error'); }
+    alert(`✅ تم استيراد ${count} عملية جديدة.\nتم تخطي ${skipped} عملية مكررة.${failed ? '\n⚠️ فشلت ' + failed + ' عملية.' : ''}`); updateSyncBadge('ok');
+  } catch (err) { alert('❌ فشل الاستيراد: ' + err.message); updateSyncBadge('error'); }
 };
 
 window.manualSync = () => { updateSyncBadge('saving', 'جاري إعادة الاتصال'); if (firebaseReady) startListeners(); setTimeout(() => updateSyncBadge('ok'), 1500); };
 
-/* ============================================================
-   المصاريف الشهرية الثابتة
-   ============================================================ */
-const pad2 = (n) => String(n).padStart(2, '0');
-const prevMonth = (m) => { let [y, mo] = m.split('-').map(Number); mo--; if (!mo) { mo = 12; y--; } return y + '-' + pad2(mo); };
-const daysIn = (m) => { const [y, mo] = m.split('-').map(Number); return new Date(y, mo, 0).getDate(); };
-const fixedList = () => Array.isArray(settings.fixedExpenses) ? settings.fixedExpenses : [];
-const saveFixed = (list) => setDoc(doc(db, 'settings', 'config'), { fixedExpenses: list }, { merge: true });
-
-async function maybeRunFixed() {
-  if (fixedRunning || !firebaseReady || !currentUser || !isManager() || !entriesLoaded || !settingsLoaded) return;
-  const list = fixedList();
-  if (!list.length) return;
-  const now = todayStr();
-  const month = now.slice(0, 7);
-  fixedRunning = true;
-  try {
-    let changed = false;
-    const next = [];
-    for (const it of list) {
-      let cur = it;
-      if (it.active !== false && it.lastMonth !== month) {
-        const day = Math.min(Math.max(parseInt(it.day) || 1, 1), daysIn(month));
-        const date = month + '-' + pad2(day);
-        if (date <= now) {
-          await setDoc(doc(db, 'entries', 'fx_' + it.id + '_' + month), {
-            type: 'expense', saleKind: '', customerName: '', customerPhone: '', productName: it.name,
-            quantity: 1, amount: Number(it.amount) || 0, costPrice: 0, paid: 0, dueDate: '',
-            notes: 'مصروف شهري ثابت', date, payments: [], user: 'auto', auto: true, fixedId: it.id,
-            timestamp: serverTimestamp()
-          });
-          cur = { ...it, lastMonth: month };
-          changed = true;
-        }
-      }
-      next.push(cur);
-    }
-    if (changed) { await saveFixed(next); toastMsg('🔁 تمت إضافة المصاريف الثابتة لهذا الشهر'); }
-  } catch (e) { console.error('Fixed expenses error', e); }
-  finally { fixedRunning = false; }
-}
-
-function renderFixedList() {
-  const el = document.getElementById('fixedList');
-  if (!el) return;
-  const list = fixedList();
-  const total = list.filter(i => i.active !== false).reduce((s, i) => s + (Number(i.amount) || 0), 0);
-  const tEl = document.getElementById('fixedTotal');
-  if (tEl) tEl.textContent = list.length ? 'إجمالي المصاريف الثابتة الفعّالة: ' + fmt(total) + ' $ / شهر' : '';
-  if (!list.length) { el.innerHTML = '<div class="text-center text-slate-400 text-sm py-3">لا توجد مصاريف ثابتة</div>'; return; }
-  el.innerHTML = list.map(it => `
-    <div class="flex items-center justify-between gap-2 border border-slate-200 rounded-xl p-3 ${it.active === false ? 'opacity-50' : ''}">
-      <div class="min-w-0">
-        <div class="font-black text-sm truncate">${esc(it.name)}</div>
-        <div class="text-[10px] text-slate-500">يوم ${esc(it.day)} من كل شهر ${it.active === false ? '· متوقف' : ''}</div>
-      </div>
-      <div class="font-black text-red-600 text-sm shrink-0">${fmt(it.amount)} $</div>
-      <div class="flex gap-1 shrink-0">
-        <button onclick="toggleFixed('${esc(it.id)}')" class="text-xs bg-slate-100 rounded-md px-2 py-1">${it.active === false ? '▶️' : '⏸️'}</button>
-        <button onclick="editFixed('${esc(it.id)}')" class="text-xs bg-slate-100 rounded-md px-2 py-1">✏️</button>
-        <button onclick="deleteFixed('${esc(it.id)}')" class="text-xs bg-red-50 text-red-600 rounded-md px-2 py-1">🗑️</button>
-      </div>
-    </div>`).join('');
-}
-
-window.addFixedExpense = async () => {
-  if (!isManager() || !firebaseReady) return;
-  const name = document.getElementById('fxName').value.trim();
-  const amount = parseFloat(document.getElementById('fxAmount').value) || 0;
-  const day = parseInt(document.getElementById('fxDay').value) || 0;
-  if (!name || amount <= 0 || day < 1 || day > 31) { toastMsg('⚠️ أدخل الاسم والمبلغ ويوماً من 1 إلى 31'); return; }
-  const now = todayStr();
-  const month = now.slice(0, 7);
-  const due = month + '-' + pad2(Math.min(day, daysIn(month)));
-  let lastMonth = prevMonth(month);
-  if (due <= now && !confirm('يوم الاستحقاق مرّ هذا الشهر.\nموافق = أضف مصروف هذا الشهر الآن\nإلغاء = ابدأ من الشهر القادم')) lastMonth = month;
-  const item = { id: Date.now().toString(36), name, amount, day, active: true, lastMonth };
-  try {
-    await saveFixed([...fixedList(), item]);
-    ['fxName', 'fxAmount', 'fxDay'].forEach(id => document.getElementById(id).value = '');
-    toastMsg('✅ تمت إضافة المصروف الثابت');
-  } catch (e) { console.error(e); toastMsg('❌ فشل الحفظ'); }
-};
-
-window.toggleFixed = async (id) => {
-  if (!isManager()) return;
-  const month = todayStr().slice(0, 7);
-  const list = fixedList().map(i => {
-    if (i.id !== id) return i;
-    if (i.active === false) return { ...i, active: true, lastMonth: month };
-    return { ...i, active: false };
-  });
-  try { await saveFixed(list); } catch (e) { toastMsg('❌ فشل'); }
-};
-
-window.editFixed = async (id) => {
-  if (!isManager()) return;
-  const it = fixedList().find(i => i.id === id); if (!it) return;
-  const a = prompt('المبلغ الشهري ($) لـ ' + it.name + ':', it.amount);
-  if (a === null) return;
-  const d = prompt('يوم الاستحقاق (1-31):', it.day);
-  if (d === null) return;
-  const amount = parseFloat(a), day = parseInt(d);
-  if (!(amount > 0) || !(day >= 1 && day <= 31)) { toastMsg('⚠️ قيمة غير صحيحة'); return; }
-  try { await saveFixed(fixedList().map(i => i.id === id ? { ...i, amount, day } : i)); toastMsg('✅ تم التعديل'); }
-  catch (e) { toastMsg('❌ فشل'); }
-};
-
-window.deleteFixed = async (id) => {
-  if (!isManager() || !confirm('حذف هذا المصروف الثابت؟ (لا يحذف ما سُجّل سابقاً)')) return;
-  try { await saveFixed(fixedList().filter(i => i.id !== id)); } catch (e) { toastMsg('❌ فشل'); }
-};
-
-/* ============================================================
-   الصلاحيات والبدء
-   ============================================================ */
 function applyRole() {
   const m = isManager();
-  ['tab_employees', 'tab_reports', 'tab_settings', 'cardProfit', 'cardReturns', 'cardExpenses', 'cardNet', 'closeBtn'].forEach(id => {
-    const el = document.getElementById(id); if (el) el.style.display = m ? '' : 'none';
-  });
-  const sel = document.getElementById('otherTypeSelect');
-  if (sel) [...sel.options].forEach(o => { if (o.value === 'expense' || o.value === 'return') { o.hidden = !m; o.disabled = !m; } });
-  const ls = document.getElementById('labelSales');
-  if (ls) ls.textContent = m ? 'المبيع' : 'مبيع اليوم (أنتِ)';
-  setType('sale');
-  switchTab('sales');
+  ['tab_employees', 'tab_reports', 'tab_settings', 'cardProfit', 'cardReturns', 'cardExpenses', 'cardNet', 'closeBtn'].forEach(id => { const el = document.getElementById(id); if (el) el.style.display = m ? '' : 'none'; });
+  document.querySelectorAll('.manager-only').forEach(el => { el.style.display = m ? '' : 'none'; });
+  const sel = document.getElementById('otherTypeSelect'); if (sel) [...sel.options].forEach(o => { if (o.value === 'expense' || o.value === 'return') { o.hidden = !m; o.disabled = !m; } });
+  const ls = document.getElementById('labelSales'); if (ls) ls.textContent = m ? 'المبيع' : 'مبيع اليوم (أنتِ)';
+  setType('sale'); switchTab('sales');
 }
 
 function boot() {
-  document.getElementById('entryDate').value = todayStr();
-  document.getElementById('filterDate').value = todayStr();
-  document.getElementById('monthPicker').value = todayStr().slice(0, 7);
-  if (localStorage.getItem('alherz_dark') === '1') document.body.classList.add('dark');
-  const saved = localStorage.getItem('alherz_user');
-  if (saved && PASS_HASHES[saved]) { currentUser = saved; applyLogin(); }
+  document.getElementById('entryDate').value = todayStr(); document.getElementById('filterDate').value = todayStr(); document.getElementById('monthPicker').value = todayStr().slice(0, 7);
+  if (localStorage.getItem('alherz_dark') === '1') { document.body.classList.add('dark'); const btn = document.getElementById('darkToggleBtn'); if (btn) btn.textContent = '☀️'; }
+  const saved = localStorage.getItem('alherz_user'); if (saved && PASS_HASHES[saved]) { currentUser = saved; applyLogin(); }
   initFirebase();
 }
-
 boot();
 </script>
 
